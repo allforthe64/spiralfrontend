@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import './App.css';
+import Register from './Register'
 import Home from './components/Home';
 import GetStarted from './components/GetStarted';
 import Nav from './components/Nav';
@@ -24,6 +25,7 @@ function App() {
 
   return (
     <div className="App bg-dark">
+      <Register />
       <Nav />
       <Routes>
         <Route path={'/'} element={<Home />}/>
