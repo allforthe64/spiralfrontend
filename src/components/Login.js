@@ -93,7 +93,7 @@ const Login = () => {
                     value={pwd}
                     required
                 />
-                <button>Sign In</button>
+                <button className='text-white'>Sign In</button>
                 <div className="persistCheck">
                     <input
                         type="checkbox"
@@ -104,10 +104,10 @@ const Login = () => {
                     <label htmlFor="persist">Trust This Device</label>
                 </div>
             </form>
-            <p>
+            <p className='text-white'>
                 Need an Account?<br />
                 <span className="line">
-                    <Link to="/register">Sign Up</Link>
+                    <Link to="/register" className='text-white'>Sign Up</Link>
                 </span>
             </p>
         </section>

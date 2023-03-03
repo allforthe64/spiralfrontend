@@ -9,7 +9,6 @@ import Unauthorized from './components/Unauthorized';
 import Missing from './components/Missing';
 import Home from './components/Home';
 import GetStarted from './components/GetStarted';
-import MyResources from './components/MyResources';
 import Dashboard from './components/Dashboard';
 import Discord from './components/Discord';
 import Resources from './components/Resources';
@@ -51,6 +50,8 @@ function App() {
     
   }, [])
 
+  console.log(dataObject)
+
   return (
     <div className="App bg-dark">
       <ResourceContext.Provider value={dataObject}>
@@ -66,13 +67,14 @@ function App() {
             {/* landing page routes */}
             <Route path="/" element={<Home />} />
             <Route path={'/get-started'} element={<GetStarted />} />
+            <Route path="/resources" element={<Resources />} />
 
 
             {/* we want to protect these routes */}
             <Route element={<PersistLogin />}>
-              <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Admin]} />}>
-                <Route path="/resources" element={<MyResources />} />
-              </Route>
+              {/*<Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Admin]} />}>
+                <Route path="/resources" element={<Resources />} />
+              </Route>*/}
 
               <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
                 <Route path="/admin" element={<Admin />} />

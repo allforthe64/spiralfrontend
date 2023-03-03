@@ -14,9 +14,9 @@ const Home = () => {
                     <p className='text-white info-txt text-left text-2xl w-4/12'>Because <span className='headings text-white'>LEARNING</span> is different when you choose it.</p>
                 </div> 
             </section>
-            <section className="pt-10 pb-10 space-bg border-t-2 border-white">
+            <section className="py-24 space-bg border-t-2 border-white">
                 <h3 className="headings text-5xl font-bold text-white mb-4">Why Spiral?</h3>
-                <p className="w-8/12 ml-[20%] mt-2 font-medium text-white text-lg info-txt">When you have a choice about what you do and can 
+                <p className="w-8/12 ml-[20%] mt-2 font-medium text-white text-lg info-txt mb-16">When you have a choice about what you do and can 
                     choose when you stop, your relationship to what you’re doing 
                     is different. Learning flows better. There isn't a set of magical information that, once 
                     memorized/understood, constitutes a complete education. 
@@ -24,36 +24,39 @@ const Home = () => {
                     is an endless source of information and it’s more important 
                     to know how to create, build, and share that info, 
                     than to memorize it.</p>
-                    <div className="flex justify-around w-10/12 ml-[8%] mt-8">
-                        <div className="w-2/12 border border-white p-6 rounded-3xl tinted">
-                            <img className='rounded-xl mb-4' src="https://www.simplilearn.com/ice9/free_resources_article_thumb/What_Is_a_Project.jpg" alt="projects"/>
+                    <div className="flex justify-around w-10/12 ml-[8%]">
+                        <div className="w-2/12 p-2 rounded-3xl tinted">
+                            <img className='rounded-lg mb-4 h-[36%]' src="https://www.simplilearn.com/ice9/free_resources_article_thumb/What_Is_a_Project.jpg" alt="projects"/>
                             <p className="headings text-2xl font-semibold text-white mb-4">Projects</p>
                             <p className="text-left text-white text-sm info-txt">Start with an idea and carry it through to a finished project</p>
                         </div>
-                        <div className="w-2/12 border border-white p-6 rounded-3xl tinted">
-                            <img className='rounded-xl mb-4' src="https://static.timesofisrael.com/www/uploads/2012/07/F120715MA01.jpg" alt="passions"/>
+                        <div className="w-2/12 p-2 rounded-3xl tinted">
+                            <img className='rounded-lg mb-4' src="https://static.timesofisrael.com/www/uploads/2012/07/F120715MA01.jpg" alt="passions"/>
                             <p className="headings text-2xl font-semibold text-white mb-4">Passions</p>
                             <p className="text-left text-white text-sm info-txt">Students will work longer, with more focus, and persist when 
                                 faced with challenges if they really care about what they are doing.</p>
                         </div>
-                        <div className="w-2/12 border border-white p-6 rounded-3xl tinted">
-                            <img className="rounded-2xl mb-4" src="https://images.squarespace-cdn.com/content/v1/5c4a3f57506fbeb3c982f7f2/1579727119279-X5GCZ65DV205D3XWLKNM/c_960x720_0F8.jpg" alt='Peers'/>
+                        <div className="w-2/12 p-2 rounded-3xl tinted">
+                            <img className="rounded-lg mb-4" src="https://images.squarespace-cdn.com/content/v1/5c4a3f57506fbeb3c982f7f2/1579727119279-X5GCZ65DV205D3XWLKNM/c_960x720_0F8.jpg" alt='Peers'/>
                             <p className="headings text-2xl font-semibold text-white mb-4">Peers</p>
                             <p className="text-left text-white text-sm info-txt">Learning is a social process. Students need feedback from both adults and 
                                 other students to help move them towards their goals.</p>
                         </div>
-                        <div className="w-2/12 border border-white p-6 rounded-3xl tinted">
-                            <img className="rounded-xl mb-4" src="https://www.parents.com/thmb/VK_eMsHSWaYAAAuaFnyO88r_mh0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-901208614-2000-9d4cdf4d1ad94fcb97ca78d67836a9d8.jpg" alt="play"/>
+                        <div className="w-2/12 p-2 rounded-3xl tinted">
+                            <img className="rounded-lg mb-4" src="https://www.parents.com/thmb/VK_eMsHSWaYAAAuaFnyO88r_mh0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-901208614-2000-9d4cdf4d1ad94fcb97ca78d67836a9d8.jpg" alt="play"/>
                             <p className="headings text-2xl font-semibold text-white mb-4">Play</p>
                             <p className="text-left text-white text-sm info-txt">Students should be given opportunities to take risks, try new things, and 
                                 recognize there is no shame if their attempts do not work out.</p>
                         </div>
                     </div>
             </section>
-            <section>
-                <h1>This is where the spiral graphic goes</h1>
+            <section className='bg-white flex justify-center flex-col items-center py-28'>
+                <h1 className='headings font-bold text-5xl mb-14'>The Creative Learning Spiral:</h1>
+                <AnimationOnScroll animateIn='animate__fadeIn' offset={100}>
+                    <img src='./graphic.png' alt='Learning spiral graphic' className='w-[80%] ml-[10%]'/>
+                </AnimationOnScroll>
             </section>
-            <section className="space-bg flex flex-col pt-20 pb-20">
+            <section className="space-bg flex flex-col py-32">
                 <AnimationOnScroll animateIn="animate__fadeInDown" offset={300}>
                     <div className='flex justify-center'>
                         <h1 className="headings text-white font-bold text-6xl w-7/12 mb-5">Want to access cutting 
@@ -68,7 +71,7 @@ const Home = () => {
                     </div> 
                 </AnimationOnScroll>
             </section>
-            <section className='bg-dark border-t-2 pb-10'>
+            <section className='bg-dark border-t-2 py-20'>
                 <AnimationOnScroll animateIn='animate__fadeInUp' offset={0}>
                     <p className='text-white headings font-bold text-5xl pt-10'>Meet The Team</p>
                     <hr className='smol-spacer ml-[42%] mt-4 bg-white'/>
