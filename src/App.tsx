@@ -67,14 +67,13 @@ function App() {
             {/* landing page routes */}
             <Route path="/" element={<Home />} />
             <Route path={'/get-started'} element={<GetStarted />} />
-            <Route path="/resources" element={<Resources />} />
 
 
             {/* we want to protect these routes */}
             <Route element={<PersistLogin />}>
-              {/*<Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Admin]} />}>
+              <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Admin]} />}>
                 <Route path="/resources" element={<Resources />} />
-              </Route>*/}
+              </Route>
 
               <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
                 <Route path="/admin" element={<Admin />} />
