@@ -49,7 +49,6 @@ function App() {
           {/* login & register */}
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
-          <Route path="linkpage" element={<LinkPage />} />
           <Route path="unauthorized" element={<Unauthorized />} />
           
           {/* landing page routes */}
