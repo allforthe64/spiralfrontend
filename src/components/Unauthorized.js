@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 const Unauthorized = () => {
     const navigate = useNavigate();
 
+    // Takes user back one page when the back button is clicked in the browser
     const goBack = () => navigate(-1);
 
     return (

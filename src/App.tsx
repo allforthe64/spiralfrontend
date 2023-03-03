@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import './App.css';
 import Layout from './components/Layout';
 import Register from './components/Register';
 import Login from './components/Login';
 import LinkPage from './components/LinkPage';
+import Admin from './components/Admin';
 import Unauthorized from './components/Unauthorized';
 import Missing from './components/Missing';
 import Home from './components/Home';
@@ -24,9 +25,8 @@ const ROLES = {
 function App() {
 
   useEffect(() => {
-
     const fetchData = async () => {
-
+      
       await fetch('https://spiral-backend-api.onrender.com/resources')
         .then(res => res.json())
         .then(data => console.log(data))
@@ -55,9 +55,13 @@ function App() {
 
 
           {/* we want to protect these routes */}
-          <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
-          <Route path="/resources" element={<MyResources />} />
-        </Route>
+          <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Admin]} />}>
+            <Route path="/resources" element={<MyResources />} />
+          </Route>
+
+          <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
+            <Route path="/admin" element={<Admin />} />
+          </Route>
 
           <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Enrolled, ROLES.Admin]}/>} >
             <Route path="/dashboard" element={<Dashboard />} />

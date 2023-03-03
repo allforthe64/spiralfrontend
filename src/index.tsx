@@ -12,7 +12,6 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
         <Routes>
@@ -20,5 +19,4 @@ root.render(
         </Routes>
       </AuthProvider>
     </BrowserRouter>
-  </React.StrictMode>
 );
