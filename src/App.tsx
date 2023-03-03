@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import './App.css';
+
 import Layout from './components/Layout';
 import Register from './components/Register';
 import Login from './components/Login';
@@ -8,12 +9,14 @@ import Admin from './components/Admin';
 import Unauthorized from './components/Unauthorized';
 import Missing from './components/Missing';
 import Home from './components/Home';
+import GetStarted from './components/GetStarted';
 import MyResources from './components/MyResources';
 import Dashboard from './components/Dashboard';
-import GetStarted from './components/GetStarted';
+import Discord from './components/Discord';
 
 
 import RequireAuth from './components/RequireAuth';
+import PersistLogin from './components/PersistLogin';
 import {Routes, Route} from 'react-router-dom'
 
 const ROLES = {
@@ -55,20 +58,22 @@ function App() {
 
 
           {/* we want to protect these routes */}
-          <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Admin]} />}>
-            <Route path="/resources" element={<MyResources />} />
-          </Route>
+          <Route element={<PersistLogin />}>
+            <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Admin]} />}>
+              <Route path="/resources" element={<MyResources />} />
+            </Route>
 
-          <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
-            <Route path="/admin" element={<Admin />} />
-          </Route>
+            <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
+              <Route path="/admin" element={<Admin />} />
+            </Route>
 
-          <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Enrolled, ROLES.Admin]}/>} >
-            <Route path="/dashboard" element={<Dashboard />} />
-          </Route>
+            <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Enrolled, ROLES.Admin]}/>} >
+              <Route path="/dashboard" element={<Dashboard />} />
+            </Route>
 
-          <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Enrolled, ROLES.Admin]}/>} >
-            <Route path="/discord" element={<Dashboard />} />
+            <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Enrolled, ROLES.Admin]}/>} >
+              <Route path="/discord" element={<Discord />} />
+            </Route>
           </Route>
           
 
