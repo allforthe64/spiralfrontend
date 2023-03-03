@@ -4,7 +4,6 @@ import './App.css';
 import Layout from './components/Layout';
 import Register from './components/Register';
 import Login from './components/Login';
-import LinkPage from './components/LinkPage';
 import Admin from './components/Admin';
 import Unauthorized from './components/Unauthorized';
 import Missing from './components/Missing';
