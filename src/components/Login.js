@@ -10,7 +10,7 @@ const Login = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || "/";
+    const from = location.state?.from?.pathname || "/dashboard";
 
     const userRef = useRef();
     const errRef = useRef();
@@ -52,7 +52,7 @@ const Login = () => {
             } else if (err.response?.status === 400) {
                 setErrMsg('Missing Username or Password');
             } else if (err.response?.status === 401) {
-                setErrMsg('Unauthorized');
+                setErrMsg('Incorrect Username or Password');
             } else {
                 setErrMsg('Login Failed');
             }
@@ -70,11 +70,12 @@ const Login = () => {
 
     return (
 
-        <section>
-            <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-            <h1>Sign In</h1>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="username">Username:</label>
+        <section className='py-20'>
+            <div className='h-10 mb-6'>
+                <p ref={errRef} className={errMsg ? "errmsg w-6/12 ml-[25%]" : "offscreen"} aria-live="assertive">{errMsg}</p>
+            </div>
+            <h1 className='text-white headings font-bold text-5xl mb-16'>Sign In to Spiral</h1>
+            <form onSubmit={handleSubmit} className='flex flex-col items-center'>
                 <input
                     type="text"
                     id="username"
@@ -83,31 +84,33 @@ const Login = () => {
                     onChange={(e) => setUser(e.target.value)}
                     value={user}
                     required
+                    className='w-4/12 bg-inherit border-b-2 outline-0 text-white info-txt text-2xl pl-2 pb-px mb-6'
+                    placeholder='username'
                 />
-
-                <label htmlFor="password">Password:</label>
                 <input
                     type="password"
                     id="password"
                     onChange={(e) => setPwd(e.target.value)}
                     value={pwd}
                     required
+                    className='w-4/12 bg-inherit border-b-2 outline-0 text-white info-txt text-2xl pl-2 pb-px mb-7'
+                    placeholder='password'
                 />
-                <button className='text-white'>Sign In</button>
-                <div className="persistCheck">
+                <div className="persistCheck mr-[19%] mb-14">
                     <input
                         type="checkbox"
                         id="persist"
                         onChange={togglePersist}
                         checked={persist}
                     />
-                    <label htmlFor="persist">Trust This Device</label>
+                    <label htmlFor="persist" className='text-white info-txt text-lg leading-tight pl-3'>Trust This Device</label>
                 </div>
+                <button className='info-txt font-bold text-2xl mb-8 bg-alien-green py-px px-8 rounded-md'>Sign In</button>
             </form>
             <p className='text-white'>
-                Need an Account?<br />
+                Need an Account?<br/>
                 <span className="line">
-                    <Link to="/register" className='text-white'>Sign Up</Link>
+                    <Link to="/register" className='text-white hover:underline'>Sign Up</Link>
                 </span>
             </p>
         </section>
