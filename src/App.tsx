@@ -51,6 +51,8 @@ function App() {
     
   }, [])
 
+  console.log(dataObject)
+
   return (
     <div className="App bg-dark">
       <ResourceContext.Provider value={dataObject}>

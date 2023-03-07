@@ -74,16 +74,6 @@ code {
   color: white;
 }
 
-.regForm input {
-  color: black;
-}
-
-.regForm button {
-  background-color: white;
-  color: black;
-}
-
-
 .errmsg {
   background-color: lightpink;
   color: firebrick;
