@@ -12,10 +12,14 @@ import GetStarted from './components/GetStarted';
 import Dashboard from './components/Dashboard';
 import Discord from './components/Discord';
 import Resources from './components/Resources';
+import NewResourceForm from './components/NewResourceForm';
+
 
 import RequireAuth from './components/RequireAuth';
 import PersistLogin from './components/PersistLogin';
 import {Routes, Route} from 'react-router-dom'
+
+
 
 
 const ROLES = {
@@ -39,6 +43,7 @@ function App() {
   })
 
   useEffect(() => {
+
     const fetchData = async () => {
       
       await fetch('https://spiral-backend-api.onrender.com/resources')
@@ -68,11 +73,19 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path={'/get-started'} element={<GetStarted />} />
 
-
             {/* we want to protect these routes */}
             <Route element={<PersistLogin />}>
-              <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Admin]} />}>
+
+              {/* <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
                 <Route path="/resources" element={<Resources />} />
+              </Route> */}
+
+              <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Admin]} />} >
+                <Route path="resources">
+                  <Route index element={<Resources />} />
+                  {/* <Route path=':id' element={<EditResource />} /> */}
+                  <Route path='new' element={<NewResourceForm />} />
+                </Route>
               </Route>
 
               <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>

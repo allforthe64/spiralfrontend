@@ -103,7 +103,6 @@ const Register = () => {
             <section>
                 <h1>Success!</h1>
                 <p>
-                    {/* Change to React Router Link */}
                     <Link to='/login'>Sign In</Link>
                 </p>
             </section>
