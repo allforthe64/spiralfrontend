@@ -19,15 +19,11 @@ import RequireAuth from './components/RequireAuth';
 import PersistLogin from './components/PersistLogin';
 import {Routes, Route} from 'react-router-dom'
 
-
-
-
 const ROLES = {
   "Admin": 5150,
   "Enrolled": 1984,
   "User": 2001
 }
-
 
 //establish context
 interface ResourceContextType {
@@ -46,7 +42,7 @@ function App() {
 
     const fetchData = async () => {
       
-      await fetch('https://spiral-backend-api.onrender.com/resources')
+      await fetch('https://spiral-backend-api.onrender.com')
         .then(res => res.json())
         .then(data => setDataObject({arr: data}))
     }
@@ -55,7 +51,7 @@ function App() {
     
   }, [])
 
-  console.log(dataObject)
+  console.log(`resources fetched: ${dataObject}`)
 
   return (
     <div className="App bg-dark">
