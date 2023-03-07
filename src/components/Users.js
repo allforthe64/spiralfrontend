@@ -13,6 +13,7 @@ const Users = () => {
         const controller = new AbortController();
 
         const getUsers = async () => {
+
             try {
                 const response = await axiosPrivate.get('/users', {
                     signal: controller.signal
@@ -24,7 +25,6 @@ const Users = () => {
                 navigate('/login', { state: { from: location }, replace: true });
             }
         }
-
         getUsers();
 
         return () => {

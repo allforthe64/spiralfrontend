@@ -1,8 +1,10 @@
 import { useContext, useState } from "react"
 import { ResourceContext } from "../App"
+import { Link } from "react-router-dom"
 
 import ResourceCard from "./ResourceCard"
 import Modal from "./Modal"
+
 
 
 const Resources = () => {
@@ -29,7 +31,6 @@ const Resources = () => {
             setOpenModal(true) 
 
         }   else {
-            console.log('in here')
             setOpenModal(false)
         }
 
@@ -44,6 +45,9 @@ const Resources = () => {
             {openModal && <Modal name={modalName} onClickFunc={onClickFunc}/>}
             <div className="flex justify-around flex-wrap">
                 {cards}
+            </div>
+            <div className="addResource text-white">
+                <Link to={'/resources/new'}>Add Resources</Link>
             </div>
         </div>
     )
