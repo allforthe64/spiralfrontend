@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { ResourceContext } from "../App"
 import { Link } from "react-router-dom"
 
@@ -35,7 +35,7 @@ const Resources = () => {
         }
 
     }
-
+    
     //create cards for display
     const cards = resources.map(el => <ResourceCard key={el._id} id={el._id} name={el.name} link={el.link} desc={el.desc} tags={el.tags} onClickFunc={onClickFunc}/>)
 

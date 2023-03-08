@@ -5,7 +5,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import axios from '../api/axios';
 const LOGIN_URL = '/auth';
 
-const Login = () => {
+const Login = ({ func }) => {
     const { setAuth, persist, setPersist } = useAuth();
 
     const navigate = useNavigate();
@@ -45,6 +45,7 @@ const Login = () => {
             setAuth({ user, pwd, roles, accessToken });
             setUser('');
             setPwd('');
+            func()
             navigate(from, { replace: true });
         } catch (err) {
             if (!err?.response) {
