@@ -2,7 +2,7 @@ import { useState } from "react";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import { useNavigate, Link } from "react-router-dom";
 
-const ResourceForm2 = () => {
+const NewResourceForm = ({ func }) => {
     const [name, setName] = useState("")
     const [desc, setDesc] = useState("")
     const [longDesc, setLongDesc] = useState("")
@@ -47,14 +47,13 @@ const ResourceForm2 = () => {
             )
             
             console.log(response?.data)
-            console.log(JSON.stringify(response))
         
             //Clear input fields
             setName('')
             setDesc('')
             setLongDesc('')
             setLink('')
-
+            func()
             navigate('/resources', { replace: true })
         } catch (err) {
             console.log('throwing error in frontend resource form')
@@ -124,4 +123,4 @@ const ResourceForm2 = () => {
     );
 };
 
-export default ResourceForm2
+export default NewResourceForm

@@ -17,7 +17,8 @@ import NewResourceForm from './components/NewResourceForm';
 
 import RequireAuth from './components/RequireAuth';
 import PersistLogin from './components/PersistLogin';
-import {Routes, Route} from 'react-router-dom'
+import {Routes, Route, useNavigate, useLocation} from 'react-router-dom'
+import useAxiosPrivate from './hooks/useAxiosPrivate';
 
 const ROLES = {
   "Admin": 5150,
@@ -33,25 +34,60 @@ interface ResourceContextType {
 export const ResourceContext = createContext<ResourceContextType | null>(null)
 
 function App() {
-  
+
+  const axiosPrivate = useAxiosPrivate();
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const [dataObject, setDataObject] = useState<ResourceContextType>({
     arr: []
   })
 
+  const [foo, setFoo] = useState(false)
+  const changeFoo = () => {
+    console.log('ran')
+    setFoo(prev => !prev)
+  }
+
   useEffect(() => {
+    let isMounted = true;
+    const controller = new AbortController();
 
-    const fetchData = async () => {
-      
-      await fetch('https://spiral-backend-api.onrender.com')
-        .then(res => res.json())
-        .then(data => setDataObject({arr: data}))
+    console.log('trying to get resources')
+    const getResources = async () => {
+
+        try {
+            console.log('refetching')
+            const response = await axiosPrivate.get('/resources', {
+                signal: controller.signal
+            });
+            console.log(response.data);
+            isMounted && setDataObject({arr: response.data});
+        } catch (err) {
+            console.error(err);
+            navigate('/', { state: { from: location }, replace: true });
+        }
     }
+    getResources();
 
-    fetchData()
+    return () => {
+        isMounted = false;
+        controller.abort();
+    }
+}, [foo])
+
+  // useEffect(() => {
+
+  //   const fetchData = async () => {
+      
+  //     await fetch('http://localhost:3500/resources')
+  //       .then(res => res.json())
+  //       .then(data => setDataObject({arr: data}))
+  //   }
+
+  //   fetchData()
     
-  }, [])
-
-  console.log(`resources fetched: ${dataObject}`)
+  // }, [])
 
   return (
     <div className="App bg-dark">
@@ -61,7 +97,7 @@ function App() {
             {/* public routes */}
 
             {/* login & register */}
-            <Route path="login" element={<Login />} />
+            <Route path="login" element={<Login func={changeFoo}/>} />
             <Route path="register" element={<Register />} />
             <Route path="unauthorized" element={<Unauthorized />} />
 
@@ -80,7 +116,7 @@ function App() {
                 <Route path="resources">
                   <Route index element={<Resources />} />
                   {/* <Route path=':id' element={<EditResource />} /> */}
-                  <Route path='new' element={<NewResourceForm />} />
+                  <Route path='new' element={<NewResourceForm func={setFoo}/>} />
                 </Route>
               </Route>
 

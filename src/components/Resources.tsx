@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { ResourceContext } from "../App"
 import { Link } from "react-router-dom"
 
@@ -15,7 +15,6 @@ const Resources = () => {
 
     //move resources out of context into their own object for referencing
     const contextObject = useContext(ResourceContext)
-    console.log(`contextObject: ${contextObject}`)
     const resources:Array<any> = []
     contextObject?.arr.map(el => resources.push(el))
 
@@ -36,10 +35,10 @@ const Resources = () => {
         }
 
     }
-
+    
     //create cards for display
     const cards = resources.map(el => <ResourceCard key={el._id} id={el._id} name={el.name} link={el.link} desc={el.desc} tags={el.tags} onClickFunc={onClickFunc}/>)
-    console.log(cards)
+
     return (
         <div className="py-16">
             <h1 className="text-white headings font-bold text-5xl mb-20">Resources</h1>
