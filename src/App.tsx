@@ -1,4 +1,4 @@
-import React, { useEffect, useState, createContext } from 'react';
+import { useEffect, useState, createContext } from 'react';
 import './App.css';
 
 import Layout from './components/Layout';
@@ -13,7 +13,7 @@ import Dashboard from './components/Dashboard';
 import Discord from './components/Discord';
 import Resources from './components/Resources';
 import NewResourceForm from './components/NewResourceForm';
-
+import EditResource from './components/EditResource'
 
 import RequireAuth from './components/RequireAuth';
 import PersistLogin from './components/PersistLogin';
@@ -45,7 +45,6 @@ function App() {
 
   const [foo, setFoo] = useState(false)
   const changeFoo = () => {
-    console.log('ran')
     setFoo(prev => !prev)
   }
 
@@ -53,11 +52,9 @@ function App() {
     let isMounted = true;
     const controller = new AbortController();
 
-    console.log('trying to get resources')
     const getResources = async () => {
 
         try {
-            console.log('refetching')
             const response = await axiosPrivate.get('/resources', {
                 signal: controller.signal
             });
@@ -73,21 +70,8 @@ function App() {
     return () => {
         isMounted = false;
         controller.abort();
-    }
-}, [foo])
-
-  // useEffect(() => {
-
-  //   const fetchData = async () => {
-      
-  //     await fetch('http://localhost:3500/resources')
-  //       .then(res => res.json())
-  //       .then(data => setDataObject({arr: data}))
-  //   }
-
-  //   fetchData()
-    
-  // }, [])
+      }
+    }, [foo])
 
   return (
     <div className="App bg-dark">
@@ -115,7 +99,7 @@ function App() {
               <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Admin]} />} >
                 <Route path="resources">
                   <Route index element={<Resources />} />
-                  {/* <Route path=':id' element={<EditResource />} /> */}
+                  <Route path=':id' element={<EditResource func={setFoo}/>} />
                   <Route path='new' element={<NewResourceForm func={setFoo}/>} />
                 </Route>
               </Route>

@@ -1,4 +1,5 @@
 import { FC } from "react"
+import { Link } from "react-router-dom"
 
 interface ResourceProps {
     id: string,
@@ -17,6 +18,7 @@ const ResourceCard:FC<ResourceProps> = (props) => {
             duration-300 ease-in-out transform hover:scale-110 card" onClick={() => props.onClickFunc(props.id)}>
             <p className="text-white info-txt font-bold text-3xl text-left mb-4 card-heading ease-out">{props.name}</p>
             <p className="text-white info-txt text-left w-10/12 mb-10">{props.desc}</p>
+            <Link to={`${props.id}`} className='resourceButton' >Edit</Link>
         </div>
     )
 }
