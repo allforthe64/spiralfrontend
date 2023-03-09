@@ -14,11 +14,16 @@ import Discord from './components/Discord';
 import Resources from './components/Resources';
 import NewResourceForm from './components/NewResourceForm';
 import EditResource from './components/EditResource'
+import Goals from './components/Goals';
+import NewGoalForm from './components/NewGoalForm';
+import EditGoal from './components/EditGoal';
+
 
 import RequireAuth from './components/RequireAuth';
 import PersistLogin from './components/PersistLogin';
 import {Routes, Route, useNavigate, useLocation} from 'react-router-dom'
 import useAxiosPrivate from './hooks/useAxiosPrivate';
+
 
 const ROLES = {
   "Admin": 5150,
@@ -92,15 +97,19 @@ function App() {
             {/* we want to protect these routes */}
             <Route element={<PersistLogin />}>
 
-              {/* <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
-                <Route path="/resources" element={<Resources />} />
-              </Route> */}
-
               <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Admin]} />} >
                 <Route path="resources">
                   <Route index element={<Resources />} />
                   <Route path=':id' element={<EditResource func={setFoo}/>} />
                   <Route path='new' element={<NewResourceForm func={setFoo}/>} />
+                </Route>
+              </Route>
+
+              <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Admin]} />} >
+                <Route path="goals">
+                  <Route index element={<Goals />} />
+                  <Route path=':id' element={<EditGoal />} />
+                  <Route path='new' element={<NewGoalForm />} />
                 </Route>
               </Route>
 
