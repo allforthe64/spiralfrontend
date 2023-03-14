@@ -61,6 +61,14 @@ const NewResourceForm = ({ func }) => {
         }
     }
 
+    const tutList = tutorials.map((tut, i) => {
+        return (
+            <span className="m-2" key={i}>
+                <a href={`${tut}`}>Tut {i + 1}</a>
+            </span>
+        )
+    })
+
     const options = Object.values(TAGS).map(tag => {
         return (
             <option
@@ -110,90 +118,104 @@ const NewResourceForm = ({ func }) => {
 
     return (
         <>
-            <form onSubmit={handleSubmit} className="text-black row g-3">
-                <div className="col-md-3">
-                    <label className="form-label">Name </label>
-                    <input
-                    type="text"
-                    name="name"
-                    className="form-control p-2"
-                    onChange={(e) => handleName(e)}
-                    value={name}
-                    />
-                </div>
+            <form onSubmit={handleSubmit} className="mx-auto mt-16 max-w-xl sm:mt-20">
+                <div class="grid grid-cols-1 gap-y-6 gap-x-8 sm:grid-cols-2">
+                    <div>
+                        <label className="form-label block text-sm font-semibold leading-6 text-white">Name </label>
+                        <div class="mt-2.5">
+                            <input
+                                type="text"
+                                name="name"
+                                className="form-control block w-full rounded-md border-0 py-2 px-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                onChange={(e) => handleName(e)}
+                                value={name}
+                            />
+                        </div>
+                    </div>
+                    <div>
+                        <label className="form-label block text-sm font-semibold leading-6 text-white">Desc</label>
+                        <div className="mt-2.5">
+                            <input
+                                type="text"
+                                name="desc"
+                                className="form-control block w-full rounded-md border-0 py-2 px-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                onChange={(e) => handleDesc(e)}
+                                value={desc}
+                            />
+                        </div>
+                    </div>
+                    <div>
+                        <label className="form-label block mb-2 text-sm font-medium text-gray-900 dark:text-white">Long Desc</label>
+                        <div className="mt-2.5">
+                            <textarea
+                                name="longDesc"
+                                className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300"
+                                onChange={(e) => handleLongDesc(e)}
+                                value={longDesc}
+                            />
+                        </div>
+                    </div>
+                    <div>
+                        <label className="form-label block text-sm font-semibold leading-6 text-white">Link</label>
+                        <div className="mt-2.5">
+                            <input
+                                type="text"
+                                name="link"
+                                className="form-control block w-full rounded-md border-0 py-2 px-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                onChange={(e) => handleLink(e)}
+                                value={link}
+                            />
+                        </div>
+                    </div>
+                    <div>
+                        <label className="form__label text-white" htmlFor="tags">
+                            ASSIGNED TAGS:</label>
+                        <select
+                            id="tags"
+                            name="tags"
+                            multiple={true}
+                            size="6"
+                            value={tags}
+                            onChange={onTagsChanged}
+                        >
+                            {options}
+                        </select>
+                    </div>
+                    <div>
+                        <div className="text-white">
+                            {tutList}
+                        </div>
+                        <label className="form__label text-white mr-2" htmlFor="tutorial">
+                        Tutorial:</label>
+                        <input
+                            className="form-control block w-full rounded-md border-0 py-2 px-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                            id="tutorial"
+                            name="tutorial"
+                            type="text"
+                            autoComplete="off"
+                            value={tutorial}
+                            onChange={onTutorialChanged}
+                        />
+                        <button
+                            className="icon-button text-white m-2"
+                            title="Tutorial"
+                            disabled={!canSaveTutorial}
+                            onClick={onSaveTutorialClicked}
+                        >
+                            <FontAwesomeIcon icon={faSave} />
+                        </button>
+                    </div>
 
-                <div className="col-md-3">
-                    <label className="form-label">Desc</label>
-                    <input
-                    type="text"
-                    name="desc"
-                    className="form-control p-2"
-                    onChange={(e) => handleDesc(e)}
-                    value={desc}
-                    />
-                </div>
+                    
+                    
+                    
+                    
 
-                <div className="col-md-3">
-                    <label className="form-label">Long Desc</label>
-                    <input
-                    type="text"
-                    name="longDesc"
-                    className="form-control p-2"
-                    onChange={(e) => handleLongDesc(e)}
-                    value={longDesc}
-                    />
-                </div>
-
-                <div className="col-md-3">
-                    <label className="form-label">Link</label>
-                    <input
-                    type="text"
-                    name="link"
-                    className="form-control p-2"
-                    onChange={(e) => handleLink(e)}
-                    value={link}
-                    />
-                </div>
-
-                <label className="form__label" htmlFor="tags">
-                    ASSIGNED TAGS:</label>
-                <select
-                    id="tags"
-                    name="tags"
-                    multiple={true}
-                    size="3"
-                    value={tags}
-                    onChange={onTagsChanged}
-                >
-                    {options}
-                </select>
-                <div className="text-white">
-                    {tutorials}
-                </div>
-                
-                <label className="form__label" htmlFor="tutorial">
-                    Tutorial:</label>
-                <input
-                    id="tutorial"
-                    name="tutorial"
-                    type="text"
-                    autoComplete="off"
-                    value={tutorial}
-                    onChange={onTutorialChanged}
-                />
-                <button
-                    className="icon-button"
-                    title="Tutorial"
-                    disabled={!canSaveTutorial}
-                    onClick={onSaveTutorialClicked}
-                >
-                    <FontAwesomeIcon icon={faSave} />
-                </button>
-
-                <div className="col-md-3">
-                    <button type="submit" className="btn btn-primary mt-4">
-                    Submit
-                    </button>
+                    <div className="col-md-3">
+                        <button type="submit" className="btn btn-primary mt-4 text-white border-white border-2 p-4 rounded">
+                        Submit
+                        </button>
+                    </div>
                 </div>
             </form>
             <Link to={'/resources'}>Return to resource lists</Link>
