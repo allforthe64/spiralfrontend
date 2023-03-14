@@ -104,7 +104,7 @@ const EditResourceForm = ({ resource, func }) => {
     
     let deleteButton = (
         <button
-            className="icon-button"
+            className="icon-button text-white m-2"
             title="Delete"
             onClick={onDeleteResourceClicked}
         >
@@ -114,78 +114,95 @@ const EditResourceForm = ({ resource, func }) => {
 
     const content = (
         <>
-            <form className="form text-white" onSubmit={e => e.preventDefault()}>
-            <div className="form__title-row">
-                <h2>Edit Resource {resource.name}</h2>
-                <div className="form__action-buttons">
-                    <button
-                        className="icon-button"
-                        title="Save"
-                        onClick={onSaveResourceClicked}
-                        disabled={!canSave}
-                    >
-                        <FontAwesomeIcon icon={faSave} />
-                    </button>
-                    {deleteButton}
+            <form className="mx-auto mt-16 max-w-xl sm:mt-20" onSubmit={e => e.preventDefault()}>
+                <div className="form__title-row flex justify-between items-center text-2xl mb-10">
+                    <h2 className='text-white inline'>Resource: {name}</h2>
+                    <div>
+                        <button
+                            className="icon-button text-white"
+                            title="Save"
+                            onClick={onSaveResourceClicked}
+                            disabled={!canSave}
+                        >
+                            <FontAwesomeIcon icon={faSave} />
+                        </button>
+                        {deleteButton}
+                    </div>
+                    
                 </div>
-            </div>
-            <label className="form__label" htmlFor="resource-name">
-                Name:</label>
-            <input
-                className='text-black'
-                id="resource-name"
-                name="name"
-                type="text"
-                autoComplete="off"
-                value={name}
-                onChange={onNameChanged}
-            />
+                <div class="grid grid-cols-1 gap-y-6 gap-x-8 sm:grid-cols-2">
 
-            <label className="form__label" htmlFor="resource-desc">
-                Desc:</label>
-            <textarea
-                className='text-black'
-                id="resource-desc"
-                name="desc"
-                value={desc}
-                onChange={onDescChanged}
-            />
-
-            <label className="form__label" htmlFor="resource-desc">
-                Long Desc:</label>
-            <textarea
-                className='text-black'
-                id="long-resource-desc"
-                name="longDesc"
-                value={longDesc}
-                onChange={onLongDescChanged}
-            />
-
-            <label className="form__label" htmlFor="resource-link">
-                Link:</label>
-            <input
-                className='text-black'
-                id="resource-link"
-                name="link"
-                type="text"
-                autoComplete="off"
-                value={link}
-                onChange={onLinkChanged}
-            />
-
-            <label className="form__label" htmlFor="tags">
-                TAGS:</label>
-            <select
-                className='text-black'
-                id="tags"
-                name="tags"
-                multiple={true}
-                size="3"
-                value={tags}
-                onChange={onTagsChanged}
-            >
-                {options}
-            </select>        
+                    <div>
+                        <label className="form-label block text-sm font-semibold leading-6 text-white" htmlFor="resource-name">
+                            Name:</label>
+                        <div className="mt-2.5">
+                            <input
+                                className='form-control block w-full rounded-md border-0 py-2 px-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+                                id="resource-name"
+                                name="name"
+                                type="text"
+                                autoComplete="off"
+                                value={name}
+                                onChange={onNameChanged}
+                            />
+                        </div>
+                    </div>
+                    <div>
+                        <label className="form-label block text-sm font-semibold leading-6 text-white" htmlFor="resource-desc">
+                            Desc:</label>
+                        <div className="mt-2.5">
+                            <textarea
+                                className='block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300'
+                                id="resource-desc"
+                                name="desc"
+                                value={desc}
+                                onChange={onDescChanged}
+                            />
+                        </div>
+                    </div>
+                    <div>
+                        <label className="form-label block text-sm font-semibold leading-6 text-white" htmlFor="resource-desc">
+                            Long Desc:</label>
+                        <div className="mt-2.5">
+                            <textarea
+                                className='block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300'
+                                id="long-resource-desc"
+                                name="longDesc"
+                                value={longDesc}
+                                onChange={onLongDescChanged}
+                            />
+                        </div>
+                    </div>
+                    <div>
+                        <label className="form-label block text-sm font-semibold leading-6 text-white" htmlFor="resource-link">
+                            Link:</label>
+                        <div className="mt-2.5">
+                            <input
+                                className='form-control block w-full rounded-md border-0 py-2 px-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+                                id="resource-link"
+                                name="link"
+                                type="text"
+                                autoComplete="off"
+                                value={link}
+                                onChange={onLinkChanged}
+                            />
+                        </div>
+                    </div>
+                    <div>
+                        <label className="form__label text-white" htmlFor="tags">
+                            ASSIGNED TAGS:</label>
+                        <select
+                            id="tags"
+                            name="tags"
+                            multiple={true}
+                            size="6"
+                            value={tags}
+                            onChange={onTagsChanged}
+                        >
+                            {options}
+                        </select>
+                    </div>                    
+                </div>       
         </form>
     </>
     )

@@ -5,25 +5,25 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 
 
-const EditGoalForm = ({ goal }) => {
+const EditNoteForm = ({ note }) => {
     const { id } = useParams()
 
     const axiosPrivate = useAxiosPrivate();
     const navigate = useNavigate();
 
-    const [title, setTitle] = useState(goal.title)
-    const [text, setText] = useState(goal.text)
+    const [title, setTitle] = useState(note.title)
+    const [text, setText] = useState(note.text)
 
     const onTitleChanged = e => setTitle(e.target.value)
     const onTextChanged = e => setText(e.target.value)
 
     const canSave = [title, text].every(Boolean)
 
-    const onSaveGoalClicked = async (e) => {
+    const onSaveNoteClicked = async (e) => {
         e.preventDefault()
         try {
             // Axios response is in JSON
-            const response = await axiosPrivate.put('/goals', 
+            const response = await axiosPrivate.put('/notes', 
                 JSON.stringify({ id, title, text }),
                 {
                     headers: { 'Content-Type': 'application/json' },
@@ -31,27 +31,27 @@ const EditGoalForm = ({ goal }) => {
                 }
             )
             console.log(response?.data)
-            console.log(`updated goal: ${title}`)
+            console.log(`updated note: ${title}`)
             
             navigate('/dashboard', { replace: true })
         } catch (err) {
-            console.log('throwing error in edit goal form')
+            console.log('throwing error in edit note form')
             if (!err?.response) {
                 console.log('No Server Response')
             } else {
-                console.log('Goal update Failed')
+                console.log('Note update Failed')
             }
         }
     }
 
-    const onDeleteGoalClicked = async (e) => {
+    const onDeleteNoteClicked = async (e) => {
         e.preventDefault()
 
         try {
             // Axios response is in JSON
             console.log(`sending id: ${id}`)
 
-            const response = await axiosPrivate.delete('/goals', 
+            const response = await axiosPrivate.delete('/notes', 
             {
                 headers: { 
                     'Content-Type': 'application/json' },
@@ -62,14 +62,14 @@ const EditGoalForm = ({ goal }) => {
             })
             
             console.log(response?.data)
-            console.log(`deleted goal: ${title}`)
+            console.log(`deleted note: ${title}`)
             navigate('/dashboard', { replace: true })
         } catch (err) {
-            console.log('throwing error in edit goal form')
+            console.log('throwing error in edit note form')
             if (!err?.response) {
                 console.log('No Server Response')
             } else {
-                console.log('Goal change Failed')
+                console.log('Note change Failed')
             }
         }
     }
@@ -78,7 +78,7 @@ const EditGoalForm = ({ goal }) => {
         <button
             className="icon-button"
             title="Delete"
-            onClick={onDeleteGoalClicked}
+            onClick={onDeleteNoteClicked}
         >
             <FontAwesomeIcon icon={faTrashCan} />
         </button>
@@ -88,12 +88,12 @@ const EditGoalForm = ({ goal }) => {
         <>
             <form className="form text-white" onSubmit={e => e.preventDefault()}>
             <div className="form__title-row">
-                <h2>Edit Goal {goal.title}</h2>
+                <h2>Edit Note {note.title}</h2>
                 <div className="form__action-buttons">
                     <button
                         className="icon-button"
                         title="Save"
-                        onClick={onSaveGoalClicked}
+                        onClick={onSaveNoteClicked}
                         disabled={!canSave}
                     >
                         <FontAwesomeIcon icon={faSave} />
@@ -105,7 +105,7 @@ const EditGoalForm = ({ goal }) => {
                 Title:</label>
             <input
                 className='text-black'
-                id="goal-text"
+                id="note-text"
                 name="title"
                 type="text"
                 autoComplete="off"
@@ -117,7 +117,7 @@ const EditGoalForm = ({ goal }) => {
                 Text:</label>
             <textarea
                 className='text-black'
-                id="goal-text"
+                id="note-text"
                 name="text"
                 value={text}
                 onChange={onTextChanged}
@@ -128,4 +128,4 @@ const EditGoalForm = ({ goal }) => {
   return content
 }
 
-export default EditGoalForm
+export default EditNoteForm

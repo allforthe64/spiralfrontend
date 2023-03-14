@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 
 
-const EditGoalForm = ({ goal }) => {
+const EditMGoalForm = ({ goal }) => {
     const { id } = useParams()
 
     const axiosPrivate = useAxiosPrivate();
@@ -23,7 +23,7 @@ const EditGoalForm = ({ goal }) => {
         e.preventDefault()
         try {
             // Axios response is in JSON
-            const response = await axiosPrivate.put('/goals', 
+            const response = await axiosPrivate.put('/mgoals', 
                 JSON.stringify({ id, title, text }),
                 {
                     headers: { 'Content-Type': 'application/json' },
@@ -31,27 +31,27 @@ const EditGoalForm = ({ goal }) => {
                 }
             )
             console.log(response?.data)
-            console.log(`updated goal: ${title}`)
+            console.log(`updated monthyl goal: ${title}`)
             
             navigate('/dashboard', { replace: true })
         } catch (err) {
-            console.log('throwing error in edit goal form')
+            console.log('throwing error in edit monthly goal form')
             if (!err?.response) {
                 console.log('No Server Response')
             } else {
-                console.log('Goal update Failed')
+                console.log('Monthly Goal update Failed')
             }
         }
     }
 
-    const onDeleteGoalClicked = async (e) => {
+    const onDeleteMGoalClicked = async (e) => {
         e.preventDefault()
 
         try {
             // Axios response is in JSON
             console.log(`sending id: ${id}`)
 
-            const response = await axiosPrivate.delete('/goals', 
+            const response = await axiosPrivate.delete('/mgoals', 
             {
                 headers: { 
                     'Content-Type': 'application/json' },
@@ -62,10 +62,10 @@ const EditGoalForm = ({ goal }) => {
             })
             
             console.log(response?.data)
-            console.log(`deleted goal: ${title}`)
+            console.log(`deleted monthly goal: ${title}`)
             navigate('/dashboard', { replace: true })
         } catch (err) {
-            console.log('throwing error in edit goal form')
+            console.log('throwing error in edit monghtly goal form')
             if (!err?.response) {
                 console.log('No Server Response')
             } else {
@@ -74,11 +74,11 @@ const EditGoalForm = ({ goal }) => {
         }
     }
     
-    let deleteButton = (
+    let deleteMButton = (
         <button
             className="icon-button"
             title="Delete"
-            onClick={onDeleteGoalClicked}
+            onClick={onDeleteMGoalClicked}
         >
             <FontAwesomeIcon icon={faTrashCan} />
         </button>
@@ -88,7 +88,7 @@ const EditGoalForm = ({ goal }) => {
         <>
             <form className="form text-white" onSubmit={e => e.preventDefault()}>
             <div className="form__title-row">
-                <h2>Edit Goal {goal.title}</h2>
+                <h2>Edit Monthly Goal {goal.title}</h2>
                 <div className="form__action-buttons">
                     <button
                         className="icon-button"
@@ -98,7 +98,7 @@ const EditGoalForm = ({ goal }) => {
                     >
                         <FontAwesomeIcon icon={faSave} />
                     </button>
-                    {deleteButton}
+                    {deleteMButton}
                 </div>
             </div>
             <label className="form__label" htmlFor="resource-name">
@@ -128,4 +128,4 @@ const EditGoalForm = ({ goal }) => {
   return content
 }
 
-export default EditGoalForm
+export default EditMGoalForm

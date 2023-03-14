@@ -158,3 +158,8 @@ code {
   background-color: white;
   width: 100px;
 }
+
+.dash-container {
+  display: flex;
+  justify-content: space-around;
+}
