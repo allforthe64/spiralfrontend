@@ -17,6 +17,12 @@ import EditResource from './components/EditResource'
 import Goals from './components/Goals';
 import NewGoalForm from './components/NewGoalForm';
 import EditGoal from './components/EditGoal';
+import MGoals from './components/MGoals';
+import EditMGoal from './components/EditMGoal'
+import NewMGoalForm from './components/NewMGoalForm'
+import Notes from './components/Notes'
+import EditNote from './components/EditNote';
+import NewNoteForm from './components/NewNoteForm';
 
 
 import RequireAuth from './components/RequireAuth';
@@ -110,6 +116,22 @@ function App() {
                   <Route index element={<Goals />} />
                   <Route path=':id' element={<EditGoal />} />
                   <Route path='new' element={<NewGoalForm />} />
+                </Route>
+              </Route>
+
+              <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Admin]} />} >
+                <Route path="mgoals">
+                  <Route index element={<MGoals />} />
+                  <Route path=':id' element={<EditMGoal />} />
+                  <Route path='new' element={<NewMGoalForm />} />
+                </Route>
+              </Route>
+
+              <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Admin]} />} >
+                <Route path="notes">
+                  <Route index element={<Notes />} />
+                  <Route path=':id' element={<EditNote />} />
+                  <Route path='new' element={<NewNoteForm />} />
                 </Route>
               </Route>
 
