@@ -130,7 +130,7 @@ const EditResourceForm = ({ resource, func }) => {
                     </div>
                     
                 </div>
-                <div class="grid grid-cols-1 gap-y-6 gap-x-8 sm:grid-cols-2">
+                <div className="grid grid-cols-1 gap-y-6 gap-x-8 sm:grid-cols-2">
 
                     <div>
                         <label className="form-label block text-sm font-semibold leading-6 text-white" htmlFor="resource-name">
