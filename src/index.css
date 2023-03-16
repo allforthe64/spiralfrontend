@@ -127,7 +127,17 @@ code {
   cursor: pointer;
 }
 
-.card:hover > .card-heading {
+.card:hover {
+  border-bottom: #00FF5D 1px solid;
+}
+
+.card:hover > div > p {
+  text-decoration: underline;
+  color: #00FF5D;
+}
+
+.tutorial:hover {
+  color: #00FF5D;
   text-decoration: underline;
 }
 
