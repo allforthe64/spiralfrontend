@@ -13,6 +13,8 @@ const Resources = () => {
     const [openModal, setOpenModal] = useState(false)
     const [modalName, setModalName] = useState('')
     const [modalLongDesc, setModalLongDesc] = useState('')
+    const [tutorials, setTutorials] = useState([])
+    const [tutLink, setTutLink] = useState('')
 
     //move resources out of context into their own object for referencing
     const contextObject = useContext(ResourceContext)
@@ -31,6 +33,8 @@ const Resources = () => {
 
             setModalName(singleResource[0].name)
             setModalLongDesc(singleResource[0].longDesc)
+            setTutorials(singleResource[0].tutorials)
+            setTutLink(singleResource[0].link)
 
             setOpenModal(true) 
 
@@ -39,14 +43,14 @@ const Resources = () => {
         }
 
     }
-    
+
     //create cards for display
-    const cards = resources.map(el => <ResourceCard key={el._id} id={el._id} name={el.name} link={el.link} desc={el.desc} tags={el.tags} onClickFunc={onClickFunc}/>)
+    const cards = resources.map(el => <ResourceCard key={el._id} id={el._id} name={el.name} link={el.link} desc={el.desc} tags={el.tags} tutorials={el.tutorials} onClickFunc={onClickFunc}/>)
 
     return (
         <div className="py-16">
             <h1 className="text-white headings font-bold text-5xl mb-20">Resources</h1>
-            {openModal && <Modal name={modalName} longDesc={modalLongDesc} onClickFunc={onClickFunc}/>}
+            {openModal && <Modal name={modalName} longDesc={modalLongDesc} tutorials={tutorials} link={tutLink} onClickFunc={onClickFunc}/>}
             <div className="flex justify-around flex-wrap">
                 {cards}
             </div>

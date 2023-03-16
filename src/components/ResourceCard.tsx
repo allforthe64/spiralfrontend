@@ -6,7 +6,8 @@ interface ResourceProps {
     name: string,
     link: string,
     desc: string,
-    tags: Array<string>
+    tags: Array<string>,
+    tutorials: Array<Object>
     onClickFunc: (id: string) => void
 }
 
