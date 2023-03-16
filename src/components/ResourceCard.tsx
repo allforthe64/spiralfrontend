@@ -29,8 +29,6 @@ const ResourceCard:FC<ResourceProps> = (props) => {
 
     }
 
-    console.log(shortDesc)
-
     return (
         <div className="w-3/12 p-4 mb-20 h-[250px] border-b border-white ml-10 transition 
             duration-300 ease-in-out transform hover:scale-110 card" onClick={() => props.onClickFunc(props.id)}>

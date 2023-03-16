@@ -12,6 +12,7 @@ const Resources = () => {
     //initialize modal state
     const [openModal, setOpenModal] = useState(false)
     const [modalName, setModalName] = useState('')
+    const [modalLongDesc, setModalLongDesc] = useState('')
 
     //move resources out of context into their own object for referencing
     const contextObject = useContext(ResourceContext)
@@ -26,7 +27,10 @@ const Resources = () => {
             //filter all resources and get resource with matching id
             const singleResource = resources.filter(el => el._id === id)
 
+            console.log(singleResource)
+
             setModalName(singleResource[0].name)
+            setModalLongDesc(singleResource[0].longDesc)
 
             setOpenModal(true) 
 
@@ -42,7 +46,7 @@ const Resources = () => {
     return (
         <div className="py-16">
             <h1 className="text-white headings font-bold text-5xl mb-20">Resources</h1>
-            {openModal && <Modal name={modalName} onClickFunc={onClickFunc}/>}
+            {openModal && <Modal name={modalName} longDesc={modalLongDesc} onClickFunc={onClickFunc}/>}
             <div className="flex justify-around flex-wrap">
                 {cards}
             </div>
