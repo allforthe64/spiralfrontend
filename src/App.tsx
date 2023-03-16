@@ -85,7 +85,7 @@ function App() {
     }, [foo])
 
   return (
-    <div className="App bg-dark">
+    <div className="App">
       <ResourceContext.Provider value={dataObject}>
         <Routes>
           <Route path={'/'} element={<Layout />}> 
