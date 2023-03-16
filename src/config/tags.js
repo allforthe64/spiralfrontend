@@ -20,4 +20,8 @@ export const TAGS = {
     Animation: 'Animation',
     Course: 'Course',
     Organization: 'Organization',
+    Video: 'Video',
+    Audio: 'Audio',
+    Start_business: 'Start a business',
+    Adobe: 'Adobe'
 }

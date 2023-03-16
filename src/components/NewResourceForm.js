@@ -11,7 +11,8 @@ const NewResourceForm = ({ func }) => {
     const [longDesc, setLongDesc] = useState("")
     const [link, setLink] = useState("")
     const [tags, setTags] = useState([''])
-    const [tutorial, setTutorial] = useState('')
+    const [tutorialTitle, setTutorialTitle] = useState('')
+    const [tutorialLink, setTutorialLink] = useState('')
     const [tutorials, setTutorials] = useState([])
     const [message, setMessage] = useState("")
     
@@ -48,23 +49,27 @@ const NewResourceForm = ({ func }) => {
         setTags(values)
     }
 
-    const onTutorialChanged = e => setTutorial(e.target.value)
+    const onTutorialTitleChanged = e => setTutorialTitle(e.target.value)
+    const onTutorialLinkChanged = e => setTutorialLink(e.target.value)
 
-    const canSaveTutorial = [tutorial.length].every(Boolean)
+    const canSaveTutorial = [tutorialTitle.length, tutorialLink.length].every(Boolean)
 
     const onSaveTutorialClicked = async (e) => {
         e.preventDefault()
+        const tut = {title: tutorialTitle.trim(), link: tutorialLink.trim()}
+    
         if (canSaveTutorial) {
-            setTutorials(prevState => [...prevState, tutorial])
-            console.log(`tutorials: ${tutorials}`)
-            setTutorial('')
+            setTutorials(prevState => [...prevState, tut])
+            
+            setTutorialTitle('')
+            setTutorialLink('')
         }
     }
 
     const tutList = tutorials.map((tut, i) => {
         return (
-            <span className="m-2" key={i}>
-                <a href={`${tut}`}>Tut {i + 1}</a>
+            <span className="m-2 text-white" key={i}>
+                <a href={`${tut.link}`} target='_blank'>{tut.title}</a>
             </span>
         )
     })
@@ -102,7 +107,6 @@ const NewResourceForm = ({ func }) => {
             setLongDesc('')
             setLink('')
             setTags([''])
-            setTutorial('')
             setTutorials([])
             func()
             navigate('/resources', { replace: true })
@@ -119,10 +123,10 @@ const NewResourceForm = ({ func }) => {
     return (
         <>
             <form onSubmit={handleSubmit} className="mx-auto mt-16 max-w-xl sm:mt-20">
-                <div class="grid grid-cols-1 gap-y-6 gap-x-8 sm:grid-cols-2">
+                <div className="grid grid-cols-1 gap-y-6 gap-x-8 sm:grid-cols-2">
                     <div>
                         <label className="form-label block text-sm font-semibold leading-6 text-white">Name </label>
-                        <div class="mt-2.5">
+                        <div className="mt-2.5">
                             <input
                                 type="text"
                                 name="name"
@@ -186,16 +190,28 @@ const NewResourceForm = ({ func }) => {
                             {tutList}
                         </div>
                         <label className="form__label text-white mr-2" htmlFor="tutorial">
-                        Tutorial:</label>
+                        Tutorial Title:</label>
                         <input
                             className="form-control block w-full rounded-md border-0 py-2 px-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                            id="tutorial"
-                            name="tutorial"
+                            id="tutorial-title"
+                            name="tutorial-title"
                             type="text"
                             autoComplete="off"
-                            value={tutorial}
-                            onChange={onTutorialChanged}
+                            value={tutorialTitle}
+                            onChange={onTutorialTitleChanged}
                         />
+                        <label className="form__label text-white mr-2" htmlFor="tutorial">
+                        Tutorial Link:</label>
+                        <input
+                            className="form-control block w-full rounded-md border-0 py-2 px-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                            id="tutorial-link"
+                            name="tutorial-link"
+                            type="text"
+                            autoComplete="off"
+                            value={tutorialLink}
+                            onChange={onTutorialLinkChanged}
+                        />
+
                         <button
                             className="icon-button text-white m-2"
                             title="Tutorial"
