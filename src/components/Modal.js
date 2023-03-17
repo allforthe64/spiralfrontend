@@ -1,25 +1,34 @@
-import { FC } from "react"
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { fas, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { far, faHeart } from "@fortawesome/free-regular-svg-icons"
 import { Link } from "react-router-dom"
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
+import { useState, useEffect } from 'react'
 
 
 library.add(far, fas, faHeart)
 
 
+const Modal = (props) => {
 
-interface ModalProps {
-    id: string,
-    name: string,
-    longDesc: string,
-    tutorials: Array<{title:string, link:string, _id:string}>,
-    link: string,
-    onClickFunc: () => void
-}
+    const axiosPrivate = useAxiosPrivate();
 
-const Modal:FC<ModalProps> = (props) => {
+    //const [inFavs, setInFavs] = useState(false)
+    console.log(props)
+    let updateFavResources = (props.favResources)
+    console.log(updateFavResources)
+
+    let favorited = 'far'
+
+    useEffect(() => {
+        if (updateFavResources.includes(props.id)) {
+            favorited = 'fas'
+        } else {
+            favorited = 'far'
+        }
+    }, [updateFavResources])
+    
 
     const stringArr = props.longDesc.split('Cost')
     let tutArr = []
@@ -29,9 +38,43 @@ const Modal:FC<ModalProps> = (props) => {
         tutArr.push(element)
     }
 
+    const toggleFav = async () => {
+        if (!updateFavResources.includes(props.id) || !updateFavResources.length) {
+            updateFavResources.push(props.id)
+        } else {
+            updateFavResources = updateFavResources.filter(el => el !== props.id)
+        }
+            
+        const id = props.userId
+
+        try {
+            // Axios response is in JSON
+            const response = await axiosPrivate.put('/users', 
+                JSON.stringify({ id, updateFavResources }),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
+                }
+            )
+            console.log(response?.data)    
+            
+        } catch (err) {
+            console.log('throwing error in update fav resource')
+            if (!err?.response) {
+                console.log('No Server Response')
+            } else {
+                console.log('fav resource update Failed')
+            }
+        }        
+    }
+
     return (
         <div className="modal backdrop-blur-sm flex justify-center py-20">
             <div className="border w-10/12 bg-dark rounded-2xl pb-26 h-[100%]">
+                {/* { updateFavResources.includes(props.id) */}
+                <FontAwesomeIcon onClick={toggleFav} icon={[`${favorited}`, "heart"]} className='text-white text-4xl'/>
+                    {/* : <FontAwesomeIcon onClick={toggleFav} icon={["far", "heart"]} className='text-white text-4xl'/> */}
+                {/* } */}
                 <div className="flex justify-end pt-2 pr-4">
                     <button className="text-white" onClick={() => props.onClickFunc()}><FontAwesomeIcon icon={faXmark} className='text-4xl' /></button>
                 </div>
@@ -51,8 +94,6 @@ const Modal:FC<ModalProps> = (props) => {
                     </div>
                     <button className="bg-alien-green info-txt px-4 py-2 text-xl font-bold rounded-lg"><Link to={props.link} target='_blank'>Start using {props.name}</Link></button>
                 </div>
-                <FontAwesomeIcon icon={["fas", "heart"]} className='text-white text-4xl'/>
-                <FontAwesomeIcon icon={["far", "heart"]} className='text-white text-4xl'/>
             </div>
         </div>
     )

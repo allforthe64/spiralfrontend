@@ -39,18 +39,15 @@ const Login = ({ func }) => {
                 }
             );
             console.log(JSON.stringify(response?.data));
-            //console.log(JSON.stringify(response));
+
             const accessToken = response?.data?.accessToken;
             const roles = response?.data?.roles;
-
-
+            const favResources = response?.data?.favResources;
 
             const id = response?.data?.id
-            console.log(id)
 
+            setAuth({ id, user, pwd, roles, favResources, accessToken });
 
-            setAuth({ id, user, pwd, roles, accessToken });
-    
             setUser('');
             setPwd('');
             func()
