@@ -6,6 +6,7 @@ import FieldValid from "./FieldValid"
 import InfoNote from "./InfoNote"
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/
+const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/
 const REGISTER_URL = '/register'
 
@@ -17,6 +18,10 @@ const Register = () => {
     const [user, setUser] = useState('')
     const [validName, setValidName] = useState(false)
     const [userFocus, setUserFocus] = useState(false)
+
+    const [email, setEmail] = useState('')
+    const [validEmail, setValidEmail] = useState(false)
+    const [emailFocus, setEmailFocus] = useState(false)
 
     const [pwd, setPwd] = useState('')
     const [validPwd, setValidPwd] = useState(false)
@@ -41,6 +46,13 @@ const Register = () => {
     }, [user])
 
     useEffect(() => {
+        const result = EMAIL_REGEX.test(email)
+        console.log(result)
+        console.log(email)
+        setValidEmail(result)
+    }, [email])
+
+    useEffect(() => {
         const result = PWD_REGEX.test(pwd)
         console.log(result)
         console.log(pwd)
@@ -58,8 +70,9 @@ const Register = () => {
 
         // Prevent button being enabled with JS hack
         const v1 = USER_REGEX.test(user)
+        const v3 = EMAIL_REGEX.test(email)
         const v2 = PWD_REGEX.test(pwd)
-        if (!v1 || !v2) {
+        if (!v1 || !v2 || !v3) {
             setErrMsg("Invalid Entry")
             return
         }
@@ -67,7 +80,7 @@ const Register = () => {
         try {
             // Axios response is in JSON
             const response = await axios.post(REGISTER_URL, 
-                JSON.stringify({ user, pwd }),
+                JSON.stringify({ user, email, pwd }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
@@ -82,6 +95,7 @@ const Register = () => {
 
             //Clear input fields
             setUser('')
+            setEmail('')
             setPwd('')
             setMatchPwd('')
         } catch (err) {
@@ -132,6 +146,23 @@ const Register = () => {
                     </div>
                     <div className="w-5/12 flex justify-around mb-6">
                         <input
+                            type="text"
+                            id="email"
+                            autoComplete="off"
+                            onChange={(e) => setEmail(e.target.value)}
+                            value={email}
+                            required
+                            aria-invalid={validEmail ? "false" : "true"}
+                            aria-describedby="uidnote"
+                            onFocus={() => setEmailFocus(true)}
+                            onBlur={() => setEmailFocus(false)}
+                            className='w-[85%] bg-inherit border-b-2 outline-0 text-white info-txt text-2xl pl-2 pb-px mb-6'
+                            placeholder="email"
+                        />
+                        <FieldValid exp1={validEmail ? "valid" : "hide"} exp2={validEmail || !email ? "hide" : "invalid"}/>
+                    </div>
+                    <div className="w-5/12 flex justify-around mb-6">
+                        <input
                             type="password"
                             id="password"
                             onChange={(e) => setPwd(e.target.value)}
@@ -163,8 +194,10 @@ const Register = () => {
                         <FieldValid exp1={validMatch && matchPwd ? "valid" : "hide"} exp2={validMatch || !matchPwd ? "hide" : "invalid"}/>
                     </div>
                     <div className="h-20 mb-10">
-                        <InfoNote _id={'uidnote'} exp1={userFocus && user && !validName ? "instructions" : "offscreen"} line1={'4 to 24 characters.'} line2={'Must begin with a letter.'} line3={'Letters, numbers, underscores, hyphens allowed.'}/>
                         {/* Will be read by screen reader for Username input */}
+                        <InfoNote _id={'uidnote'} exp1={userFocus && user && !validName ? "instructions" : "offscreen"} line1={'4 to 24 characters.'} line2={'Must begin with a letter.'} line3={'Letters, numbers, underscores, hyphens allowed.'}/>
+                        {/* Will be read by screen reader for Email input */}
+                        <InfoNote _id={'emailnote'} exp1={emailFocus && !validEmail ? "instructions" : "offscreen"} line1={'must enter a valid password.'} line2={'_____@domain.com'} line4={true}/>
                         {/* Will be read by screen reader for Password input */}
                         <InfoNote _id={'pwdnote'} exp1={pwdFocus && !validPwd ? "instructions" : "offscreen"} line1={'8 to 24 characters.'} line2={'Must include uppercase and lowercase letters, a number and a special character.'} line3={'Allowed special characters:'} line4={true}/>
                         {/* Will be read by screen reader for Confirm Password input */}

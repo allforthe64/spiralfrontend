@@ -40,6 +40,39 @@ const Goals = () => {
         }
     }, [])
 
+    const updateCompleted = async (goal) => {
+        console.log(goal)
+        const id = goal._id
+        const completed = goal.completed
+        console.log(id)
+        console.log(completed)
+
+        try {
+            // Axios response is in JSON
+            const response = await axiosPrivate.put('/goals', 
+                JSON.stringify({ id, completed }),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
+                }
+            )
+            console.log(response?.data)
+            console.log(`updated monthyl goal: ${id}`)
+            
+            //Need to re-render goals to show updated checkmark
+            
+            navigate('/dashboard', { replace: true })
+        } catch (err) {
+            console.log('throwing error in update completed goal')
+            if (!err?.response) {
+                console.log('No Server Response')
+            } else {
+                console.log('completed goal update Failed')
+            }
+        }
+    }
+
+
     return (
         <article>
             <h2>Goals List</h2>
@@ -49,6 +82,15 @@ const Goals = () => {
                         {goals.map((goal) => (
                         <li key={goal?._id} className="text-white">
                             {goal?.title}
+                            <div className="completed">
+                                <input
+                                    type="checkbox"
+                                    checked={goal.completed}
+                                    id={goal.id}
+                                    onChange={() => updateCompleted({ ...goal, completed: !goal.completed })}
+                                />
+                                <label htmlFor={goal.id}></label>
+                            </div>
                             <Link to={`/goals/${goal._id}`} className="text-red-700">Edit</Link>
                         </li>
                         ))}
