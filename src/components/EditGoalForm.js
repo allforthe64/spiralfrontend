@@ -13,6 +13,7 @@ const EditGoalForm = ({ goal }) => {
 
     const [title, setTitle] = useState(goal.title)
     const [text, setText] = useState(goal.text)
+    const completed = goal.completed
 
     const onTitleChanged = e => setTitle(e.target.value)
     const onTextChanged = e => setText(e.target.value)
@@ -24,7 +25,7 @@ const EditGoalForm = ({ goal }) => {
         try {
             // Axios response is in JSON
             const response = await axiosPrivate.put('/goals', 
-                JSON.stringify({ id, title, text }),
+                JSON.stringify({ id, title, text, completed }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true

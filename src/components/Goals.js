@@ -41,11 +41,9 @@ const Goals = () => {
     }, [])
 
     const updateCompleted = async (goal) => {
-        console.log(goal)
+        
         const id = goal._id
-        const completed = goal.completed
-        console.log(id)
-        console.log(completed)
+        const completed = !goal.completed
 
         try {
             // Axios response is in JSON
@@ -56,9 +54,7 @@ const Goals = () => {
                     withCredentials: true
                 }
             )
-            console.log(response?.data)
-            console.log(`updated monthyl goal: ${id}`)
-            
+            console.log(response?.data)    
             //Need to re-render goals to show updated checkmark
             
             navigate('/dashboard', { replace: true })
@@ -87,7 +83,7 @@ const Goals = () => {
                                     type="checkbox"
                                     checked={goal.completed}
                                     id={goal.id}
-                                    onChange={() => updateCompleted({ ...goal, completed: !goal.completed })}
+                                    onChange={() => updateCompleted({ ...goal })}
                                 />
                                 <label htmlFor={goal.id}></label>
                             </div>
