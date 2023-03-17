@@ -1,10 +1,17 @@
 import { FC } from "react"
+import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faXmark } from "@fortawesome/free-solid-svg-icons"
+import { fas, faXmark } from "@fortawesome/free-solid-svg-icons"
+import { far, faHeart } from "@fortawesome/free-regular-svg-icons"
 import { Link } from "react-router-dom"
 
 
+library.add(far, fas, faHeart)
+
+
+
 interface ModalProps {
+    id: string,
     name: string,
     longDesc: string,
     tutorials: Array<{title:string, link:string, _id:string}>,
@@ -14,8 +21,6 @@ interface ModalProps {
 
 const Modal:FC<ModalProps> = (props) => {
 
-    console.log(props.tutorials)
-
     const stringArr = props.longDesc.split('Cost')
     let tutArr = []
 
@@ -23,8 +28,6 @@ const Modal:FC<ModalProps> = (props) => {
         let element = <li className="text-white text-left"><Link to={props.tutorials[i].link} target='_blank' className="text-white info-txt mt-4 tutorial text-lg">{props.tutorials[i].title}</Link></li>
         tutArr.push(element)
     }
-
-    console.log(tutArr)
 
     return (
         <div className="modal backdrop-blur-sm flex justify-center py-20">
@@ -48,7 +51,8 @@ const Modal:FC<ModalProps> = (props) => {
                     </div>
                     <button className="bg-alien-green info-txt px-4 py-2 text-xl font-bold rounded-lg"><Link to={props.link} target='_blank'>Start using {props.name}</Link></button>
                 </div>
-                
+                <FontAwesomeIcon icon={["fas", "heart"]} className='text-white text-4xl'/>
+                <FontAwesomeIcon icon={["far", "heart"]} className='text-white text-4xl'/>
             </div>
         </div>
     )
