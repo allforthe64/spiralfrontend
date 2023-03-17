@@ -7,8 +7,6 @@ const Goals = () => {
     const { auth } = useAuth()
     const id = auth.id
 
-    console.log(`id in goals: ${id}`)
-
     const [goals, setGoals] = useState();
     const axiosPrivate = useAxiosPrivate();
     const navigate = useNavigate();

@@ -10,6 +10,7 @@ import Modal from "./Modal"
 const Resources = () => {
 
     //initialize modal state
+    const [modalId, setModalId] = useState('')
     const [openModal, setOpenModal] = useState(false)
     const [modalName, setModalName] = useState('')
     const [modalLongDesc, setModalLongDesc] = useState('')
@@ -31,6 +32,7 @@ const Resources = () => {
 
             console.log(singleResource)
 
+            setModalId(singleResource[0]._id)
             setModalName(singleResource[0].name)
             setModalLongDesc(singleResource[0].longDesc)
             setTutorials(singleResource[0].tutorials)
@@ -50,7 +52,7 @@ const Resources = () => {
     return (
         <div className="py-16">
             <h1 className="text-white headings font-bold text-5xl mb-20">Resources</h1>
-            {openModal && <Modal name={modalName} longDesc={modalLongDesc} tutorials={tutorials} link={tutLink} onClickFunc={onClickFunc}/>}
+            {openModal && <Modal id={modalId} name={modalName} longDesc={modalLongDesc} tutorials={tutorials} link={tutLink} onClickFunc={onClickFunc}/>}
             <div className="flex justify-around flex-wrap">
                 {cards}
             </div>
