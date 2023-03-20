@@ -14,7 +14,6 @@ const Modal = (props) => {
 
     const axiosPrivate = useAxiosPrivate();
 
-    //const [inFavs, setInFavs] = useState(false)
     console.log(props)
     let updateFavResources = (props.favResources)
     console.log(updateFavResources)

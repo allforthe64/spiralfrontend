@@ -7,8 +7,6 @@ const Notes = () => {
     const { auth } = useAuth()
     const id = auth.id
 
-    console.log(`id in notes: ${id}`)
-
     const [notes, setNotes] = useState();
     const axiosPrivate = useAxiosPrivate();
     const navigate = useNavigate();

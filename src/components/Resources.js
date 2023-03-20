@@ -26,9 +26,7 @@ const Resources = () => {
     const { auth } = useAuth()
     const userId = auth.id
 
-    console.log(`auth.favresources is: ${auth.favResources}`)
-
-    const [favResources, setFavResources] = useState([auth.favResources] || [])
+    const [favResources, setFavResources] = useState(auth.favResources || [])
 
     console.log(`favresources in resources: ${favResources}`)
 

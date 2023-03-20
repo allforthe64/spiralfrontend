@@ -3,7 +3,7 @@ import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
-const Goals = () => {
+const CompletedGoals = () => {
     const { auth } = useAuth()
     const id = auth.id
 
@@ -23,7 +23,7 @@ const Goals = () => {
                 {
                     signal: controller.signal,
                 });
-                const results = response.data.filter(el => el.user === id && !el.completed)
+                const results = response.data.filter(el => el.user === id && el.completed)
                 isMounted && setGoals(results);
             } catch (err) {
                 console.error(err);
@@ -69,7 +69,7 @@ const Goals = () => {
 
     return (
         <article>
-            <h2>Goals List</h2>
+            <h2>Completed Goals List</h2>
             {goals?.length
                 ? (
                     <ul>
@@ -91,7 +91,7 @@ const Goals = () => {
                     </ul>
                 ) : (
                     <div>
-                        <p>No goals to display</p>
+                        <p>Go finish some goals!</p>
                     </div>
                 )
             }
@@ -100,4 +100,4 @@ const Goals = () => {
     );
 };
 
-export default Goals;
+export default CompletedGoals;
