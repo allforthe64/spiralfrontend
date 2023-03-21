@@ -7,7 +7,9 @@ const Goals = () => {
     const { auth } = useAuth()
     const id = auth.id
 
-    const [goals, setGoals] = useState();
+    const [completedGoals, setCompletedGoals] = useState();
+    const [notCompletedGoals, setNotCompletedGoals] = useState();
+    const [lastUpdated, setLastUpdated] = useState(false)
     const axiosPrivate = useAxiosPrivate();
     const navigate = useNavigate();
     const location = useLocation();
@@ -23,8 +25,12 @@ const Goals = () => {
                 {
                     signal: controller.signal,
                 });
-                const results = response.data.filter(el => el.user === id)
-                isMounted && setGoals(results);
+                const notCompletedResults = response.data.filter(el => el.user === id && !el.completed)
+                const completedResults = response.data.filter(el => el.user === id && el.completed)
+
+                isMounted && setCompletedGoals(completedResults)
+                isMounted && setNotCompletedGoals(notCompletedResults)
+
             } catch (err) {
                 console.error(err);
                 navigate('/login', { state: { from: location }, replace: true });
@@ -36,7 +42,7 @@ const Goals = () => {
             isMounted = false;
             controller.abort();
         }
-    }, [])
+    }, [lastUpdated])
 
     const updateCompleted = async (goal) => {
         
@@ -53,9 +59,8 @@ const Goals = () => {
                 }
             )
             console.log(response?.data)    
-            //Need to re-render goals to show updated checkmark
-            
-            navigate('/dashboard', { replace: true })
+
+            setLastUpdated(prev => !prev)
         } catch (err) {
             console.log('throwing error in update completed goal')
             if (!err?.response) {
@@ -70,10 +75,35 @@ const Goals = () => {
     return (
         <article>
             <h2>Goals List</h2>
-            {goals?.length
+            {completedGoals?.length
                 ? (
                     <ul>
-                        {goals.map((goal) => (
+                        {completedGoals.map((goal) => (
+                        <li key={goal?._id} className="text-white">
+                            {goal?.title}
+                            <div className="completed">
+                                <input
+                                    type="checkbox"
+                                    checked={goal.completed}
+                                    id={goal.id}
+                                    onChange={() => updateCompleted({ ...goal })}
+                                />
+                                <label htmlFor={goal.id}></label>
+                            </div>
+                        </li>
+                        ))}
+                    </ul>
+                ) : (
+                    <div>
+                        <p>No goals to display</p>
+                    </div>
+                )
+            }
+            <h2>Not Completed Goals List</h2>
+            {notCompletedGoals?.length
+                ? (
+                    <ul>
+                        {notCompletedGoals.map((goal) => (
                         <li key={goal?._id} className="text-white">
                             {goal?.title}
                             <div className="completed">

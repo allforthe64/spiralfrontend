@@ -1,6 +1,7 @@
 import Goals from "./Goals"
 import MGoals from "./MGoals"
 import Notes from "./Notes"
+import ResourceList from "./ResourceList"
 
 const Dashboard = () => {
 
@@ -11,6 +12,7 @@ const Dashboard = () => {
                 <MGoals />
                 <Goals />
                 <Notes />
+                <ResourceList />
             </div>
             
         </div>
