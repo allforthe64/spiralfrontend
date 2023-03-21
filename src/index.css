@@ -224,10 +224,10 @@ code {
 .slide li {padding : 20px;}
 
 .slide li:hover {
-  background-color: white;
-  color: black;
-  transition-duration: 600ms;
+  text-decoration: underline;
+  transition-duration: 200ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  cursor : pointer;
 }
 
 #touch {position: absolute; opacity: 0; height: 0px;}    

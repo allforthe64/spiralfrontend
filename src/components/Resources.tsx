@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 
 import ResourceCard from "./ResourceCard"
 import Modal from "./Modal"
+import Tag from "./Tag"
 
 import { TAGS } from "../config/tags"
 
@@ -52,18 +53,19 @@ const Resources = () => {
     //onclick function to update filters
     const updateFilters = (name:string) => {
         if (filters.includes(name)) {
-            console.log(name)
+            setFilters(prev => prev.filter(el => el !== name))
         } else {
-            console.log('not in array')
+            setFilters(prev => [...prev, name])
         }
     }
+
 
     //create cards for display
     const cards = resources.map(el => <ResourceCard key={el._id} id={el._id} name={el.name} link={el.link} desc={el.desc} tags={el.tags} tutorials={el.tutorials} onClickFunc={onClickFunc}/>)
 
     //create li elements
     const objVals = Object.values(TAGS)
-    const tags = objVals.map(el => <li key={el} className="text-white text-left" onClick={() => updateFilters(el)}>{el}</li>)
+    const tags = objVals.map(el => <Tag name={el} key={el} func={updateFilters} />)
 
     return (
         <div className="py-16">
