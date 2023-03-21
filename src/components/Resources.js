@@ -23,11 +23,11 @@ const Resources = () => {
 
     //move resources out of context into their own object for referencing
     const contextObject = useContext(ResourceContext)
-    const resources:Array<any> = []
+    const resources = []
     contextObject?.arr.map(el => resources.push(el))
 
     //onclick function to create modal
-    const onClickFunc = (id?:string) => {
+    const onClickFunc = (id) => {
 
         if (openModal === false) {
             
@@ -50,6 +50,7 @@ const Resources = () => {
 
     }
 
+<<<<<<< HEAD:src/components/Resources.tsx
     //onclick function to update filters
     const updateFilters = (name:string) => {
         if (filters.includes(name)) {
@@ -59,9 +60,12 @@ const Resources = () => {
         }
     }
 
+=======
+    
+>>>>>>> a06e609e3d68eb6c0c289ed6b2f3301c46f5049e:src/components/Resources.js
 
     //create cards for display
-    const cards = resources.map(el => <ResourceCard key={el._id} id={el._id} name={el.name} link={el.link} desc={el.desc} tags={el.tags} tutorials={el.tutorials} onClickFunc={onClickFunc}/>)
+    const cards = resources.map(el => <ResourceCard key={el._id} id={el._id} name={el.name} link={el.link} desc={el.desc} tags={el.tags} tutorials={el.tutorials} onClickFunc={onClickFunc} />)
 
     //create li elements
     const objVals = Object.values(TAGS)
@@ -70,6 +74,7 @@ const Resources = () => {
     return (
         <div className="py-16">
             <h1 className="text-white headings font-bold text-5xl mb-20">Resources</h1>
+<<<<<<< HEAD:src/components/Resources.tsx
             {openModal && <Modal id={modalId} name={modalName} longDesc={modalLongDesc} tutorials={tutorials} link={tutLink} onClickFunc={onClickFunc}/>}
             <div>
                 <nav className="filter-nav info-txt border-white border-b mb-10">
@@ -82,6 +87,16 @@ const Resources = () => {
 
                 </nav> 
             </div>
+=======
+            {openModal && <Modal 
+                id={modalId} 
+                name={modalName} 
+                longDesc={modalLongDesc} 
+                tutorials={tutorials} 
+                link={tutLink} 
+                onClickFunc={onClickFunc} 
+            />}
+>>>>>>> a06e609e3d68eb6c0c289ed6b2f3301c46f5049e:src/components/Resources.js
             <div className="flex justify-around flex-wrap">
                 {cards}
             </div>
