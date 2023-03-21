@@ -14,8 +14,14 @@ const Nav = () => {
 
     return (
         <nav className='pt-3 pl-6 flex'>
-            <p className='text-white headings text-3xl font-bold'><Link to={'/'}>Spiral</Link></p>
-            <ul className="flex w-6/12 justify-around ml-[42%]">
+            <div >
+                <Link to={'/'} className='flex items-center'>
+                    <img src='./logo_white.png' className="w-2/12" />
+                    <span className='text-white headings text-3xl font-bold pl-5'>Spiral</span>
+                </Link>
+            </div>
+            
+            <ul className="flex w-8/12 justify-around ml-[42%]">
                 <li className="leading-loose info-txt text-white text-lg hover:underline"><Link to={'/get-started'}>Get Started</Link></li>
                 <li className="leading-loose info-txt text-white text-lg hover:underline"><Link to={'/dashboard'}>Dashboard</Link></li>
                 <li className="leading-loose info-txt text-white text-lg hover:underline"><Link to={'/resources'}>Resources</Link></li>

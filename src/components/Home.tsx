@@ -7,11 +7,11 @@ const Home = () => {
         <>
             <section className='py-48 bg-dark'>
                 <div className='flex flex-col ml-[6%]'>
-                    <p className='text-white info-txt text-left text-2xl mb-2'>Join A</p>
+                    <p className='text-white info-txt text-left text-2xl mb-2'>Join a</p>
                     <p className='text-white info-txt text-left text-3xl mb-2'>Creative Learning</p>
                     <h1 className='text-white headings text-left font-bold text-7xl mb-10'>Spiral</h1>
                     <button className='rounded-xl headings px-4 py-2 text-3xl bg-alien-green font-bold w-2/12 mb-10'><Link to='/get-started'>Get Started</Link></button>
-                    <p className='text-white info-txt text-left text-2xl w-4/12'>Because <span className='headings text-white'>LEARNING</span> is different when you <span className='headings alien-green'>choose</span> it.</p>
+                    <p className='text-white info-txt text-left text-2xl w-4/12'>Because <span className='headings text-white'>learning</span> is different when you <span className='headings alien-green'>CHOOSE</span> it.</p>
                 </div> 
             </section>
             <section className="py-24 space-bg border-t-2 border-white">
