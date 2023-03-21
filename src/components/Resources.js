@@ -19,7 +19,7 @@ const Resources = () => {
     const [modalLongDesc, setModalLongDesc] = useState('')
     const [tutorials, setTutorials] = useState([])
     const [tutLink, setTutLink] = useState('')
-    const [filters, setFilters] = useState<Array<string>>([])
+    const [filters, setFilters] = useState([])
 
     //move resources out of context into their own object for referencing
     const contextObject = useContext(ResourceContext)
@@ -50,9 +50,8 @@ const Resources = () => {
 
     }
 
-<<<<<<< HEAD:src/components/Resources.tsx
     //onclick function to update filters
-    const updateFilters = (name:string) => {
+    const updateFilters = (name) => {
         if (filters.includes(name)) {
             setFilters(prev => prev.filter(el => el !== name))
         } else {
@@ -60,9 +59,6 @@ const Resources = () => {
         }
     }
 
-=======
-    
->>>>>>> a06e609e3d68eb6c0c289ed6b2f3301c46f5049e:src/components/Resources.js
 
     //create cards for display
     const cards = resources.map(el => <ResourceCard key={el._id} id={el._id} name={el.name} link={el.link} desc={el.desc} tags={el.tags} tutorials={el.tutorials} onClickFunc={onClickFunc} />)
@@ -74,7 +70,6 @@ const Resources = () => {
     return (
         <div className="py-16">
             <h1 className="text-white headings font-bold text-5xl mb-20">Resources</h1>
-<<<<<<< HEAD:src/components/Resources.tsx
             {openModal && <Modal id={modalId} name={modalName} longDesc={modalLongDesc} tutorials={tutorials} link={tutLink} onClickFunc={onClickFunc}/>}
             <div>
                 <nav className="filter-nav info-txt border-white border-b mb-10">
@@ -87,16 +82,6 @@ const Resources = () => {
 
                 </nav> 
             </div>
-=======
-            {openModal && <Modal 
-                id={modalId} 
-                name={modalName} 
-                longDesc={modalLongDesc} 
-                tutorials={tutorials} 
-                link={tutLink} 
-                onClickFunc={onClickFunc} 
-            />}
->>>>>>> a06e609e3d68eb6c0c289ed6b2f3301c46f5049e:src/components/Resources.js
             <div className="flex justify-around flex-wrap">
                 {cards}
             </div>
