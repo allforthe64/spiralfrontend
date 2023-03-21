@@ -5,6 +5,8 @@ import { Link } from "react-router-dom"
 import ResourceCard from "./ResourceCard"
 import Modal from "./Modal"
 
+import { TAGS } from "../config/tags"
+
 
 
 const Resources = () => {
@@ -16,6 +18,7 @@ const Resources = () => {
     const [modalLongDesc, setModalLongDesc] = useState('')
     const [tutorials, setTutorials] = useState([])
     const [tutLink, setTutLink] = useState('')
+    const [filters, setFilters] = useState<Array<string>>([])
 
     //move resources out of context into their own object for referencing
     const contextObject = useContext(ResourceContext)
@@ -46,13 +49,37 @@ const Resources = () => {
 
     }
 
+    //onclick function to update filters
+    const updateFilters = (name:string) => {
+        if (filters.includes(name)) {
+            console.log(name)
+        } else {
+            console.log('not in array')
+        }
+    }
+
     //create cards for display
     const cards = resources.map(el => <ResourceCard key={el._id} id={el._id} name={el.name} link={el.link} desc={el.desc} tags={el.tags} tutorials={el.tutorials} onClickFunc={onClickFunc}/>)
+
+    //create li elements
+    const objVals = Object.values(TAGS)
+    const tags = objVals.map(el => <li key={el} className="text-white text-left" onClick={() => updateFilters(el)}>{el}</li>)
 
     return (
         <div className="py-16">
             <h1 className="text-white headings font-bold text-5xl mb-20">Resources</h1>
             {openModal && <Modal id={modalId} name={modalName} longDesc={modalLongDesc} tutorials={tutorials} link={tutLink} onClickFunc={onClickFunc}/>}
+            <div>
+                <nav className="filter-nav info-txt border-white border-b mb-10">
+                    <label htmlFor="touch"><span className="filter-span text-left">Filters</span></label>               
+                    <input type="checkbox" id="touch" /> 
+
+                    <ul className="slide">
+                        {tags}
+                    </ul>
+
+                </nav> 
+            </div>
             <div className="flex justify-around flex-wrap">
                 {cards}
             </div>
