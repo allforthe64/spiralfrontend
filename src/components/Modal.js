@@ -4,31 +4,29 @@ import { fas, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { far, faHeart } from "@fortawesome/free-regular-svg-icons"
 import { Link } from "react-router-dom"
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
-import { useState, useEffect } from 'react'
+import useAuth from "../hooks/useAuth"
 
 
 library.add(far, fas, faHeart)
 
 
 const Modal = (props) => {
-
     const axiosPrivate = useAxiosPrivate();
 
-    console.log(props)
-    let updateFavResources = (props.favResources)
-    console.log(updateFavResources)
+    const { auth, setAuth } = useAuth()
+    const id = auth.id
 
-    let favorited = 'far'
+    let updateFavResources = auth.favResources
 
-    useEffect(() => {
-        if (updateFavResources.includes(props.id)) {
-            favorited = 'fas'
-        } else {
-            favorited = 'far'
-        }
-    }, [updateFavResources])
-    
+    let favorited = ''
 
+    if (updateFavResources.includes(props.id)) {
+        favorited = 'fas'
+    } else {
+        favorited = 'far'
+    }
+
+    //building array for tuturial elements
     const stringArr = props.longDesc.split('Cost')
     let tutArr = []
 
@@ -37,14 +35,15 @@ const Modal = (props) => {
         tutArr.push(element)
     }
 
+    //Handle adding/removing from favs
     const toggleFav = async () => {
         if (!updateFavResources.includes(props.id) || !updateFavResources.length) {
             updateFavResources.push(props.id)
+            favorited = 'fas'
         } else {
             updateFavResources = updateFavResources.filter(el => el !== props.id)
+            favorited = 'far'
         }
-            
-        const id = props.userId
 
         try {
             // Axios response is in JSON
@@ -56,7 +55,7 @@ const Modal = (props) => {
                 }
             )
             console.log(response?.data)    
-            
+            setAuth({...auth, favResources: updateFavResources})
         } catch (err) {
             console.log('throwing error in update fav resource')
             if (!err?.response) {
@@ -70,10 +69,7 @@ const Modal = (props) => {
     return (
         <div className="modal backdrop-blur-sm flex justify-center py-20">
             <div className="border w-10/12 bg-dark rounded-2xl pb-26 h-[100%]">
-                {/* { updateFavResources.includes(props.id) */}
                 <FontAwesomeIcon onClick={toggleFav} icon={[`${favorited}`, "heart"]} className='text-white text-4xl'/>
-                    {/* : <FontAwesomeIcon onClick={toggleFav} icon={["far", "heart"]} className='text-white text-4xl'/> */}
-                {/* } */}
                 <div className="flex justify-end pt-2 pr-4">
                     <button className="text-white" onClick={() => props.onClickFunc()}><FontAwesomeIcon icon={faXmark} className='text-4xl' /></button>
                 </div>

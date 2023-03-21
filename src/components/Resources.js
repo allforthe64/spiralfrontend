@@ -1,7 +1,6 @@
 import { useContext, useState } from "react"
 import { ResourceContext } from "../App"
 import { Link } from "react-router-dom"
-import useAuth from "../hooks/useAuth"
 
 import ResourceCard from "./ResourceCard"
 import Modal from "./Modal"
@@ -22,13 +21,6 @@ const Resources = () => {
     const contextObject = useContext(ResourceContext)
     const resources = []
     contextObject?.arr.map(el => resources.push(el))
-
-    const { auth } = useAuth()
-    const userId = auth.id
-
-    const [favResources, setFavResources] = useState(auth.favResources || [])
-
-    console.log(`favresources in resources: ${favResources}`)
 
     //onclick function to create modal
     const onClickFunc = (id) => {
@@ -69,9 +61,6 @@ const Resources = () => {
                 tutorials={tutorials} 
                 link={tutLink} 
                 onClickFunc={onClickFunc} 
-                favResources={favResources}
-                setFavResources={setFavResources}
-                userId={userId}
             />}
             <div className="flex justify-around flex-wrap">
                 {cards}

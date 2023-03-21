@@ -5,17 +5,16 @@ import useAuth from "../hooks/useAuth";
 
 
 const ResourceList = () => {
-    const { auth } = useAuth()
+    const { auth, setAuth } = useAuth()
     const id = auth.id
-    console.log(`auth.favResources: ${auth.favResources}`)
 
-    const [resourceList, setResourceList] = useState(auth.favResources);
-    console.log(`resourceList is set as : ${resourceList}`)
+    const [resourceList, setResourceList] = useState([]);
     const axiosPrivate = useAxiosPrivate();
     const navigate = useNavigate();
     const location = useLocation();
 
     useEffect(() => {
+
         let isMounted = true;
         const controller = new AbortController();
 
@@ -26,8 +25,9 @@ const ResourceList = () => {
                 {
                     signal: controller.signal,
                 });
-                const results = response.data.filter(el => resourceList.includes(el._id))
 
+                const results = response.data.filter(el => auth.favResources.includes(el._id))
+        
                 isMounted && setResourceList(results);
             } catch (err) {
                 console.error(err);
@@ -46,15 +46,10 @@ const ResourceList = () => {
         e.preventDefault()
 
         const resourceId = e.target.id
-        const removedResource = resourceList.filter(resource => resource._id !== resourceId)
-        console.log(`with removed: ${removedResource}`)
-        setResourceList(prevValues => {
-            console.log(prevValues)
-            return prevValues.filter(resource => resource._id !== resourceId)
-        })
-        //setResourceList(prev => prev.filter(el => el._id !== resourceId))
-        console.log(`resourceList now: ${resourceList}`)
-        const updateFavResources = removedResource
+        const updateFavResources = auth.favResources.filter(id => id !== resourceId)
+        console.log(`new resourceIDList: ${updateFavResources}`)
+    
+        setResourceList(prevValues => prevValues.filter(resource => resource._id !== resourceId))
 
         try {
             // Axios response is in JSON
@@ -67,6 +62,8 @@ const ResourceList = () => {
             )
             console.log(response?.data)    
             
+            setAuth({...auth, favResources: updateFavResources})
+
         } catch (err) {
             console.log('throwing error in update fav resource')
             if (!err?.response) {
