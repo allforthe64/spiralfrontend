@@ -12,7 +12,7 @@ const Dashboard = () => {
             <div className="dash-container">
                 <MGoals />
                 <Goals />
-                <CompletedGoals />
+                {/* <CompletedGoals /> */}
                 <Notes />
                 <ResourceList />
             </div>
