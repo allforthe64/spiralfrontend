@@ -164,10 +164,6 @@ code {
   width: 100px;
 }
 
-.dash-container {
-  display: flex;
-  justify-content: space-around;
-}
 
 /*scrollbar styling */
 .modal-scroll::-webkit-scrollbar {

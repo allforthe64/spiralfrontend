@@ -59,40 +59,40 @@ const NewNoteForm = () => {
 
     return (
         <>
-            <div>
-                <h2>Create New Note</h2>
-                <h4 className="text-white">User: {auth.user}</h4>
+            <div className="py-20">
+                <h4 className="text-white headings text-5xl font-bold">Add a note for {auth.user}</h4>
             </div>
-            <form onSubmit={handleSubmit} className="text-black row g-3">
-                <div className="col-md-3">
-                    <label className="form-label">Title </label>
+            <form onSubmit={handleSubmit}>
+                <div>
                     <input
                     type="text"
-                    name="title"
-                    className="form-control p-2"
+                    placeholder="Enter a note title"
+                    className="w-4/12 bg-inherit border-b-2 outline-0 text-white info-txt text-2xl pl-2 pb-px mb-20"
                     onChange={(e) => handleTitle(e)}
                     value={title}
                     />
                 </div>
 
-                <div className="col-md-3">
-                    <label className="form-label">Text</label>
-                    <input
+                <div>
+                    <textarea
                     type="text"
-                    name="text"
-                    className="form-control p-2"
+                    placeholder="Enter note body"
+                    className="w-4/12 bg-inherit border-2 outline-0 text-white info-txt text-lg pl-2 py-2 mb-24 rounded-md"
                     onChange={(e) => handleText(e)}
                     value={text}
+                    rows='8'
                     />
                 </div>
 
-                <div className="col-md-3">
-                    <button type="submit" className="btn btn-primary mt-4">
+                <div>
+                    <button type="submit" className="info-txt font-bold text-2xl mb-8 bg-alien-green py-px px-8 rounded-md">
                     Submit
                     </button>
                 </div>
             </form>
-            <Link to={'/dashboard'}>Return to dashboard</Link>
+            <div className="py-10">
+                <Link to={'/dashboard'} className='text-white hover:underline'>Return to dashboard</Link>
+            </div>
         </>
     );
 };
