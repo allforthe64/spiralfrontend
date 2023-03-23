@@ -60,7 +60,7 @@ const Goals = () => {
                     withCredentials: true
                 }
             )
-            console.log(response?.data)    
+            console.log(response?.data)   
 
             setLastUpdated(prev => !prev)
         } catch (err) {
@@ -133,8 +133,8 @@ const Goals = () => {
                                         {completedGoals.map((goal) => (
                                         <li key={goal?._id} className="text-white">
                                             <div className="flex mb-4">
-                                                <p className="ml-2 font-bold text-lg leading-tight headings">{goal?.title}</p>
-                                                <div className="completed ml-20">
+
+                                                <div className="completed">
                                                     <input
                                                         type="checkbox"
                                                         checked={goal.completed}
@@ -143,6 +143,9 @@ const Goals = () => {
                                                     />
                                                     <label htmlFor={goal.id}></label>
                                                 </div>
+
+                                                <p className="ml-2 font-bold text-lg leading-tight headings">{goal?.title}</p>
+                                                
                                             </div>
                                         </li>
                                         ))}
