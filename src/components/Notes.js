@@ -46,7 +46,7 @@ const Notes = () => {
             </div>
             {notes?.length
                 ? (
-                    <div className="border-white border-2 h-[200px] pt-4 pl-4">
+                    <div className="h-[200px] pt-4 pl-4">
                         <ul>
                             {notes.map((note) => (
                                 <div className="flex justify-between mb-4">
