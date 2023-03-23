@@ -40,20 +40,24 @@ const Notes = () => {
 
     return (
         <article className="border-gray-500 border-2 p-4 bg-slate-900 rounded-lg">
-            <div className="flex justify-around mb-4 border-b-2 border-white">
+            <div className="flex justify-around mb-6 border-b-2 border-white">
                 <h2 className="text-2xl headings font-bold">Notes List</h2>
                 <button className="info-txt font-bold mb-12 bg-alien-green py-px px-8 rounded-md text-black"><Link to={'/notes/new'}>Add New Note</Link></button> 
             </div>
             {notes?.length
                 ? (
-                    <ul>
-                        {notes.map((note) => (
-                        <li key={note?._id} className="text-white">
-                            {note?.title}
-                            <Link to={`/notes/${note._id}`} className="text-red-700">Edit</Link>
-                        </li>
-                        ))}
-                    </ul>
+                    <div className="border-white border-2 h-[200px] pt-4 pl-4">
+                        <ul>
+                            {notes.map((note) => (
+                                <div className="flex justify-between mb-4">
+                                    <li key={note?._id} className="text-white">
+                                        <p className="ml-2 font-bold text-lg leading-tight headings">{note?.title}</p>
+                                    </li>
+                                    <button className="text-red-700 mr-20 leading-relaxed info-txt font-bold hover:underline"><Link to={`/notes/${note._id}`} className="text-red-700">Edit</Link></button>
+                                </div>
+                            ))}
+                        </ul>
+                    </div>   
                 ) : (
                     <div>
                         <p>No notes to display</p>

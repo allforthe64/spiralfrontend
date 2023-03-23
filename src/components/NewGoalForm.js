@@ -77,7 +77,7 @@ const NewGoalForm = () => {
                     <textarea
                     type="text"
                     placeholder="Enter goal description"
-                    className="w-4/12 bg-inherit border-2 outline-0 text-white info-txt text-lg pl-2 py-2 mb-24 rounded-md"
+                    className="w-4/12 bg-inherit border-2 outline-0 text-white info-txt text-lg p-2 mb-24 rounded-md"
                     onChange={(e) => handleText(e)}
                     value={text}
                     rows='6'
