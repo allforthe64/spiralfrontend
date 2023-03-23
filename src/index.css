@@ -34,6 +34,10 @@ code {
   background-color: #00FF5D;
 }
 
+.bg-dg {
+  background-color: #212434;
+}
+
 .bg-alien-green:hover {
   transition-duration: 200ms;
   background-color: transparent;
@@ -127,11 +131,7 @@ code {
   cursor: pointer;
 }
 
-.card:hover {
-  border-bottom: #00FF5D 1px solid;
-}
-
-.card:hover > div > p {
+.card:hover > div > .card-heading {
   text-decoration: underline;
   color: #00FF5D;
 }
@@ -168,10 +168,6 @@ code {
   width: 100px;
 }
 
-.dash-container {
-  display: flex;
-  justify-content: space-around;
-}
 
 /*scrollbar styling */
 .modal-scroll::-webkit-scrollbar {
@@ -187,3 +183,56 @@ code {
   background-color: white;    /* color of the scroll thumb */
   border-radius: 20px;       /* roundness of the scroll thumb */
 }
+
+/*filter styles*/
+
+.filter-nav {
+  width : 300px; 
+  margin-left: 7%;
+}
+
+.filter-span {
+  padding : 20px;
+  color : white;
+  font-size : 1.2em;
+  cursor : pointer;
+  display: block;
+}
+
+.filter-span::after {
+  float: right;
+  right: 10%;
+  content: "+";
+}
+
+.slide {
+  clear:both;
+  width:100%;
+  height:0px;
+  overflow: auto;
+  transition: height .4s ease;
+}
+
+.slide::-webkit-scrollbar {
+  width: 2px;
+}
+
+.slide::-webkit-scrollbar-thumb {
+  background-color: white;
+}
+
+.slide li {padding : 20px;}
+
+.slide li:hover {
+  text-decoration: underline;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  cursor : pointer;
+}
+
+#touch {position: absolute; opacity: 0; height: 0px;}    
+
+#touch:checked + .slide {
+  height: 300px;
+} 
+

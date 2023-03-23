@@ -16,7 +16,9 @@ const Modal = (props) => {
     const { auth, setAuth } = useAuth()
     const id = auth.id
 
-    let updateFavResources = auth.favResources
+    let updateFavResources = auth.favResources || []
+
+    console.log(updateFavResources)
 
     let favorited = ''
 

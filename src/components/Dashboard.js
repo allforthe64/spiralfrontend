@@ -1,17 +1,15 @@
 import Goals from "./Goals"
 import MGoals from "./MGoals"
-import Notes from "./Notes"
 import ResourceList from "./ResourceList"
 
 const Dashboard = () => {
 
     return (
-        <div className="text-white headings">
-            <h2>My Dashboard</h2>
-            <div className="dash-container">
+        <div className="py-10 headings text-white">
+            <h2 className="font-bold text-5xl mb-20">My Dashboard</h2>
+            <div>
                 <MGoals />
                 <Goals />
-                <Notes />
                 <ResourceList />
             </div>
             

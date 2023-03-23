@@ -4,6 +4,9 @@ import { Link } from "react-router-dom"
 
 import ResourceCard from "./ResourceCard"
 import Modal from "./Modal"
+import Tag from "./Tag"
+
+import { TAGS } from "../config/tags"
 
 
 
@@ -16,11 +19,14 @@ const Resources = () => {
     const [modalLongDesc, setModalLongDesc] = useState('')
     const [tutorials, setTutorials] = useState([])
     const [tutLink, setTutLink] = useState('')
+    const [filters, setFilters] = useState([])
 
     //move resources out of context into their own object for referencing
     const contextObject = useContext(ResourceContext)
-    const resources = []
+    let resources = []
+    let filtered = []
     contextObject?.arr.map(el => resources.push(el))
+
 
     //onclick function to create modal
     const onClickFunc = (id) => {
@@ -46,22 +52,64 @@ const Resources = () => {
 
     }
 
-    
+    //onclick function to update filters
+    const updateFilters = (name) => {
+        if (filters.includes(name)) {
+            setFilters(prev => prev.filter(el => el !== name))
+        } else {
+            setFilters(prev => [...prev, name])
+        }
+    }
 
-    //create cards for display
-    const cards = resources.map(el => <ResourceCard key={el._id} id={el._id} name={el.name} link={el.link} desc={el.desc} tags={el.tags} tutorials={el.tutorials} onClickFunc={onClickFunc} />)
+    /* if (filters.length > 0) {
+        for (let i of filters) {
+            console.log(i)
+            for (let j of resources) {
+                if (j.tags.includes(i)) {
+                    if (!filtered.includes(j)) filtered.push(j)
+                }
+            }
+        }
+    } */
+
+    if (filters.length > 0) {
+        for (let i of resources) {
+            let success = filters.every(el => i.tags.indexOf(el) !== -1)
+            if (success) filtered.push(i)
+        }
+        resources = filtered
+    }
+
+     //create cards for display
+     let cards;
+     
+    if (resources.length > 0 && resources) {
+        cards = resources.map(el => <ResourceCard key={el._id} id={el._id} name={el.name} link={el.link} desc={el.desc} tags={el.tags} tutorials={el.tutorials} onClickFunc={onClickFunc} />)
+    } else {
+        cards = (<p className="text-white my-20 text-3xl headings font-bold w-8/12">Oops! We couldn't find any resources matching those filters &#128531;</p>)
+    }
+     
+
+    
+    //create li elements
+    const objVals = Object.values(TAGS)
+    const tags = objVals.map(el => <Tag name={el} key={el} func={updateFilters} />)
 
     return (
         <div className="py-16">
             <h1 className="text-white headings font-bold text-5xl mb-20">Resources</h1>
-            {openModal && <Modal 
-                id={modalId} 
-                name={modalName} 
-                longDesc={modalLongDesc} 
-                tutorials={tutorials} 
-                link={tutLink} 
-                onClickFunc={onClickFunc} 
-            />}
+            {openModal && <Modal id={modalId} name={modalName} longDesc={modalLongDesc} tutorials={tutorials} link={tutLink} onClickFunc={onClickFunc}/>}
+            <div>
+                <nav className="filter-nav info-txt border-white border-b mb-10">
+                    <label htmlFor="touch"><span className="filter-span text-left">{filters.length > 0 ? `Filters (${filters.length})` : 'Filters'}</span></label>               
+                    <input type="checkbox" id="touch" /> 
+
+                    <ul className="slide">
+                        {tags}
+                    </ul>
+
+                </nav> 
+            </div>
             <div className="flex justify-around flex-wrap">
                 {cards}
             </div>

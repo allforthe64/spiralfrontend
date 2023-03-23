@@ -3,6 +3,8 @@ import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
+import Notes from "./Notes";
+
 const Goals = () => {
     const { auth } = useAuth()
     const id = auth.id
@@ -73,8 +75,51 @@ const Goals = () => {
 
 
     return (
-        <article>
-            <h2>Goals List</h2>
+        <article className="border-white border-2 w-9/12">
+            <div className="flex justify-around">
+                <div className="border-2 border-white w-5/12 p-4 bg-slate-900 border-gray-500 rounded-lg">
+                    <div className="flex justify-around mb-4 border-b-2 border-white">
+                        <h2 className="text-2xl headings font-bold">Goals List</h2>
+                        <button className="info-txt font-bold mb-12 bg-alien-green py-px px-8 rounded-md text-black"><Link to={'/goals/new'}>Add New Goal</Link></button>
+                    </div>
+                    {notCompletedGoals?.length ? (
+                            <ul>
+                                {notCompletedGoals.map((goal) => (
+                                <div className="flex justify-between">
+                                    <li key={goal?._id} className="text-white flex">
+
+                                        <div className="completed ml-6">
+                                            <input
+                                                type="checkbox"
+                                                checked={goal.completed}
+                                                id={goal.id}
+                                                onChange={() => updateCompleted({ ...goal })}
+                                            />
+                                            <label htmlFor={goal.id}></label>
+                                        </div>
+
+                                        <p className="ml-2 font-bold text-lg leading-tight headings">{goal?.title}</p>
+                                        
+                                    </li>
+                                    <button className="text-red-700 mr-10 leadning-tight info-txt font-bold"><Link to={`/goals/${goal._id}`}>Edit</Link></button>
+                                </div>
+                                
+                                ))}
+                            </ul>
+                        ) : (
+                            <div>
+                                <p>No goals to display</p>
+                            </div>
+                        )
+                    }
+                </div>
+                <div className="w-6/12">
+                    <Notes />
+                </div>
+            </div>
+            
+
+            <h2>Completed Goals List</h2>
             {completedGoals?.length
                 ? (
                     <ul>
@@ -99,33 +144,6 @@ const Goals = () => {
                     </div>
                 )
             }
-            <h2>Not Completed Goals List</h2>
-            {notCompletedGoals?.length
-                ? (
-                    <ul>
-                        {notCompletedGoals.map((goal) => (
-                        <li key={goal?._id} className="text-white">
-                            {goal?.title}
-                            <div className="completed">
-                                <input
-                                    type="checkbox"
-                                    checked={goal.completed}
-                                    id={goal.id}
-                                    onChange={() => updateCompleted({ ...goal })}
-                                />
-                                <label htmlFor={goal.id}></label>
-                            </div>
-                            <Link to={`/goals/${goal._id}`} className="text-red-700">Edit</Link>
-                        </li>
-                        ))}
-                    </ul>
-                ) : (
-                    <div>
-                        <p>No goals to display</p>
-                    </div>
-                )
-            }
-            <Link to={'/goals/new'} className="text-yellow-500">Add New Goal</Link>
         </article>
     );
 };

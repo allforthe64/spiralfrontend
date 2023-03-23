@@ -16,7 +16,7 @@ const Nav = () => {
         <nav className='pt-3 pl-6 flex'>
             <div >
                 <Link to={'/'} className='flex items-center'>
-                    <img src='./logo_white.png' className="w-2/12" />
+                    <img src='./logo_white.png' alt='logo' className="w-2/12" />
                     <span className='text-white headings text-3xl font-bold pl-5'>Spiral</span>
                 </Link>
             </div>
