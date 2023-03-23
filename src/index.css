@@ -34,6 +34,10 @@ code {
   background-color: #00FF5D;
 }
 
+.bg-dg {
+  background-color: #212434;
+}
+
 .bg-alien-green:hover {
   transition-duration: 200ms;
   background-color: transparent;

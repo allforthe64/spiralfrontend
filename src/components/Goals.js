@@ -76,8 +76,8 @@ const Goals = () => {
 
     return (
         <article className="border-white border-2 w-9/12">
-            <div className="flex">
-                <div className="border-2 border-white w-5/12 p-4">
+            <div className="flex justify-around">
+                <div className="border-2 border-white w-5/12 p-4 bg-slate-900 border-gray-500 rounded-lg">
                     <div className="flex justify-around mb-4 border-b-2 border-white">
                         <h2 className="text-2xl headings font-bold">Goals List</h2>
                         <button className="info-txt font-bold mb-12 bg-alien-green py-px px-8 rounded-md text-black"><Link to={'/goals/new'}>Add New Goal</Link></button>
@@ -113,7 +113,9 @@ const Goals = () => {
                         )
                     }
                 </div>
-                <Notes />
+                <div className="w-6/12">
+                    <Notes />
+                </div>
             </div>
             
 
@@ -142,7 +144,6 @@ const Goals = () => {
                     </div>
                 )
             }
-            <Link to={'/goals/new'} className="text-yellow-500">Add New Goal</Link>
         </article>
     );
 };

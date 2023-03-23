@@ -60,7 +60,8 @@ const NewNoteForm = () => {
     return (
         <>
             <div className="py-20">
-                <h4 className="text-white headings text-5xl font-bold">Add a note for {auth.user}</h4>
+                <h4 className="text-white headings text-5xl font-bold mb-6">Add a note for {auth.user}</h4>
+                <p className="text-white info-txt text-2xl">Leave yourself a note about what you accomplished today!</p>
             </div>
             <form onSubmit={handleSubmit}>
                 <div>
