@@ -75,7 +75,7 @@ const Goals = () => {
 
 
     return (
-        <article className="w-9/12">
+        <article>
             <div className="flex justify-around mb-10">
                 <div className="border-2 w-5/12 p-4 bg-slate-900 border-gray-500 rounded-lg">
                     <div className="flex justify-around mb-6 border-b-2 border-white">
@@ -83,7 +83,7 @@ const Goals = () => {
                         <button className="info-txt font-bold mb-12 bg-alien-green py-px px-8 rounded-md text-black"><Link to={'/goals/new'}>Add New Goal</Link></button>
                     </div>
                     {notCompletedGoals?.length ? (
-                            <div className="h-[200px] pt-4">
+                            <div className="h-[200px] pt-4 overflow-auto scrollbar">
                                 <ul>
                                     {notCompletedGoals.map((goal) => (
                                     <div className="flex justify-between mb-4">
@@ -128,7 +128,7 @@ const Goals = () => {
                         </div>
                         {completedGoals?.length
                             ? (
-                                <div className="h-[200px] pt-4">
+                                <div className="h-[200px] pt-4 overflow-auto scrollbar">
                                     <ul>
                                         {completedGoals.map((goal) => (
                                         <li key={goal?._id} className="text-white">

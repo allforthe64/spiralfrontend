@@ -46,7 +46,7 @@ const Notes = () => {
             </div>
             {notes?.length
                 ? (
-                    <div className="h-[200px] pt-4 pl-4">
+                    <div className="h-[200px] pt-4 pl-4 overflow-auto scrollbar">
                         <ul>
                             {notes.map((note) => (
                                 <div className="flex justify-between mb-4">
