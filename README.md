@@ -44,3 +44,10 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+<!-- ** Icons from : <a href="https://www.flaticon.com/free-icons/idea" title="idea icons">Idea icons created by Smashicons - Flaticon</a>
+
+<a href="https://www.flaticon.com/free-icons/study" title="study icons">Study icons created by Freepik - Flaticon</a>
+
+<a target="_blank" href="https://icons8.com/icon/3734/user-groups">User Groups</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a> ** -->
