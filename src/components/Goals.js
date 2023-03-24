@@ -60,7 +60,7 @@ const Goals = () => {
                     withCredentials: true
                 }
             )
-            console.log(response?.data)    
+            console.log(response?.data)   
 
             setLastUpdated(prev => !prev)
         } catch (err) {
@@ -75,37 +75,39 @@ const Goals = () => {
 
 
     return (
-        <article className="border-white border-2 w-9/12">
-            <div className="flex justify-around">
-                <div className="border-2 border-white w-5/12 p-4 bg-slate-900 border-gray-500 rounded-lg">
-                    <div className="flex justify-around mb-4 border-b-2 border-white">
+        <article className="w-9/12">
+            <div className="flex justify-around mb-10">
+                <div className="border-2 w-5/12 p-4 bg-slate-900 border-gray-500 rounded-lg">
+                    <div className="flex justify-around mb-6 border-b-2 border-white">
                         <h2 className="text-2xl headings font-bold">Goals List</h2>
                         <button className="info-txt font-bold mb-12 bg-alien-green py-px px-8 rounded-md text-black"><Link to={'/goals/new'}>Add New Goal</Link></button>
                     </div>
                     {notCompletedGoals?.length ? (
-                            <ul>
-                                {notCompletedGoals.map((goal) => (
-                                <div className="flex justify-between">
-                                    <li key={goal?._id} className="text-white flex">
+                            <div className="h-[200px] pt-4">
+                                <ul>
+                                    {notCompletedGoals.map((goal) => (
+                                    <div className="flex justify-between mb-4">
+                                        <li key={goal?._id} className="text-white flex">
 
-                                        <div className="completed ml-6">
-                                            <input
-                                                type="checkbox"
-                                                checked={goal.completed}
-                                                id={goal.id}
-                                                onChange={() => updateCompleted({ ...goal })}
-                                            />
-                                            <label htmlFor={goal.id}></label>
-                                        </div>
+                                            <div className="completed ml-6">
+                                                <input
+                                                    type="checkbox"
+                                                    checked={goal.completed}
+                                                    id={goal.id}
+                                                    onChange={() => updateCompleted({ ...goal })}
+                                                />
+                                                <label htmlFor={goal.id}></label>
+                                            </div>
 
-                                        <p className="ml-2 font-bold text-lg leading-tight headings">{goal?.title}</p>
-                                        
-                                    </li>
-                                    <button className="text-red-700 mr-10 leadning-tight info-txt font-bold"><Link to={`/goals/${goal._id}`}>Edit</Link></button>
-                                </div>
-                                
-                                ))}
-                            </ul>
+                                            <p className="ml-2 font-bold text-lg leading-tight headings">{goal?.title}</p>
+                                            
+                                        </li>
+                                        <button className="text-red-700 mr-10 leading-relaxed info-txt font-bold hover:underline"><Link to={`/goals/${goal._id}`}>Edit</Link></button>
+                                    </div>
+                                    
+                                    ))}
+                                </ul>
+                            </div>
                         ) : (
                             <div>
                                 <p>No goals to display</p>
@@ -118,32 +120,49 @@ const Goals = () => {
                 </div>
             </div>
             
+            <div className="flex justify-center">
+                <div className="border-2 w-[96%] p-4 bg-slate-900 border-gray-500 rounded-lg flex justify-center">
+                    <div className="w-10/12">
+                        <div className="border-b-2 border-white mb-4 pb-10">
+                            <h2 className="text-2xl headings font-bold">Completed Goals List</h2>    
+                        </div>
+                        {completedGoals?.length
+                            ? (
+                                <div className="h-[200px] pt-4">
+                                    <ul>
+                                        {completedGoals.map((goal) => (
+                                        <li key={goal?._id} className="text-white">
+                                            <div className="flex mb-4">
 
-            <h2>Completed Goals List</h2>
-            {completedGoals?.length
-                ? (
-                    <ul>
-                        {completedGoals.map((goal) => (
-                        <li key={goal?._id} className="text-white">
-                            {goal?.title}
-                            <div className="completed">
-                                <input
-                                    type="checkbox"
-                                    checked={goal.completed}
-                                    id={goal.id}
-                                    onChange={() => updateCompleted({ ...goal })}
-                                />
-                                <label htmlFor={goal.id}></label>
-                            </div>
-                        </li>
-                        ))}
-                    </ul>
-                ) : (
-                    <div>
-                        <p>No goals to display</p>
+                                                <div className="completed">
+                                                    <input
+                                                        type="checkbox"
+                                                        checked={goal.completed}
+                                                        id={goal.id}
+                                                        onChange={() => updateCompleted({ ...goal })}
+                                                    />
+                                                    <label htmlFor={goal.id}></label>
+                                                </div>
+
+                                                <p className="ml-2 font-bold text-lg leading-tight headings">{goal?.title}</p>
+                                                
+                                            </div>
+                                        </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            ) : (
+                                <div>
+                                    <p>No goals to display</p>
+                                </div>
+                            )
+                        }
                     </div>
-                )
-            }
+                    
+                </div>
+            </div>
+            
+            
         </article>
     );
 };
