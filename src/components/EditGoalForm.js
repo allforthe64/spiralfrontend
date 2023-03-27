@@ -3,6 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom'
 import useAxiosPrivate from '../hooks/useAxiosPrivate'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons"
+import EditForm from './EditForm'
+
 
 
 const EditGoalForm = ({ goal }) => {
@@ -77,7 +79,8 @@ const EditGoalForm = ({ goal }) => {
     
     let deleteButton = (
         <button
-            className="icon-button"
+            className="icon-button text-3xl transition 
+            duration-300 ease-in-out transform hover:scale-110"
             title="Delete"
             onClick={onDeleteGoalClicked}
         >
@@ -85,46 +88,23 @@ const EditGoalForm = ({ goal }) => {
         </button>
     )
 
+    let saveButton = (
+        <button
+            className="icon-button text-3xl transition 
+            duration-300 ease-in-out transform hover:scale-110"
+            title="Save"
+            onClick={onSaveGoalClicked}
+            disabled={!canSave}
+        >
+        <FontAwesomeIcon icon={faSave} />
+    </button>
+    )
+
     const content = (
         <>
-            <form className="form text-white" onSubmit={e => e.preventDefault()}>
-            <div className="form__title-row">
-                <h2>Edit Goal {goal.title}</h2>
-                <div className="form__action-buttons">
-                    <button
-                        className="icon-button"
-                        title="Save"
-                        onClick={onSaveGoalClicked}
-                        disabled={!canSave}
-                    >
-                        <FontAwesomeIcon icon={faSave} />
-                    </button>
-                    {deleteButton}
-                </div>
-            </div>
-            <label className="form__label" htmlFor="resource-name">
-                Title:</label>
-            <input
-                className='text-black'
-                id="goal-text"
-                name="title"
-                type="text"
-                autoComplete="off"
-                value={title}
-                onChange={onTitleChanged}
-            />
-
-            <label className="form__label" htmlFor="resource-desc">
-                Text:</label>
-            <textarea
-                className='text-black'
-                id="goal-text"
-                name="text"
-                value={text}
-                onChange={onTextChanged}
-            />      
-        </form>
-    </>
+            <EditForm goalTitle={goal.title} title={title} titleChange={onTitleChanged} text={text} textChange={onTextChanged} save={saveButton} del={deleteButton}/>
+        </>
+        
     )
   return content
 }
