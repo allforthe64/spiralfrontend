@@ -102,7 +102,7 @@ const EditGoalForm = ({ goal }) => {
 
     const content = (
         <>
-            <EditForm goalTitle={goal.title} title={title} titleChange={onTitleChanged} text={text} textChange={onTextChanged} save={saveButton} del={deleteButton}/>
+            <EditForm note={false} topTitle={goal.title} title={title} titleChange={onTitleChanged} text={text} textChange={onTextChanged} save={saveButton} del={deleteButton}/>
         </>
         
     )

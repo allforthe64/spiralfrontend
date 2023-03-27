@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom'
 
-const EditForm = ({goalTitle, title, titleChange, text, textChange, save, del}) => {
+const EditForm = ({note, topTitle, title, titleChange, text, textChange, save, del}) => {
     
 
     return (
         <div className='py-[35px]'>
             <form className="form text-white" onSubmit={e => e.preventDefault()}>
                 <div className="form__title-row mb-32">
-                    <h2 className='headings font-bold text-5xl'>Editing Goal: {goalTitle}</h2>
+                    <h2 className='headings font-bold text-5xl'>{note ? `Editing Note: ${topTitle}` : `Editing Goal: ${topTitle}`}</h2>
                 </div>
 
                 <div className='flex justify-around px-20 mb-16'>
@@ -26,7 +26,7 @@ const EditForm = ({goalTitle, title, titleChange, text, textChange, save, del}) 
                     </div>
 
                     <div className='flex flex-col w-5/12'>
-                        <p className='text-white info-txt font-bold text-2xl mb-10 text-left'>Edit Goal Text:</p>
+                        <p className='text-white info-txt font-bold text-2xl mb-10 text-left'>{note ? 'Edit Note Text' : 'Edit Goal Text:'}</p>
                         <textarea
                             id="goal-text"
                             name="text"
