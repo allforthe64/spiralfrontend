@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
 
-const ResourceList = () => {
+const ResourceList = ({func}) => {
     const { auth, setAuth } = useAuth()
     const id = auth.id
 
@@ -86,7 +86,7 @@ const ResourceList = () => {
                             {resourceList.map((resource) => (
                             <li key={resource?._id} className="text-white mb-6">
                                 <div className="flex justify-between">
-                                    <p className="ml-2 font-bold text-lg leading-tight headings">{resource?.name}</p>
+                                    <p className="ml-2 font-bold text-lg leading-tight headings hover:underline hover:cursor-pointer dash-title" onClick={() => func(resource._id)}>{resource?.name}</p>
                                     <button id={resource._id} onClick={onDeleteResourceClicked} className='text-red-700 info-txt font-bold hover:underline'>
                                         Delete
                                     </button>

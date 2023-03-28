@@ -99,7 +99,7 @@ const Goals = ({func}) => {
                                                 <label htmlFor={goal.id}></label>
                                             </div>
 
-                                            <p className="ml-2 font-bold text-lg leading-tight headings hover:underline hover:cursor-pointer" onClick={() => func(goal.title, goal.text, false)}>{goal?.title}</p>
+                                            <p className="ml-2 font-bold text-lg leading-tight headings hover:underline hover:cursor-pointer dash-title" onClick={() => func(goal.title, goal.text, false, false)}>{goal?.title}</p>
                                             
                                         </li>
                                         <button className="text-red-700 mr-10 leading-relaxed info-txt font-bold hover:underline"><Link to={`/goals/${goal._id}`}>Edit</Link></button>

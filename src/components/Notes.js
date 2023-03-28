@@ -51,7 +51,7 @@ const Notes = ({func}) => {
                             {notes.map((note) => (
                                 <div className="flex justify-between mb-4">
                                     <li key={note?._id} className="text-white">
-                                        <p className="ml-2 font-bold text-lg leading-tight headings hover:underline hover:cursor-pointer" onClick={() => func(note.title, note.text, true)}>{note?.title}</p>
+                                        <p className="ml-2 font-bold text-lg leading-tight headings hover:underline hover:cursor-pointer dash-title" onClick={() => func(note.title, note.text, true, false)}>{note?.title}</p>
                                     </li>
                                     <button className="text-red-700 mr-20 leading-relaxed info-txt font-bold hover:underline"><Link to={`/notes/${note._id}`} className="text-red-700">Edit</Link></button>
                                 </div>
