@@ -144,7 +144,7 @@ const Goals = ({func}) => {
                                                     <label htmlFor={goal.id}></label>
                                                 </div>
 
-                                                <p className="ml-2 font-bold text-lg leading-tight headings">{goal?.title}</p>
+                                                <p className="ml-2 font-bold text-lg leading-tight headings hover:underline hover:cursor-pointer dash-title" onClick={() => func(goal.title, goal.text, false, false)}>{goal?.title}</p>
                                                 
                                             </div>
                                         </li>

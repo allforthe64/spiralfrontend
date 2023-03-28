@@ -49,14 +49,18 @@ const MGoals = () => {
                 </div>
                 <div className="h-[219px] pt-4 overflow-auto scrollbar">
                     {mgoals?.length ? (
-                        <div className="h-[200px] w-8/12 pt-4 pl-8 overflow-auto scrollbar">
+                        <div className="h-[200px] w-9/12 pt-4 pl-8 overflow-auto scrollbar">
                             <ul>
                                 {mgoals.map((mgoal) => (
                                     <div className="flex justify-between mb-4">
                                         <li key={mgoal?._id} className="text-white">
-                                            <p className="ml-2 font-bold text-lg leading-tight headings">{mgoal?.title}</p>
+                                            <p className="ml-2 font-bold text-xl text-left headings">{mgoal?.title}</p>
+                                            <p className="ml-4 mt-4 info-txt text-sm text-left">{mgoal.text}</p>
                                         </li>
-                                        <button className="text-red-700 mr-20 leading-relaxed info-txt font-bold hover:underline"><Link to={`/mgoals/${mgoal._id}`}>Edit</Link></button>
+                                        <div className="h-[30px]">
+                                            <button className="text-red-700 leading-relaxed info-txt font-bold hover:underline text-lg"><Link to={`/mgoals/${mgoal._id}`}>Edit</Link></button>
+                                        </div>
+                                        
                                     </div>
                                 ))}
                             </ul>
