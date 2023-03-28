@@ -5,7 +5,7 @@ import useAuth from "../hooks/useAuth";
 
 import Notes from "./Notes";
 
-const Goals = () => {
+const Goals = ({func}) => {
     const { auth } = useAuth()
     const id = auth.id
 
@@ -47,6 +47,7 @@ const Goals = () => {
     }, [lastUpdated])
 
     const updateCompleted = async (goal) => {
+
         
         const id = goal._id
         const completed = !goal.completed
@@ -73,7 +74,6 @@ const Goals = () => {
         }
     }
 
-
     return (
         <article>
             <div className="flex justify-around mb-10">
@@ -99,7 +99,7 @@ const Goals = () => {
                                                 <label htmlFor={goal.id}></label>
                                             </div>
 
-                                            <p className="ml-2 font-bold text-lg leading-tight headings">{goal?.title}</p>
+                                            <p className="ml-2 font-bold text-lg leading-tight headings hover:underline hover:cursor-pointer" onClick={() => func(goal.title, goal.text, false)}>{goal?.title}</p>
                                             
                                         </li>
                                         <button className="text-red-700 mr-10 leading-relaxed info-txt font-bold hover:underline"><Link to={`/goals/${goal._id}`}>Edit</Link></button>
@@ -116,7 +116,7 @@ const Goals = () => {
                     }
                 </div>
                 <div className="w-6/12">
-                    <Notes />
+                    <Notes func={func}/>
                 </div>
             </div>
             

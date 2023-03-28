@@ -113,7 +113,6 @@ function App() {
 
               <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Admin]} />} >
                 <Route path="goals">
-                  <Route index element={<Goals />} />
                   <Route path=':id' element={<EditGoal />} />
                   <Route path='new' element={<NewGoalForm />} />
                 </Route>
@@ -129,7 +128,6 @@ function App() {
 
               <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Admin]} />} >
                 <Route path="notes">
-                  <Route index element={<Notes />} />
                   <Route path=':id' element={<EditNote />} />
                   <Route path='new' element={<NewNoteForm />} />
                 </Route>

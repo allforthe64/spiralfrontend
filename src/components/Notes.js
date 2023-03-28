@@ -3,7 +3,7 @@ import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
-const Notes = () => {
+const Notes = ({func}) => {
     const { auth } = useAuth()
     const id = auth.id
 
@@ -51,7 +51,7 @@ const Notes = () => {
                             {notes.map((note) => (
                                 <div className="flex justify-between mb-4">
                                     <li key={note?._id} className="text-white">
-                                        <p className="ml-2 font-bold text-lg leading-tight headings">{note?.title}</p>
+                                        <p className="ml-2 font-bold text-lg leading-tight headings hover:underline hover:cursor-pointer" onClick={() => func(note.title, note.text, true)}>{note?.title}</p>
                                     </li>
                                     <button className="text-red-700 mr-20 leading-relaxed info-txt font-bold hover:underline"><Link to={`/notes/${note._id}`} className="text-red-700">Edit</Link></button>
                                 </div>
