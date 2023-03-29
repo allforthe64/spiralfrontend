@@ -1,8 +1,25 @@
 import { Link } from 'react-router-dom'
 import { AnimationOnScroll } from 'react-animation-on-scroll'
+import { useRef } from 'react';
+import emailjs from '@emailjs/browser';
 
 
 const Home = () => {
+
+    const form = useRef();
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        emailjs.sendForm(process.env.REACT_APP_EMAILJS_SERVICE_KEY, process.env.REACT_APP_EMAILJS_TEMPLATE_ID, form.current, process.env.REACT_APP_EMAILJS_PUBLIC_KEY)
+        .then((result) => {
+            console.log(result.text);
+        }, (error) => {
+            console.log(error.text);
+        });
+    };
+
+
     return(
         <>
             <section className='flex flex-col lg:flex-row py-48 bg-dark'>
@@ -109,13 +126,13 @@ const Home = () => {
             <section className='flex flex-col items-center md:flex=row md:justify-around py-10 bg-white'>
                 <img src='/question.png' className='w-4/12 h-[auto]' alt='question-mark'/>
                 <div className='w-10/12 md:w-7/12 mt-12'>
-                    <form>
+                    <form ref={form} onSubmit={sendEmail}>
                         <div className='flex flex-col'>
                             <p className='headings text-4xl md:text-6xl text-left mb-2'>Questions?</p>
                             <p className='info-txt text-xl md:text-2xl text-left mb-2'>Send us a message</p>
-                            <input className='border-black border-2 mb-4 pl-2 py-px rounded focus:outline-black' type={'text'} placeholder='Name'/>
-                            <input className='border-black border-2 mb-4 pl-2 py-px rounded focus:outline-black' type={'text'} placeholder='Email'/>
-                            <textarea className='border-black border-2 rounded-lg pl-2 py-2 mb-4 focus:outline-black' rows={5} cols={50} placeholder='Enter a question'></textarea>
+                            <input className='border-black border-2 mb-4 pl-2 py-px rounded focus:outline-black' type={'text'} placeholder='Name' name="from_name"/>
+                            <input className='border-black border-2 mb-4 pl-2 py-px rounded focus:outline-black' type={'text'} placeholder='Email' name='from_email'/>
+                            <textarea className='border-black border-2 rounded-lg pl-2 py-2 mb-4 focus:outline-black' rows={5} cols={50} placeholder='Enter a question' name='message'></textarea>
                             <button className='headings rounded-lg text-lg md:text-2xl border-2 border-black md:w-4/12 md:ml-[35%] hover:bg-black hover:text-white ease-in duration-100'>Consult Now</button>
                         </div>
                     </form>
