@@ -1,10 +1,14 @@
 import { Link } from 'react-router-dom'
 import { AnimationOnScroll } from 'react-animation-on-scroll'
-import { useRef } from 'react';
+import { useRef, useState,useEffect } from 'react';
 import emailjs from '@emailjs/browser';
+
+import FieldValid from './FieldValid';
 
 
 const Home = () => {
+
+    const [email, setEmail] = useState('')
 
     const form = useRef();
 
@@ -17,8 +21,11 @@ const Home = () => {
         }, (error) => {
             console.log(error.text);
         });
+
+        form.current.reset()
     };
 
+    console.log(email)
 
     return(
         <>
@@ -131,7 +138,7 @@ const Home = () => {
                             <p className='headings text-4xl md:text-6xl text-left mb-2'>Questions?</p>
                             <p className='info-txt text-xl md:text-2xl text-left mb-2'>Send us a message</p>
                             <input className='border-black border-2 mb-4 pl-2 py-px rounded focus:outline-black' type={'text'} placeholder='Name' name="from_name"/>
-                            <input className='border-black border-2 mb-4 pl-2 py-px rounded focus:outline-black' type={'text'} placeholder='Email' name='from_email'/>
+                            <input className='border-black border-2 mb-4 pl-2 py-px rounded focus:outline-black' type={'email'} placeholder='Email' name='from_email' required/>
                             <textarea className='border-black border-2 rounded-lg pl-2 py-2 mb-4 focus:outline-black' rows={5} cols={50} placeholder='Enter a question' name='message'></textarea>
                             <button className='headings rounded-lg text-lg md:text-2xl border-2 border-black md:w-4/12 md:ml-[35%] hover:bg-black hover:text-white ease-in duration-100'>Consult Now</button>
                         </div>
