@@ -86,6 +86,14 @@ code {
   margin-bottom: 0.5rem;
 }
 
+.successmsg {
+  background-color: rgb(151, 255, 137);
+  color: rgb(34, 84, 26);
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
 .instructions > svg {
   color: white;
   margin-right: 0.25rem;

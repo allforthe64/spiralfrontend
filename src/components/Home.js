@@ -1,19 +1,22 @@
 import { Link } from 'react-router-dom'
 import { AnimationOnScroll } from 'react-animation-on-scroll'
-import { useRef, useState,useEffect } from 'react';
+import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 
-import FieldValid from './FieldValid';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faXmark } from "@fortawesome/free-solid-svg-icons"
 
 
 const Home = () => {
 
-    const [email, setEmail] = useState('')
+    const [success, setSuccess] = useState()
 
     const form = useRef();
 
     const sendEmail = (e) => {
         e.preventDefault();
+
+        setSuccess(true)
 
         emailjs.sendForm(process.env.REACT_APP_EMAILJS_SERVICE_KEY, process.env.REACT_APP_EMAILJS_TEMPLATE_ID, form.current, process.env.REACT_APP_EMAILJS_PUBLIC_KEY)
         .then((result) => {
@@ -22,10 +25,15 @@ const Home = () => {
             console.log(error.text);
         });
 
+        
         form.current.reset()
     };
 
-    console.log(email)
+    const changeSuccess = () => {
+        setSuccess(false)
+    }
+
+    console.log(`This is the success variable: ${success}`)
 
     return(
         <>
@@ -137,6 +145,12 @@ const Home = () => {
                         <div className='flex flex-col'>
                             <p className='headings text-4xl md:text-6xl text-left mb-2'>Questions?</p>
                             <p className='info-txt text-xl md:text-2xl text-left mb-2'>Send us a message</p>
+                            <div className={success ? "h-10 mb-4 mt-2" : "offscreen"}>
+                                <div className='successmsg flex w-6/12 ml-[24%]'>
+                                    <p className={success ? " ml-[25%]" : "offscreen"} aria-live="assertive">Feedback Sent!</p>
+                                    <FontAwesomeIcon icon={faXmark} className='font-grey ml-[25%] mt-[5px]' onClick={() => changeSuccess()}/>
+                                </div>
+                            </div>
                             <input className='border-black border-2 mb-4 pl-2 py-px rounded focus:outline-black' type={'text'} placeholder='Name' name="from_name"/>
                             <input className='border-black border-2 mb-4 pl-2 py-px rounded focus:outline-black' type={'email'} placeholder='Email' name='from_email' required/>
                             <textarea className='border-black border-2 rounded-lg pl-2 py-2 mb-4 focus:outline-black' rows={5} cols={50} placeholder='Enter a question' name='message'></textarea>
