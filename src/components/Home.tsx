@@ -5,16 +5,16 @@ import { AnimationOnScroll } from 'react-animation-on-scroll'
 const Home = () => {
     return(
         <>
-            <section className='flex flex-col lg:flex-row py-48 bg-dark'>
-                <div className='flex flex-col pl-12 pr-12'>
+            <section className='flex flex-col lg:flex-row lg:justify-aorund py-48 bg-dark'>
+                <div className='flex flex-col pl-12 pr-12 ml-12'>
                     <p className='text-white info-txt text-left text-2xl mb-2'>Join a</p>
                     <p className='text-white info-txt text-left text-3xl mb-2'>Creative Learning</p>
                     <h1 className='text-white headings text-left font-bold text-7xl mb-10'>Spiral</h1>
                     <button className='rounded-xl headings px-4 py-2 text-lg md:text-3xl bg-alien-green font-bold max-w-md mb-10'><Link to='/get-started'>Get Started</Link></button>
                     <p className='text-white info-txt text-left text-2xl w-10/12'>Because <span className='headings text-white'>learning</span> is different when you <span className='headings alien-green'>CHOOSE</span> it.</p>
                 </div> 
-                <div className='text-white'>
-                    <h1>Video</h1>
+                <div className='flex justify-around items-center'>
+                    <img src='./Video_screen_shot.png' className="w-10/12" alt="screen shot of the spiral logo and animated host"/>
                 </div>
             </section>
             <section className="flex flex-col items-center pt-16 pb-16">
@@ -53,7 +53,7 @@ const Home = () => {
             <section className='bg-white flex justify-center flex-col items-center py-28'>
                 <h1 className='headings font-bold text-3xl md:text-5xl mb-14'>The Creative Learning Spiral:</h1>
                 <AnimationOnScroll animateIn='animate__fadeIn' offset={100}>
-                    <img src='./graphic.png' alt='Learning spiral graphic' className='w-[80%] ml-[10%]'/>
+                    <img src='./desktop1.png' alt='Learning spiral graphic' className='w-[80%] ml-[10%]'/>
                 </AnimationOnScroll>
             </section>
             <section className="space-bg flex flex-col py-32">
