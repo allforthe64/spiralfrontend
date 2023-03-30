@@ -23,12 +23,12 @@ const Nav = () => {
             
             <ul className="flex w-8/12 justify-around ml-[42%]">
                 <li className="leading-loose info-txt text-white text-lg hover:underline"><Link to={'/get-started'}>Get Started</Link></li>
-                <li className="leading-loose info-txt text-white text-lg hover:underline"><Link to={'/dashboard'}>Dashboard</Link></li>
+                {/* <li className="leading-loose info-txt text-white text-lg hover:underline"><Link to={'/dashboard'}>Dashboard</Link></li> */}
                 <li className="leading-loose info-txt text-white text-lg hover:underline"><Link to={'/resources'}>Resources</Link></li>
-                <li className="leading-loose info-txt text-white text-lg hover:underline"><Link to={'/admin'}>Admin</Link></li>
+                {/* <li className="leading-loose info-txt text-white text-lg hover:underline"><Link to={'/admin'}>Admin</Link></li> */}
                 <li className="leading-loose info-txt text-white text-lg hover:underline"><Link to={'/login'}>Login</Link></li>
                 <li className="leading-loose info-txt text-white text-lg hover:underline"><Link to={'/register'}>Sign up</Link></li>
-                <li className="leading-loose info-txt text-white text-lg hover:underline"><button onClick={signout}>Signout</button></li>
+                {/* <li className="leading-loose info-txt text-white text-lg hover:underline"><button onClick={signout}>Signout</button></li> */}
             </ul>
         </nav>
     )

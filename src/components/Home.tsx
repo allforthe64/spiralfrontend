@@ -5,21 +5,28 @@ import { AnimationOnScroll } from 'react-animation-on-scroll'
 const Home = () => {
     return(
         <>
-            <section className='flex flex-col lg:flex-row lg:justify-aorund py-48 bg-dark'>
-                <div className='flex flex-col pl-12 pr-12 ml-12'>
+            <section className='flex flex-col lg:flex-row lg:justify-aorund lg:py-48 py-12 bg-dark'>
+                <div className='flex flex-col justify-center items-center lg:justify-start lg:items-start lg:pl-12 lg:pr-12 mb-12 lg:ml-12'>
                     <p className='text-white info-txt text-left text-2xl mb-2'>Join a</p>
                     <p className='text-white info-txt text-left text-3xl mb-2'>Creative Learning</p>
                     <h1 className='text-white headings text-left font-bold text-7xl mb-10'>Spiral</h1>
                     <button className='rounded-xl headings px-4 py-2 text-lg md:text-3xl bg-alien-green font-bold max-w-md mb-10'><Link to='/get-started'>Get Started</Link></button>
-                    <p className='text-white info-txt text-left text-2xl w-10/12'>Because <span className='headings text-white'>learning</span> is different when you <span className='headings alien-green'>CHOOSE</span> it.</p>
+                    <p className='text-white info-txt text-center lg:text-left text-2xl w-10/12'>Because <span className='headings text-white'>learning</span> is different when you <span className='headings alien-green'>CHOOSE</span> it.</p>
                 </div> 
                 <div className='flex justify-around items-center'>
-                    <img src='./Video_screen_shot.png' className="w-10/12" alt="screen shot of the spiral logo and animated host"/>
+                    <iframe 
+                        width="560" 
+                        height="315" 
+                        src="https://www.youtube.com/embed/6x31JhaNTkU" 
+                        title="YouTube video player" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen
+                    >
+                    </iframe>
                 </div>
             </section>
             <section className="flex flex-col items-center pt-16 pb-16">
                 <h3 className="headings text-5xl font-bold text-white mb-4">Why Spiral?</h3>
-                <p className="w-8/12 mt-2 font-medium text-white text-sm md:text-xl leading-9 info-txt mb-16">When you have a choice about what you do and can 
+                <p className="w-10/12 lg:w-8/12 mt-2 font-medium text-white text-sm md:text-xl leading-9 info-txt mb-16">When you have a choice about what you do and can 
                     choose when you stop, your relationship to what you’re doing 
                     is different. Learning flows better. There isn't a magical set facts that, once 
                     memorized/understood, constitutes a complete education. There’s always something more to be learned. The internet 
@@ -59,7 +66,7 @@ const Home = () => {
             <section className="space-bg flex flex-col py-32">
                 <AnimationOnScroll animateIn="animate__fadeInDown" offset={300}>
                     <div className='flex justify-center'>
-                        <h1 className="headings text-white font-bold text-4xl md:text-6xl w-7/12 mb-5">Want to access cutting 
+                        <h1 className="headings text-white font-bold w-10/12 text-3xl md:text-6xl md:w-7/12 mb-5">Want to access cutting 
                         edge learning solutions?</h1>
                     </div>
                 </AnimationOnScroll>
@@ -75,12 +82,12 @@ const Home = () => {
                 <AnimationOnScroll animateIn='animate__fadeInUp' offset={0}>
                     <p className='text-white headings font-bold text-5xl pt-10'>Meet The Team</p>
                     <hr className='smol-spacer ml-[42%] mt-4 bg-white'/>
-                    <div className='flex mt-10 flex-col items-center md:flex-row md:justify-around'>
-                        <div className='w-10/12 md:w-5/12'>
+                    <div className='flex mt-10 flex-col items-center md:flex-row md:justify-around md:px-15' >
+                        <div className='w-10/12  mt-10 md:mt-0 md:w-4/12 '>
                             <img className='w-[100%]'src='/profile.jpg' alt='profile 1'/>
                             <div className='bg-white pt-4 px-2 pb-4'>
                                 <p className='text-left headings font-bold text-3xl mb-2'>Lindsay</p>
-                                <p className='info-txt font-semibold text-lg text-left mb-2'>Co-founder + Founding Engineer + Head of Content (?)</p>
+                                <p className='info-txt font-semibold text-lg text-left mb-2'>Co-founder + Founding Engineer + Head of Content</p>
                                 <p className='info-txt text-left text-sm'> A certified teacher turned home educator and a mom of two. She has 
                                     over 8 years of experience as a home educator and several more in the 
                                     classroom. Believing that interests lead to deeper learning, she 
@@ -91,7 +98,7 @@ const Home = () => {
                                     that free kids to learn in ways that work for them.</p>
                             </div>
                         </div>
-                        <div className='w-10/12 md:w-5/12'>
+                        <div className='w-10/12 mt-10 md:mt-0 md:w-4/12'>
                             <img className='w-[100%]' src='https://avatars.githubusercontent.com/u/80420796?v=4' alt='profile 1'/>
                             <div className='bg-white pt-4 px-2 pb-9'>
                                 <p className='text-left headings font-bold text-3xl mb-2'>Will</p>
