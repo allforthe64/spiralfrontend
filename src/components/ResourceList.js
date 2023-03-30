@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
 
-const ResourceList = () => {
+const ResourceList = ({func}) => {
     const { auth, setAuth } = useAuth()
     const id = auth.id
 
@@ -75,25 +75,27 @@ const ResourceList = () => {
     }      
 
     return (
-        <article>
-            <h2>My Resources</h2>
-            <p>Easily find all of your resources</p>
+        <article className="border-gray-500 border-2 p-4 h-[100%] bg-slate-900 rounded-lg">
+            <div className="border-b-2 border-white mb-10 pb-10">
+                <h2 className="headings font-bold text-2xl">Liked Resources</h2>
+            </div>
             {resourceList?.length
                 ? (
-                    <ul>
-                        {resourceList.map((resource) => (
-                        <li 
-                            key={resource?._id} 
-                            className="text-white"
-                            
-                        >
-                            {resource?.name}
-                            <div id={resource._id} onClick={onDeleteResourceClicked}>
-                                Delete
-                            </div>
-                        </li>
-                        ))}
-                    </ul>
+                    <div className="overflow-auto scrollbar h-[83%]">
+                        <ul>
+                            {resourceList.map((resource) => (
+                            <li key={resource?._id} className="text-white mb-6">
+                                <div className="flex justify-between">
+                                    <p className="ml-2 font-bold text-lg leading-tight headings hover:underline hover:cursor-pointer dash-title" onClick={() => func(resource._id)}>{resource?.name}</p>
+                                    <button id={resource._id} onClick={onDeleteResourceClicked} className='text-red-700 info-txt font-bold hover:underline'>
+                                        Delete
+                                    </button>
+                                </div>
+                                
+                            </li>
+                            ))}
+                        </ul>
+                    </div>
                 ) : (
                     <div>
                         <p>No resources to display</p>
