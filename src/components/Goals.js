@@ -5,7 +5,7 @@ import useAuth from "../hooks/useAuth";
 
 import Notes from "./Notes";
 
-const Goals = () => {
+const Goals = ({func}) => {
     const { auth } = useAuth()
     const id = auth.id
 
@@ -47,6 +47,7 @@ const Goals = () => {
     }, [lastUpdated])
 
     const updateCompleted = async (goal) => {
+
         
         const id = goal._id
         const completed = !goal.completed
@@ -73,9 +74,8 @@ const Goals = () => {
         }
     }
 
-
     return (
-        <article className="w-9/12">
+        <article>
             <div className="flex justify-around mb-10">
                 <div className="border-2 w-5/12 p-4 bg-slate-900 border-gray-500 rounded-lg">
                     <div className="flex justify-around mb-6 border-b-2 border-white">
@@ -83,7 +83,7 @@ const Goals = () => {
                         <button className="info-txt font-bold mb-12 bg-alien-green py-px px-8 rounded-md text-black"><Link to={'/goals/new'}>Add New Goal</Link></button>
                     </div>
                     {notCompletedGoals?.length ? (
-                            <div className="h-[200px] pt-4">
+                            <div className="h-[200px] pt-4 overflow-auto scrollbar">
                                 <ul>
                                     {notCompletedGoals.map((goal) => (
                                     <div className="flex justify-between mb-4">
@@ -99,7 +99,7 @@ const Goals = () => {
                                                 <label htmlFor={goal.id}></label>
                                             </div>
 
-                                            <p className="ml-2 font-bold text-lg leading-tight headings">{goal?.title}</p>
+                                            <p className="ml-2 font-bold text-lg leading-tight headings hover:underline hover:cursor-pointer dash-title" onClick={() => func(goal.title, goal.text, false, false)}>{goal?.title}</p>
                                             
                                         </li>
                                         <button className="text-red-700 mr-10 leading-relaxed info-txt font-bold hover:underline"><Link to={`/goals/${goal._id}`}>Edit</Link></button>
@@ -116,7 +116,7 @@ const Goals = () => {
                     }
                 </div>
                 <div className="w-6/12">
-                    <Notes />
+                    <Notes func={func}/>
                 </div>
             </div>
             
@@ -128,7 +128,7 @@ const Goals = () => {
                         </div>
                         {completedGoals?.length
                             ? (
-                                <div className="h-[200px] pt-4">
+                                <div className="h-[200px] pt-4 overflow-auto scrollbar">
                                     <ul>
                                         {completedGoals.map((goal) => (
                                         <li key={goal?._id} className="text-white">
@@ -144,7 +144,7 @@ const Goals = () => {
                                                     <label htmlFor={goal.id}></label>
                                                 </div>
 
-                                                <p className="ml-2 font-bold text-lg leading-tight headings">{goal?.title}</p>
+                                                <p className="ml-2 font-bold text-lg leading-tight headings hover:underline hover:cursor-pointer dash-title" onClick={() => func(goal.title, goal.text, false, false)}>{goal?.title}</p>
                                                 
                                             </div>
                                         </li>
