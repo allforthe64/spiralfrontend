@@ -47,8 +47,10 @@ const Home = () => {
                 </div> 
                 <div className='flex justify-around items-center'>
                     <iframe 
-                        width="560" 
-                        height="315" 
+                        className='w-[350px] md:w-[560px] h-[315px]'
+                        // width="350"
+                        // max-width="560" 
+                        // height="315" 
                         src="https://www.youtube.com/embed/6x31JhaNTkU" 
                         title="YouTube video player" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen
@@ -89,10 +91,11 @@ const Home = () => {
                         </div>
                     </div>
             </section>
-            <section className='bg-white flex justify-center flex-col items-center py-28'>
-                <h1 className='headings font-bold text-3xl md:text-5xl mb-14'>The Creative Learning Spiral:</h1>
+            <section className='bg-white flex justify-center flex-col items-center py-14 md:py-28'>
+                <h1 className='headings font-bold text-3xl md:text-5xl mb-4 md:mb-14'>The Creative Learning Spiral:</h1>
                 <AnimationOnScroll animateIn='animate__fadeIn' offset={100}>
-                    <img src='./desktop1.png' alt='Learning spiral graphic' className='w-[80%] ml-[10%]'/>
+                    <img src='./desktop1.png' alt='Learning spiral graphic' className='hidden md:w-[80%] md:ml-[10%] md:block'/>
+                    <img src='./mobile4.png' alt='Learning spiral graphic' className='w-[80%] ml-[10%] md:hidden'/>
                 </AnimationOnScroll>
             </section>
             <section className="space-bg flex flex-col py-32">
