@@ -37,20 +37,17 @@ const Home = () => {
 
     return(
         <>
-            <section className='flex flex-col lg:flex-row lg:justify-aorund lg:py-48 py-12 bg-dark'>
-                <div className='flex flex-col justify-center items-center lg:justify-start lg:items-start lg:pl-12 lg:pr-12 mb-12 lg:ml-12'>
-                    <p className='text-white info-txt text-left text-2xl mb-2'>Join a</p>
-                    <p className='text-white info-txt text-left text-3xl mb-2'>Creative Learning</p>
-                    <h1 className='text-white headings text-left font-bold text-7xl mb-10'>Spiral</h1>
+            <section className='flex flex-col lg:flex-row lg:justify-aorund lg:py-36 lg:px-10 py-12 bg-dark'>
+                <div className='flex flex-col justify-center items-center lg:justify-start lg:items-start lg:pl-12  mb-12 lg:ml-12'>
+                    <p className='text-white info-txt text-left text-2xl'>Join a</p>
+                    <p className='text-white info-txt text-left text-2xl mb-2'>Creative Learning</p>
+                    <h1 className='text-white headings text-left font-bold text-7xl lg:text-8xl mb-5'>Spiral</h1>
                     <button className='rounded-xl headings px-4 py-2 text-lg md:text-3xl bg-alien-green font-bold max-w-md mb-10'><Link to='/get-started'>Get Started</Link></button>
                     <p className='text-white info-txt text-center lg:text-left text-2xl w-10/12'>Because <span className='headings text-white'>learning</span> is different when you <span className='headings alien-green'>CHOOSE</span> it.</p>
                 </div> 
                 <div className='flex justify-around items-center'>
                     <iframe 
-                        className='w-[350px] md:w-[560px] h-[315px]'
-                        // width="350"
-                        // max-width="560" 
-                        // height="315" 
+                        className='w-[350px] md:w-[622px] md:h-[350px] lg:w-[666px] lg:h-[375px]' 
                         src="https://www.youtube.com/embed/6x31JhaNTkU" 
                         title="YouTube video player" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen
