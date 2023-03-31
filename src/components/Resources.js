@@ -61,17 +61,6 @@ const Resources = () => {
         }
     }
 
-    /* if (filters.length > 0) {
-        for (let i of filters) {
-            console.log(i)
-            for (let j of resources) {
-                if (j.tags.includes(i)) {
-                    if (!filtered.includes(j)) filtered.push(j)
-                }
-            }
-        }
-    } */
-
     if (filters.length > 0) {
         for (let i of resources) {
             let success = filters.every(el => i.tags.indexOf(el) !== -1)

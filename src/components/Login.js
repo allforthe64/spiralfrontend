@@ -102,7 +102,7 @@ const Login = ({ func }) => {
                     className='w-4/12 bg-inherit border-b-2 outline-0 text-white info-txt text-2xl pl-2 pb-px mb-7'
                     placeholder='password'
                 />
-                <div className="persistCheck mr-[19%] mb-14">
+                <div className="persistCheck mb-14">
                     <input
                         type="checkbox"
                         id="persist"

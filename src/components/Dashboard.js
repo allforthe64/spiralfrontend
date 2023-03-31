@@ -11,8 +11,6 @@ const Dashboard = () => {
     const contextObject = useContext(ResourceContext)
     const resources = contextObject.arr
 
-    console.log(resources)
-
     const [openModal, setOpenModal] = useState(false)
     const [modalTitle, setModalTitle] = useState('')
     const [modalBody, setModalBody] = useState('')
