@@ -1,5 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import useLogout from '../hooks/useLogout';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 import useAuth from "../hooks/useAuth"
 
@@ -25,7 +27,9 @@ const Nav = () => {
                 </Link>
             </div>
             
-            <ul className="flex justify-around w-[55%] ml-[12%] pt-4">
+            <FontAwesomeIcon icon={faBars} className='text-white text-3xl md:hidden mt-px ml-[55%]'/>
+
+            <ul className="md:flex md:justify-around md:w-[55%] md:ml-[12%] md:pt-4 hidden">
                 <li className="info-txt text-white md:text-lg hover:underline text-sm"><Link to={'/get-started'}>Get Started</Link></li>
                 {auth.id && (auth.roles.includes(2001) || auth.roles.includes(5150)) && 
                     
