@@ -1,10 +1,12 @@
 import { useState, useContext } from "react"
+import axios from 'axios'
 import { ResourceContext } from "../App"
-
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import Goals from "./Goals"
 import MGoals from "./MGoals"
 import ResourceList from "./ResourceList"
 import DashModal from "./DashModal"
+import Avatar from "./Avatar";
 
 const Dashboard = () => {
 
@@ -43,15 +45,14 @@ const Dashboard = () => {
         setOpenModal(true)
     }
 
-    console.log(modalResource)
-    
+    //console.log(modalResource)
 
     return (
         <div className="py-10 headings text-white pr-6">
             {openModal && <DashModal state={modalState} note={modalNote} func={onClick} title={modalTitle} body={modalBody} resourceContent={modalContent}/>}
             <h2 className="font-bold text-5xl mb-20">My Dashboard</h2>
             <div className="flex justify-around pl-[1%] mb-16">
-                <div className="h-[350px] w-[31%]  border border-white">Profile Pic goes here</div>
+                <Avatar />
                 <div className="w-[63%] ml-[2%]">
                     <MGoals />
                 </div>
