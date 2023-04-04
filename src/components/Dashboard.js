@@ -49,9 +49,11 @@ const Dashboard = () => {
         <div className="py-10 headings text-white pr-6">
             {openModal && <DashModal state={modalState} note={modalNote} func={onClick} title={modalTitle} body={modalBody} resourceContent={modalContent}/>}
             <h2 className="font-bold text-5xl mb-20">My Dashboard</h2>
-            <div className="flex justify-around pl-[1%] mb-16">
-                <Avatar />
-                <div className="w-[63%] ml-[2%]">
+            <div className="flex justify-between pl-[1%] mb-16">
+                <div className="w-[32%]">
+                    <Avatar />
+                </div>
+                <div className="w-[65%]">
                     <MGoals />
                 </div>
             </div>

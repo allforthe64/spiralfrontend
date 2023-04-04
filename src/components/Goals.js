@@ -60,9 +60,7 @@ const Goals = ({func}) => {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
                 }
-            )
-            console.log(response?.data)   
-
+            )   
             setLastUpdated(prev => !prev)
         } catch (err) {
             console.log('throwing error in update completed goal')
@@ -132,20 +130,22 @@ const Goals = ({func}) => {
                                     <ul>
                                         {completedGoals.map((goal) => (
                                         <li key={goal?._id} className="text-white">
-                                            <div className="flex mb-4">
+                                            <div className="flex mb-4 justify-between">
+                                                <div className="flex">
 
-                                                <div className="completed">
-                                                    <input
-                                                        type="checkbox"
-                                                        checked={goal.completed}
-                                                        id={goal.id}
-                                                        onChange={() => updateCompleted({ ...goal })}
-                                                    />
-                                                    <label htmlFor={goal.id}></label>
+                                                    <div className="completed">
+                                                        <input
+                                                            type="checkbox"
+                                                            checked={goal.completed}
+                                                            id={goal.id}
+                                                            onChange={() => updateCompleted({ ...goal })}
+                                                        />
+                                                        <label htmlFor={goal.id}></label>
+                                                    </div>
+
+                                                    <p className="ml-2 font-bold text-lg leading-tight headings hover:underline hover:cursor-pointer dash-title" onClick={() => func(goal.title, goal.text, false, false)}>{goal?.title}</p>
                                                 </div>
-
-                                                <p className="ml-2 font-bold text-lg leading-tight headings hover:underline hover:cursor-pointer dash-title" onClick={() => func(goal.title, goal.text, false, false)}>{goal?.title}</p>
-                                                
+                                                <p className="info-txt">Completed On: {goal.dateCompleted.split('T')[0]}</p>
                                             </div>
                                         </li>
                                         ))}
