@@ -1,12 +1,10 @@
 import { useState, useContext } from "react"
-import axios from 'axios'
 import { ResourceContext } from "../App"
-import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import Goals from "./Goals"
 import MGoals from "./MGoals"
 import ResourceList from "./ResourceList"
 import DashModal from "./DashModal"
-import Avatar from "./Avatar";
+import Avatar from "./Avatar"
 
 const Dashboard = () => {
 

@@ -45,6 +45,16 @@ code {
   color: #00FF5D;
 }
 
+.bg-grey {
+  background-color: #939692;
+}
+
+.bg-grey:hover {
+  background-color: transparent;
+  border: 1px solid #939692;
+  color: #939692;
+}
+
 .bg-dark {
   background-image: linear-gradient(#000000, #000525);
 }
