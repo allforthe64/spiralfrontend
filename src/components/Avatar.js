@@ -52,7 +52,7 @@ const Avatar = () => {
     }
     
     return (
-        <form className=" col-sm-6 offset-3 pt-5 signup_form " enctype="multipart/form-data" onSubmit={submitForm}>
+        <form className="pt-5 border h-[350px]" enctype="multipart/form-data" onSubmit={submitForm}>
             
             <div className="form-outline mb-4">
                 <input onChange={handleImage}  type="file" id="formupload" name="file" className="form-control"  />
