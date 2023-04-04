@@ -7,7 +7,8 @@ interface ResourceProps {
     link: string,
     desc: string,
     tags: Array<string>,
-    tutorials: Array<Object>
+    tutorials: Array<Object>,
+    admin: boolean
     onClickFunc: (id: string) => void
 }
 
@@ -37,8 +38,10 @@ const ResourceCard:FC<ResourceProps> = (props) => {
                 <p className="text-white info-txt font-bold text-3xl text-left mb-4 card-heading ease-out">{props.name}</p>
                 <p className="text-white info-txt text-left w-11/12 mb-10">{shortDesc !== '' ? shortDesc : props.desc}</p>
             </div>
-            <Link to={`${props.id}`} className='resourceButton' >Edit</Link>
-        </div>
+            {props.admin && 
+                <Link to={`${props.id}`} className='resourceButton' >Edit</Link>
+            }
+            </div>
     )
 }
 
