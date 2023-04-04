@@ -218,6 +218,14 @@ code {
   border-radius: 20px;       /* roundness of the scroll thumb */
 }
 
+.icon-button:hover {
+  color: #00FF5D;
+}
+
+.dash-title:hover {
+  color: #00FF5D;
+}
+
 /*filter styles*/
 
 .filter-nav {
@@ -241,10 +249,12 @@ code {
 
 .slide {
   clear:both;
-  width:100%;
+  width:36%;
   height:0px;
   overflow: auto;
   transition: height .4s ease;
+  position: absolute;
+  z-index: 40;
 }
 
 .slide::-webkit-scrollbar {
@@ -268,12 +278,16 @@ code {
 
 #touch:checked + .slide {
   height: 300px;
+  z-index: 40;
 } 
 
-.icon-button:hover {
-  color: #00FF5D;
+#mini-nav {
+  margin-left: 0;
+  width: 100%;
 }
 
-.dash-title:hover {
-  color: #00FF5D;
+#mini-slide {
+  width: 34%;
 }
+
+
