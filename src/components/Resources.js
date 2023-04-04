@@ -93,7 +93,7 @@ const Resources = () => {
                     <label htmlFor="touch"><span className="filter-span text-left">{filters.length > 0 ? `Filters (${filters.length})` : 'Filters'}</span></label>               
                     <input type="checkbox" id="touch" /> 
 
-                    <ul className="slide">
+                    <ul className="slide bg-inherit">
                         {tags}
                     </ul>
 
