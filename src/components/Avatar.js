@@ -1,5 +1,4 @@
-import { useState } from "react";
-import axios from "axios";
+import { useState, useEffect } from "react";
 import useAuth from "../hooks/useAuth";
 import { axiosPrivate } from "../api/axios";
 
@@ -7,6 +6,42 @@ const Avatar = () => {
     
     const { auth } = useAuth()
     const id = auth.id
+
+    const [user, setUser] = useState();
+    const [edit, setEdit] = useState(false);
+    
+    useEffect(() => {
+        console.log('here')
+        let isMounted = true;
+        const controller = new AbortController();
+
+        const getUser = async () => {
+            console.log('trying to get user')
+            try {
+                const response = await axiosPrivate.get(`/users/${id}`, 
+                {
+                    signal: controller.signal,
+                });
+                const foundUser = response.data
+                console.log(`found user: ${foundUser.imageUrl}`)
+                isMounted && setUser(foundUser);
+                console.log(`user is now ${foundUser.imageUrl}`)
+            } catch (err) {
+                console.error(err);
+                // navigate('/login', { state: { from: location }, replace: true });
+            }
+        }
+        getUser();
+
+        return () => {
+            isMounted = false;
+            controller.abort();
+        }
+    }, [])
+
+    const flipButton = () => {
+        setEdit(!edit)
+    }
 
     const [file, setFile] = useState([]);
     
@@ -51,17 +86,23 @@ const Avatar = () => {
 
     }
     
-    return (
-        <form className="pt-5 border h-[350px]" enctype="multipart/form-data" onSubmit={submitForm}>
+    return (            
+        <div className="flex flex-col justify-center items-center w-3/12">
+            {user?.imageUrl ? <img className="w-8/12 mb-10" src={user.imageUrl} alt="user avatar" />
+                            : <img className="w-8/12" src="user_white.png" alt="default avatar image" />}
+            {!edit && <div onClick={flipButton} className="cursor-pointer info-txt font-bold mb-12 bg-alien-green py-px px-8 rounded-md text-black">Edit</div> }
+            {edit && <form className="w-full" enctype="multipart/form-data" onSubmit={submitForm}>
             
-            <div className="form-outline mb-4">
-                <input onChange={handleImage}  type="file" id="formupload" name="file" className="form-control"  />
-                <label className="form-label" htmlFor="form4Example2"></label>
-            </div>
-            <img className="img-fluid" src={file} alt="" />
-            <button  type="submit" className="btn btn-primary btn-block mb-4">Create</button>
-            
-        </form>
+                <div className="mb-4">
+                    <input onChange={handleImage}  type="file" id="formupload" name="file" className="w-10/12 py-px px-8 rounded-md"  />
+                    <label className="form-label" htmlFor="form4Example2"></label>
+                </div>
+                <div classname="flex flex-row justify-around">
+                    <button  type="submit" className="inline-block info-txt font-bold mb-12 bg-alien-green py-px px-8 rounded-md text-black">Update</button>
+                    <div onClick={flipButton} className="inline-block cursor-pointer info-txt font-bold mb-12 bg-grey py-px px-8 rounded-md text-black w-4/12 ml-2">Cancel</div>
+                </div>
+            </form>}
+        </div>            
     )   
 }
 

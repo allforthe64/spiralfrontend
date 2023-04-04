@@ -58,8 +58,7 @@ const Home = () => {
             <section className="flex flex-col items-center pt-16 pb-16">
                 <h3 className="headings text-5xl font-bold text-white mb-4">Why Spiral?</h3>
                 <p className="w-10/12 lg:w-8/12 mt-2 font-medium text-white text-sm md:text-xl leading-9 info-txt mb-16">When you have a choice about what you do and can 
-                    choose when you stop, your relationship to what you’re doing 
-                    is different. Learning flows better. There isn't a magical set facts that, once 
+                    choose when to stop, how you choose to spend your time shifts. Learning flows better. There isn't a magical set facts that, once 
                     memorized/understood, constitutes a complete education. There’s always something more to be learned. The internet 
                     is an endless source of information and it’s more important to know how to create, build, and share information and ideas, than it is to memorize it.</p>
                     <div className="grid grid-flow-row gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 justify-items-center">
@@ -72,7 +71,7 @@ const Home = () => {
                         <div className="p-4 max-w-xs rounded-3xl tinted">
                             <img className='rounded-lg mb-4' src="./learning_white.png" alt="projects"/>
                             <p className="headings text-2xl font-semibold text-white mb-4">Projects</p>
-                            <p className="text-left text-white text-sm info-txt">Start with an idea and carry it through to a finished project</p>
+                            <p className="text-left text-white text-sm info-txt">Start with an idea and carry it through to a finished project. Use real tools and master cutting edge technologies.</p>
                         </div>
                         <div className="p-4 max-w-xs rounded-3xl tinted">
                             <img className="rounded-lg mb-4" src="./peers_white.png" alt='Peers'/>

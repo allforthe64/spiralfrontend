@@ -53,3 +53,5 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 <a target="_blank" href="https://icons8.com/icon/3734/user-groups">User Groups</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a> ** -->
 
 <!-- illustrations on getting started page<a href="https://storyset.com/worker">Worker illustrations by Storyset</a> -->
+
+<!-- avatar icon on dashboard <a href="https://www.flaticon.com/free-icons/user" title="user icons">User icons created by Freepik - Flaticon</a> -->

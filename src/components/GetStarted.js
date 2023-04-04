@@ -15,8 +15,8 @@ const GetStarted = () => {
             <section className="pt-20 pb-20 px-10 flex lg:flex-row lg:justify-around flex-col-reverse items-center">
                 <div className='flex flex-col items-start w-10/12 lg:w-5/12 text-left text-white'>
                     <h1 className="headings text-2xl sm:text-3xl md:text-5xl font-bold mb-7">Why a self directed, project based approach to learning?</h1>
-                    <p className="info-txt text-md md:text-lg">A self-directed, project based approach to learning allows children to learn by doing - not the 
-                    ‘kid’ version - the real thing. This approach allows children to utilize their endless curiosity and fosters an intrinsic 
+                    <p className="info-txt text-md md:text-lg">Children learn best by doing - not the 
+                    ‘kid’ version - the real thing. Children utilize their endless curiosity and foster an intrinsic 
                     motivation to learn. Parents can stop being the enforcer when it comes to their children’s learning. 
                     </p>
                     <p className='text-2xl md:text-3xl font-semibold my-4'>Ready to implement this approach with your children?</p>
@@ -32,7 +32,7 @@ const GetStarted = () => {
                     />
                 </div>
                 <div className='w-8/12 md:w-6/12 lg:w-4/12 mb-5 lg:mb-0'>
-                    <img src='./started1.png'/>
+                    <img src='./started1.png' alt="achild with a pencil in front of posters depicting the project completion process"/>
                 </div>
                 
             </section>
