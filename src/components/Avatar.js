@@ -66,7 +66,7 @@ const Avatar = () => {
         e.preventDefault();
         try {
 
-            const response = await axiosPrivate.post(`http://localhost:3500/users/${id}`, 
+            const response = await axiosPrivate.post(`https://spiral-backend-api.onrender.com/users/${id}`, 
             JSON.stringify({file}),
                 {
                     headers: { 'Content-Type': 'application/json' },
