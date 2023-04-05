@@ -97,7 +97,7 @@ const Resources = () => {
             <h1 className="text-white headings font-bold text-5xl mb-20">Resources</h1>
             {openModal && <Modal id={modalId} name={modalName} longDesc={modalLongDesc} tutorials={tutorials} link={tutLink} onClickFunc={onClickFunc}/>}
             <div>
-                <nav className="filter-nav info-txt border-white border-b mb-10">
+                <nav className="filter-nav info-txt border-white border-b mb-16">
                     <label htmlFor="touch"><span className="filter-span text-left">{filters.length > 0 ? `Filters (${filters.length})` : 'Filters'}</span></label>               
                     <input type="checkbox" id="touch" /> 
 
