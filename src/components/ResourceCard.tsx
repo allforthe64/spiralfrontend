@@ -7,7 +7,8 @@ interface ResourceProps {
     link: string,
     desc: string,
     tags: Array<string>,
-    tutorials: Array<Object>
+    tutorials: Array<Object>,
+    admin: boolean
     onClickFunc: (id: string) => void
 }
 
@@ -31,13 +32,17 @@ const ResourceCard:FC<ResourceProps> = (props) => {
     }
 
     return (
-        <div className="w-3/12 p-4 mb-20 h-[250px] border-b border-white ml-10 transition 
-            duration-300 ease-in-out transform hover:scale-110 card" onClick={() => props.onClickFunc(props.id)}>
-            <div className="h-60 mb-4">
-                <p className="text-white info-txt font-bold text-3xl text-left mb-4 card-heading ease-out">{props.name}</p>
-                <p className="text-white info-txt text-left w-11/12 mb-10">{shortDesc !== '' ? shortDesc : props.desc}</p>
+        <div className="max-sm:w-9/12 sm:max-md:w-5/12 md:w-3/12 p-4 mb-20 max-sm:ml-0 md:ml-10 transition 
+            duration-300 ease-in-out transform hover:scale-110" onClick={() => props.onClickFunc(props.id)}>
+            <div className="border-b border-white pb-10 card mb-4">
+                <div className="h-60 mb-4">
+                    <p className="text-white info-txt font-bold text-3xl text-left mb-4 card-heading ease-out">{props.name}</p>
+                    <p className="text-white info-txt text-left w-11/12 mb-10">{shortDesc !== '' ? shortDesc : props.desc}</p>
+                </div>
             </div>
-            <Link to={`${props.id}`} className='resourceButton' >Edit</Link>
+            {props.admin && 
+                <button className="info-txt font-bold mb-12 bg-alien-green py-px px-8 rounded-md text-black"><Link to={`${props.id}`}>Edit</Link></button>
+            }
         </div>
     )
 }
