@@ -181,11 +181,6 @@ code {
   width: 80%; /* Could be more or less, depending on screen size */
 }
 
-.resourceButton {
-  background-color: white;
-  width: 100px;
-}
-
 
 /*scrollbar styling */
 
@@ -216,6 +211,14 @@ code {
   width: 5px;
   background-color: white;    /* color of the scroll thumb */
   border-radius: 20px;       /* roundness of the scroll thumb */
+}
+
+.icon-button:hover {
+  color: #00FF5D;
+}
+
+.dash-title:hover {
+  color: #00FF5D;
 }
 
 /*filter styles*/
@@ -270,10 +273,55 @@ code {
   height: 300px;
 } 
 
-.icon-button:hover {
-  color: #00FF5D;
+/*mini nav */
+.filter-nav-1 {
+  width : 300px; 
 }
 
-.dash-title:hover {
-  color: #00FF5D;
+.filter-span-1 {
+  padding : 20px;
+  color : white;
+  font-size : 1.2em;
+  cursor : pointer;
+  display: block;
 }
+
+.filter-span-1::after {
+  float: right;
+  right: 10%;
+  content: "+";
+}
+
+.slide-1 {
+  clear:both;
+  width:33.7%;
+  height:0px;
+  overflow: auto;
+  transition: height .4s ease;
+  position: absolute;
+  z-index: 40;
+}
+
+.slide-1::-webkit-scrollbar {
+  width: 2px;
+}
+
+.slide-1::-webkit-scrollbar-thumb {
+  background-color: white;
+}
+
+.slide-1 li {padding : 20px;}
+
+.slide-1 li:hover {
+  text-decoration: underline;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  cursor : pointer;
+}
+
+#touch-1 {position: absolute; opacity: 0; height: 0px;}    
+
+#touch-1:checked + .slide-1 {
+  height: 300px;
+  z-index: 40;
+} 

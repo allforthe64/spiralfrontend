@@ -8,9 +8,19 @@ import Tag from "./Tag"
 
 import { TAGS } from "../config/tags"
 
+import useAuth from "../hooks/useAuth"
+
 
 
 const Resources = () => {
+
+    const { auth } = useAuth()
+
+    let admin = false
+
+    if (auth.roles.includes(5150)) {
+        admin = true
+    }
 
     //initialize modal state
     const [modalId, setModalId] = useState('')
@@ -73,12 +83,10 @@ const Resources = () => {
      let cards;
      
     if (resources.length > 0 && resources) {
-        cards = resources.map(el => <ResourceCard key={el._id} id={el._id} name={el.name} link={el.link} desc={el.desc} tags={el.tags} tutorials={el.tutorials} onClickFunc={onClickFunc} />)
+        cards = resources.map(el => <ResourceCard key={el._id} id={el._id} name={el.name} link={el.link} desc={el.desc} tags={el.tags} tutorials={el.tutorials} onClickFunc={onClickFunc} admin={admin}/>)
     } else {
         cards = (<p className="text-white my-20 text-3xl headings font-bold w-8/12">Oops! We couldn't find any resources matching those filters &#128531;</p>)
     }
-     
-
     
     //create li elements
     const objVals = Object.values(TAGS)
@@ -89,11 +97,11 @@ const Resources = () => {
             <h1 className="text-white headings font-bold text-5xl mb-20">Resources</h1>
             {openModal && <Modal id={modalId} name={modalName} longDesc={modalLongDesc} tutorials={tutorials} link={tutLink} onClickFunc={onClickFunc}/>}
             <div>
-                <nav className="filter-nav info-txt border-white border-b mb-10">
+                <nav className="filter-nav info-txt border-white border-b mb-16">
                     <label htmlFor="touch"><span className="filter-span text-left">{filters.length > 0 ? `Filters (${filters.length})` : 'Filters'}</span></label>               
                     <input type="checkbox" id="touch" /> 
 
-                    <ul className="slide">
+                    <ul className="slide bg-inherit">
                         {tags}
                     </ul>
 
@@ -102,9 +110,11 @@ const Resources = () => {
             <div className="flex justify-around flex-wrap">
                 {cards}
             </div>
-            <div className="addResource text-white">
-                <Link to={'/resources/new'}>Add Resources</Link>
-            </div>
+            {admin && 
+                <div className="addResource text-white">
+                    <Link to={'/resources/new'}>Add Resources</Link>
+                </div>
+            }
         </div>
     )
 }

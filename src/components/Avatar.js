@@ -66,7 +66,7 @@ const Avatar = () => {
         e.preventDefault();
         try {
 
-            const response = await axiosPrivate.post(`http://localhost:3500/users/${id}`, 
+            const response = await axiosPrivate.post(`https://spiral-backend-api.onrender.com/users/${id}`, 
             JSON.stringify({file}),
                 {
                     headers: { 'Content-Type': 'application/json' },
@@ -87,9 +87,9 @@ const Avatar = () => {
     }
     
     return (            
-        <div className="flex flex-col justify-center items-center w-3/12">
+        <div className="flex flex-col justify-center items-center h-full">
             {user?.imageUrl ? <img className="w-8/12 mb-10" src={user.imageUrl} alt="user avatar" />
-                            : <img className="w-8/12" src="user_white.png" alt="default avatar image" />}
+                            : <img className="w-6/12 h-6/12 mb-10" src="user_white.png" alt="default avatar" />}
             {!edit && <div onClick={flipButton} className="cursor-pointer info-txt font-bold mb-12 bg-alien-green py-px px-8 rounded-md text-black">Edit</div> }
             {edit && <form className="w-full" enctype="multipart/form-data" onSubmit={submitForm}>
             
