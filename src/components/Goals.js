@@ -74,8 +74,8 @@ const Goals = ({func}) => {
 
     return (
         <article>
-            <div className="flex justify-around mb-10">
-                <div className="border-2 w-5/12 p-4 bg-slate-900 border-gray-500 rounded-lg">
+            <div className="flex flex-col md:flex-row justify-between lg:justify-around mb-10">
+                <div className="border-2 sm:w-full mb-8 md:mb-0 md:w-4/12 lg:w-5/12 p-4 bg-slate-900 border-gray-500 rounded-lg">
                     <div className="flex justify-around mb-6 border-b-2 border-white">
                         <h2 className="text-2xl headings font-bold">Goals List</h2>
                         <button className="info-txt font-bold mb-12 bg-alien-green py-px px-8 rounded-md text-black"><Link to={'/goals/new'}>Add New Goal</Link></button>
@@ -113,13 +113,13 @@ const Goals = ({func}) => {
                         )
                     }
                 </div>
-                <div className="w-6/12">
+                <div className="sm:w-full md:w-7/12 lg:w-6/12">
                     <Notes func={func}/>
                 </div>
             </div>
             
             <div className="flex justify-center">
-                <div className="border-2 w-[96%] p-4 bg-slate-900 border-gray-500 rounded-lg flex justify-center">
+                <div className="border-2 w-full lg:w-[96%] p-4 bg-slate-900 border-gray-500 rounded-lg flex justify-center">
                     <div className="w-10/12">
                         <div className="border-b-2 border-white mb-4 pb-10">
                             <h2 className="text-2xl headings font-bold">Completed Goals List</h2>    
