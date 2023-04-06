@@ -41,8 +41,8 @@ const Notes = ({func}) => {
     return (
         <article className="border-gray-500 border-2 p-4 bg-slate-900 rounded-lg">
             <div className="flex justify-around mb-6 border-b-2 border-white">
-                <h2 className="text-2xl headings font-bold">Notes List</h2>
-                <button className="info-txt font-bold mb-12 bg-alien-green py-px px-8 rounded-md text-black"><Link to={'/notes/new'}>Add New Note</Link></button> 
+                <h2 className="text-lg md:text-2xl headings font-bold">Notes List</h2>
+                <button className="info-txt font-bold mb-4 md:mb-12 bg-alien-green py-px px-8 rounded-md text-black"><Link to={'/notes/new'}>Add New Note</Link></button> 
             </div>
             {notes?.length
                 ? (
