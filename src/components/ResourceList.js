@@ -76,8 +76,8 @@ const ResourceList = ({func}) => {
 
     return (
         <article className="border-gray-500 border-2 p-4 h-[100%] bg-slate-900 rounded-lg">
-            <div className="border-b-2 border-white mb-10 pb-10">
-                <h2 className="headings font-bold text-2xl">Liked Resources</h2>
+            <div className="border-b-2 border-white mb-4 md:mb-10 pb-4 md:pb-10">
+                <h2 className="headings font-bold text-lg md:text-2xl">Liked Resources</h2>
             </div>
             {resourceList?.length
                 ? (

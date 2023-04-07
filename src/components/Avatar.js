@@ -59,7 +59,6 @@ const Avatar = () => {
         reader.onloadend = () =>{
             setFile(reader.result);
         }
-
     }
 
     //submit the form
@@ -91,8 +90,8 @@ const Avatar = () => {
     
     return (            
         <div className="flex flex-col justify-center items-center h-full">
-            {user?.imageUrl ? <img className="w-8/12 mb-10" src={user.imageUrl} alt="user avatar" />
-                            : <img className="w-6/12 h-6/12 mb-10" src="user_white.png" alt="default avatar" />}
+            {user?.imageUrl ? <img className="w-8/12 mb-4 md:mb-10" src={user.imageUrl} alt="user avatar" />
+                            : <img className="w-6/12 h-6/12 mb-4 md:mb-10" src="user_white.png" alt="default avatar" />}
             {!edit && <div onClick={flipButton} className="cursor-pointer info-txt font-bold mb-12 bg-alien-green py-px px-8 rounded-md text-black">Edit</div> }
             {edit && <form className="w-full" enctype="multipart/form-data" onSubmit={submitForm}>
             
@@ -101,8 +100,8 @@ const Avatar = () => {
                     <label className="form-label" htmlFor="form4Example2"></label>
                 </div>
                 <div classname="flex flex-row justify-around">
-                    <button  type="submit" className="inline-block info-txt font-bold mb-12 bg-alien-green py-px px-8 rounded-md text-black">Update</button>
-                    <div onClick={flipButton} className="inline-block cursor-pointer info-txt font-bold mb-12 bg-grey py-px px-8 rounded-md text-black w-4/12 ml-2">Cancel</div>
+                    <button  type="submit" className="inline-block info-txt font-bold mb-8 md:mb-12 bg-alien-green py-px px-8 rounded-md text-black">Update</button>
+                    <div onClick={flipButton} className="inline-block cursor-pointer info-txt font-bold mb-8 md:mb-12 bg-grey py-px px-8 rounded-md text-black w-4/12 ml-2">Cancel</div>
                 </div>
             </form>}
         </div>            

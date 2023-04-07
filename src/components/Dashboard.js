@@ -46,23 +46,23 @@ const Dashboard = () => {
     //console.log(modalResource)
 
     return (
-        <div className="py-10 headings text-white pr-6">
+        <div className="py-10 headings text-white px-6">
             {openModal && <DashModal state={modalState} note={modalNote} func={onClick} title={modalTitle} body={modalBody} resourceContent={modalContent}/>}
-            <h2 className="font-bold text-5xl mb-20">My Dashboard</h2>
-            <div className="flex justify-between pl-[1%] mb-16">
-                <div className="w-[32%]">
+            <h2 className="font-bold text-5xl mb-4 md:mb-20">My Dashboard</h2>
+            <div className="flex flex-col items-center md:flex-row md:justify-between px-[1%] mb-8 md:mb-16">
+                <div className="w-full sm:w-10/12 md:w-[32%]">
                     <Avatar />
                 </div>
-                <div className="w-[65%]">
+                <div className="w-full md:w-[65%]">
                     <MGoals />
                 </div>
             </div>
-            <div className="flex justify-around">
-                <div className="w-9/12">
+            <div className="flex flex-col lg:flex-row lg:justify-around px-[1%]">
+                <div className="w-full mb-8 lg:mb-0 lg:w-9/12">
                     <Goals func={onClick}/>
                 </div>
 
-                <div className="w-3/12">
+                <div className="w-full lg:w-3/12">
                     <ResourceList func={findResource}/>
                 </div>
                 

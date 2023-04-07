@@ -71,14 +71,14 @@ const Goals = ({func}) => {
             }
         }
     }
-
+    
     return (
         <article>
-            <div className="flex justify-around mb-10">
-                <div className="border-2 w-5/12 p-4 bg-slate-900 border-gray-500 rounded-lg">
+            <div className="flex flex-col md:flex-row justify-between lg:justify-around mb-10">
+                <div className="border-2 sm:w-full mb-8 md:mb-0 md:w-4/12 lg:w-5/12 p-4 bg-slate-900 border-gray-500 rounded-lg">
                     <div className="flex justify-around mb-6 border-b-2 border-white">
-                        <h2 className="text-2xl headings font-bold">Goals List</h2>
-                        <button className="info-txt font-bold mb-12 bg-alien-green py-px px-8 rounded-md text-black"><Link to={'/goals/new'}>Add New Goal</Link></button>
+                        <h2 className="text-lg lg:text-2xl headings font-bold">Goals List</h2>
+                        <button className="ml-2 lg:ml-0 info-txt font-bold mb-4 sm:mb-12 bg-alien-green py-px px-4 lg:px-8 rounded-md text-black"><Link to={'/goals/new'}>Add New Goal</Link></button>
                     </div>
                     {notCompletedGoals?.length ? (
                             <div className="h-[200px] pt-4 overflow-auto scrollbar">
@@ -97,10 +97,10 @@ const Goals = ({func}) => {
                                                 <label htmlFor={goal.id}></label>
                                             </div>
 
-                                            <p className="ml-2 font-bold text-lg leading-tight headings hover:underline hover:cursor-pointer dash-title" onClick={() => func(goal.title, goal.text, false, false)}>{goal?.title}</p>
+                                            <p className="ml-2 font-bold text-base lg:text-lg leading-tight headings hover:underline hover:cursor-pointer dash-title" onClick={() => func(goal.title, goal.text, false, false)}>{goal?.title}</p>
                                             
                                         </li>
-                                        <button className="text-red-700 mr-10 leading-relaxed info-txt font-bold hover:underline"><Link to={`/goals/${goal._id}`}>Edit</Link></button>
+                                        <button className="text-red-700 ml-2 mr-2 lg:ml-0 lg:mr-10 leading-relaxed info-txt font-bold hover:underline text-sm md:text-base"><Link to={`/goals/${goal._id}`}>Edit</Link></button>
                                     </div>
                                     
                                     ))}
@@ -113,16 +113,16 @@ const Goals = ({func}) => {
                         )
                     }
                 </div>
-                <div className="w-6/12">
+                <div className="sm:w-full md:w-7/12 lg:w-6/12">
                     <Notes func={func}/>
                 </div>
             </div>
             
             <div className="flex justify-center">
-                <div className="border-2 w-[96%] p-4 bg-slate-900 border-gray-500 rounded-lg flex justify-center">
+                <div className="border-2 w-full lg:w-[96%] p-4 bg-slate-900 border-gray-500 rounded-lg flex justify-center">
                     <div className="w-10/12">
-                        <div className="border-b-2 border-white mb-4 pb-10">
-                            <h2 className="text-2xl headings font-bold">Completed Goals List</h2>    
+                        <div className="border-b-2 border-white mb-4 pb-4 md:pb-10">
+                            <h2 className="text-lg md:text-2xl headings font-bold">Completed Goals List</h2>    
                         </div>
                         {completedGoals?.length
                             ? (
@@ -143,9 +143,9 @@ const Goals = ({func}) => {
                                                         <label htmlFor={goal.id}></label>
                                                     </div>
 
-                                                    <p className="ml-2 font-bold text-lg leading-tight headings hover:underline hover:cursor-pointer dash-title" onClick={() => func(goal.title, goal.text, false, false)}>{goal?.title}</p>
+                                                    <p className="ml-2 font-bold text-lg leading-tight headings hover:underline hover:cursor-pointer dash-title text-sm md:text-base" onClick={() => func(goal.title, goal.text, false, false)}>{goal?.title}</p>
                                                 </div>
-                                                <p className="info-txt">Completed On: {goal.dateCompleted.split('T')[0]}</p>
+                                                <p className="info-txt text-xs ml-2 md:text-base">Completed: {goal.dateCompleted.split('T')[0]}</p>
                                             </div>
                                         </li>
                                         ))}
