@@ -9,6 +9,7 @@ const Avatar = () => {
 
     const [user, setUser] = useState();
     const [edit, setEdit] = useState(false);
+    const [currentFile, setCurrentFile] = useState('')
     
     useEffect(() => {
         console.log('here')
@@ -37,7 +38,7 @@ const Avatar = () => {
             isMounted = false;
             controller.abort();
         }
-    }, [])
+    }, [currentFile])
 
     const flipButton = () => {
         setEdit(!edit)
@@ -79,6 +80,8 @@ const Avatar = () => {
                 console.log('created avatar')
             }
             console.log(response);
+            setCurrentFile(file)
+            setEdit(!edit)
         } catch (error) {
             console.log(error)
         }
@@ -93,7 +96,7 @@ const Avatar = () => {
             {edit && <form className="w-full" enctype="multipart/form-data" onSubmit={submitForm}>
             
                 <div className="mb-4">
-                    <input onChange={handleImage}  type="file" id="formupload" name="file" className="w-10/12 py-px px-8 rounded-md"  />
+                    <input onChange={handleImage}  type="file" id="formupload" name="file" className="w-10/12 py-px px-8 rounded-md"/>
                     <label className="form-label" htmlFor="form4Example2"></label>
                 </div>
                 <div classname="flex flex-row justify-around">
