@@ -47,7 +47,6 @@ const Goals = ({func}) => {
     }, [lastUpdated])
 
     const updateCompleted = async (goal) => {
-
         
         const id = goal._id
         const completed = !goal.completed
@@ -84,8 +83,8 @@ const Goals = ({func}) => {
                             <div className="h-[200px] pt-4 overflow-auto scrollbar">
                                 <ul>
                                     {notCompletedGoals.map((goal) => (
-                                    <div className="flex justify-between mb-4">
-                                        <li key={goal?._id} className="text-white flex">
+                                    <div key={goal?._id} className="flex justify-between mb-4">
+                                        <li className="text-white flex">
 
                                             <div className="completed ml-6">
                                                 <input
@@ -143,7 +142,7 @@ const Goals = ({func}) => {
                                                         <label htmlFor={goal.id}></label>
                                                     </div>
 
-                                                    <p className="ml-2 font-bold text-lg leading-tight headings hover:underline hover:cursor-pointer dash-title text-sm md:text-base" onClick={() => func(goal.title, goal.text, false, false)}>{goal?.title}</p>
+                                                    <p className="ml-2 font-bold sm:text-lg leading-tight headings hover:underline hover:cursor-pointer dash-title text-sm md:text-base" onClick={() => func(goal.title, goal.text, false, false)}>{goal?.title}</p>
                                                 </div>
                                                 <p className="info-txt text-xs ml-2 md:text-base">Completed: {goal.dateCompleted.split('T')[0]}</p>
                                             </div>
