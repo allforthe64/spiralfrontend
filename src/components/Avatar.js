@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
 import useAuth from "../hooks/useAuth";
-import { axiosPrivate } from "../api/axios";
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Avatar = () => {
     
     const { auth } = useAuth()
     const id = auth.id
+
+    const axiosPrivate = useAxiosPrivate();
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const [user, setUser] = useState();
     const [edit, setEdit] = useState(false);
@@ -33,7 +38,7 @@ const Avatar = () => {
                 console.log(`user is now ${foundUser.imageUrl}`)
             } catch (err) {
                 console.error(err);
-                // navigate('/login', { state: { from: location }, replace: true });
+                navigate('/login', { state: { from: location }, replace: true });
             }
         }
         getUser();
@@ -71,9 +76,8 @@ const Avatar = () => {
     const submitForm = async (e) =>{
         e.preventDefault();
         try {
-
-            //https://spiral-backend-api.onrender.com/users/${id}
-            const response = await axiosPrivate.post(`http://localhost:3500/users/${id}`, JSON.stringify({file}))
+            const response = await axiosPrivate.post(`https://spiral-backend-api.onrender.com/users/${id}`, JSON.stringify({file}))
+            //const response = await axiosPrivate.post(`http://localhost:3500/users/${id}`, JSON.stringify({file}))
 
             // const {data} = await axiosPrivate.post(`http://localhost:3500/users/${id}`, {file})
             if  (response.success === true){
