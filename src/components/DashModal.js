@@ -48,6 +48,11 @@ const DashModal = ({func, title, body, note, state, resourceContent}) => {
                                 {tutArr}
                             </ul>
                         </div>
+                        <div className='flex justify-center sm:max-md:mt-4'>
+                        <div className='md:w-10/12 sm:max-md:w-8/12 flex justify-around'>
+                        <button className="text-black bg-alien-green info-txt px-4 py-2 text-xl font-bold rounded-lg sm:max-md:text-sm max-sm:text-xs max-sm:w-8/12"><Link to={resourceContent.link} target='_blank'>Start using {resourceContent.name}</Link></button>
+                    </div>
+                    </div>
                     </div>
                 </div>
 
@@ -57,7 +62,7 @@ const DashModal = ({func, title, body, note, state, resourceContent}) => {
 
     return (
         <div className="modal backdrop-blur-sm flex justify-center py-20">
-            <div className="border w-10/12 bg-dark rounded-2xl pb-26 h-[100%]">
+            <div className="border w-10/12 bg-slate-900 rounded-2xl pb-26 h-[100%]">
                 {content}
             </div>
         </div>
