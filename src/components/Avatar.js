@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import useAuth from "../hooks/useAuth";
-import { axiosPrivate } from "../api/axios";
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
 const Avatar = () => {
     
     const { auth } = useAuth()
     const id = auth.id
+
+    const axiosPrivate = useAxiosPrivate();
 
     const [user, setUser] = useState();
     const [edit, setEdit] = useState(false);
