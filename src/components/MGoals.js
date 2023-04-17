@@ -52,8 +52,8 @@ const MGoals = () => {
                         <div className="h-[200px] w-11/12 lg:w-9/12 pt-4 pl-8 overflow-auto scrollbar">
                             <ul>
                                 {mgoals.map((mgoal) => (
-                                    <div className="flex justify-between mb-4">
-                                        <li key={mgoal?._id} className="text-white">
+                                    <div key={mgoal?._id} className="flex justify-between mb-4">
+                                        <li className="text-white">
                                             <p className="ml-0 md:ml-2 font-bold text-lg sm:text-xl text-left headings">{mgoal?.title}</p>
                                             <p className="ml-0 md:ml-4 mt-4 info-txt text-sm text-left">{mgoal.text}</p>
                                         </li>

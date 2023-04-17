@@ -26,7 +26,7 @@ const ResourceList = ({func}) => {
                     signal: controller.signal,
                 });
 
-                const results = response.data.filter(el => auth.favResources.includes(el._id))
+                const results = response.data.filter(el => auth?.favResources?.includes(el._id))
         
                 isMounted && setResourceList(results);
             } catch (err) {

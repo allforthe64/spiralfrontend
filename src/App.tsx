@@ -13,14 +13,12 @@ import Dashboard from './components/Dashboard';
 import Discord from './components/Discord';
 import Resources from './components/Resources';
 import NewResourceForm from './components/NewResourceForm';
-import EditResource from './components/EditResource'
-import Goals from './components/Goals';
+import EditResource from './components/EditResource';
 import NewGoalForm from './components/NewGoalForm';
 import EditGoal from './components/EditGoal';
 import MGoals from './components/MGoals';
 import EditMGoal from './components/EditMGoal'
 import NewMGoalForm from './components/NewMGoalForm'
-import Notes from './components/Notes'
 import EditNote from './components/EditNote';
 import NewNoteForm from './components/NewNoteForm';
 
@@ -82,7 +80,7 @@ function App() {
         isMounted = false;
         controller.abort();
       }
-    }, [foo])
+  }, [foo])
 
   return (
     <div className="App">
