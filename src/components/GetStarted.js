@@ -37,28 +37,51 @@ const GetStarted = () => {
                 
             </section>
             <section className="bg-white pt-10 pb-10">
+                <p className="text-black info-txt text-xl md:text-3xl font-bold w-9/12 ml-[4%] text-left pb-4">In <span className='text-[#00FF5D] text-2xl md:text-4xl font-semibold'>One</span> month, your child will . . .</p>
+                <hr className='lg-spacer ml-[4%] mb-6 bg-black'/> 
+                <AnimationOnScroll animateIn='animate__fadeInUp'>
+                    <div className="flex flex-col items-center lg:flex-row lg:justify-around lg:w-10/12 lg:ml-[8%] pt-10">
+                            <div className="w-10/12 mb-8 md:mb-0 md:w-8/12 lg:w-3/12">
+                                <img className='mb-4 h-[48%] w-[100%]' src="./interest.png" alt="peers"/>
+                                <p className="headings text-center text-lg font-semibold text-black mb-2">Interest Led Learning</p>
+                                <p className="text-left text-black text-sm info-txt">Use intrinsic motivation to follow their interests and dig deep on a topic they are passionate about.</p>
+                            </div>
+                            <div className="w-10/12 mb-8 md:mb-0 md:w-8/12 lg:w-3/12">
+                                <img className="mb-4 h-[48%] w-[100%]" src="./mentor.png" alt='Resources'/>
+                                <p className="headings text-center text-lg font-semibold text-black mb-2">Find a Mentor</p>
+                                <p className="text-left text-black text-sm info-txt">Connect with a professional to hear how that passion can lead to a career.</p>
+                            </div>
+                            <div className="w-10/12 mb-8 md:mb-0 md:w-8/12 lg:w-3/12">
+                                <img className='mb-4  h-[48%] w-[100%]' src="portfolio.png" alt="Discord"/>
+                                <p className="headings text-center text-lg font-semibold text-black mb-2">Portfolio Website</p>
+                                <p className="text-left text-black text-sm info-txt">Document their exploration and learning by building a portfolio website to share.</p>
+                            </div>
+                        </div>
+                </AnimationOnScroll>
+            </section>
+            <section className="bg-white pt-10 pb-10">
                 <AnimationOnScroll animateIn='animate__fadeInLeft' >
                     <p className="text-black info-txt text-xl md:text-3xl font-bold w-9/12 ml-[4%] text-left pb-4">What does <span className='text-[#00FF5D] text-2xl md:text-4xl font-semibold'>Spiral</span> offer?</p>
                     <hr className='lg-spacer ml-[4%] mb-6 bg-black'/> 
                 </AnimationOnScroll>
                 <AnimationOnScroll animateIn='animate__fadeInUp'>
-                    <div className="flex flex-col items-center lg:flex-row lg:justify-around lg:w-10/12 lg:ml-[8%]">
-                            <div className="w-10/12 mb-8 md:mb-0 md:w-8/12 lg:w-3/12">
-                                <img className='mb-4 h-[48%] w-[100%]' src="https://i0.hippopx.com/photos/279/654/449/art-craft-creative-cute-preview.jpg" alt="peers"/>
-                                <p className="headings text-left text-lg font-semibold text-black mb-2">Weekly Live Meetings</p>
+                    <div className="flex flex-col items-center lg:flex-row lg:justify-around lg:items-stretch lg:w-10/12 lg:ml-[8%] pt-10">
+                            <div className="py-4 h-full w-10/12 mb-8 md:mb-0 md:w-8/12 lg:w-3/12">
+                                <img className='mb-4 w-4/12 m-auto' src="./support.png" alt="peers"/>
+                                <p className="headings text-center text-lg font-semibold text-black mb-2">Support</p>
                                 <p className="text-left text-black text-sm info-txt">Log on and share with fellow builders. Meet each Tuesday and Friday to share your progress, 
                                     ask questions, and see what everyone else is building. Sometimes parents have questions too! Weekly meetup held via zoom will answer any questions 
                                     caregivers may have.</p>
                             </div>
-                            <div className="w-10/12 mb-8 md:mb-0 md:w-8/12 lg:w-3/12">
-                                <img className="mb-4 h-[48%] w-[100%]" src="https://img.freepik.com/premium-photo/connection-lines-with-nodes-connection-structure-black-background-3d-rendering_493806-14591.jpg" alt='Resources'/>
-                                <p className="headings text-left text-lg font-semibold text-black mb-2">Extensive Learning Resource Database</p>
+                            <div className="py-4 h-full w-10/12 mb-8 md:mb-0 md:w-8/12 lg:w-3/12">
+                                <img className="mb-4 w-4/12 m-auto" src="./book.png" alt='Resources'/>
+                                <p className="headings text-center text-lg font-semibold text-black mb-2">Resource Database</p>
                                 <p className="text-left text-black text-sm info-txt">The internet makes world class learning resources just a click away. Gain access to the Spiral resource database which includes 
                                     software, tutorial, and class recommendations</p>
                             </div>
-                            <div className="w-10/12 mb-8 md:mb-0 md:w-8/12 lg:w-3/12">
-                                <img className='mb-4  h-[48%] w-[100%]' src="https://miro.medium.com/max/1000/0*kBHpKva09AsGj7RQ" alt="Discord"/>
-                                <p className="headings text-left text-lg font-semibold text-black mb-2">Discord Server</p>
+                            <div className="py-4 h-full w-10/12 mb-8 md:mb-0 md:w-8/12 lg:w-3/12">
+                                <img className='mb-4  w-4/12 m-auto' src="./community.png" alt="Discord"/>
+                                <p className="headings text-center text-lg font-semibold text-black mb-2">Community</p>
                                 <p className="text-left text-black text-sm info-txt">As students build their skills, they may need a little help. Our Discord community 
                                     is there to answer questions and point them in the direction of great resources to keep them on track between meet-ups.</p>
                             </div>

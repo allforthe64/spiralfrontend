@@ -27,7 +27,7 @@ const Nav = () => {
 
     return (
         <>
-            <nav className='pt-3 pl-6 flex'>
+            <nav className='pt-3 px-6 flex justify-between'>
                 <div className='w-4/12'>
                     <Link to={'/'} className='flex items-center'>
                         <img src='./Logo_White_Green.png' alt='logo' className="w-2/12" />
@@ -42,11 +42,14 @@ const Nav = () => {
 
                         <ul id='mini-slide' className="slide-1 bg-white">
                             <li className="info-txt text-left md:text-lg hover:underline text-sm"><Link to={'/get-started'}>Get Started</Link></li>
-                            {auth.id && (auth.roles.includes(2001) || auth.roles.includes(5150)) && 
+                            {auth.id && (auth.roles.includes(1984) || auth.roles.includes(5150)) && 
                                 
                                 <li className="info-txt text-left md:text-lg hover:underline text-sm"><Link to={'/dashboard'}>Dashboard</Link></li>
                             }
-                            <li className="info-txt text-left md:text-lg hover:underline text-sm"><Link to={'/resources'}>Resources</Link></li>
+                            {auth.id && (auth.roles.includes(1984) || auth.roles.includes(2001) || auth.roles.includes(5150)) && 
+                                
+                                <li className="info-txt text-left md:text-lg hover:underline text-sm"><Link to={'/resources'}>Resources</Link></li>
+                            }
                             {auth.id && auth.roles.includes(5150) && 
                                 <li className="info-txt text-left md:text-lg hover:underline text-sm"><Link to={'/admin'}>Admin</Link></li>
                             }
@@ -64,24 +67,27 @@ const Nav = () => {
                     </nav> 
                 </div>
 
-                <ul className="md:flex md:justify-around md:w-[80%] md:pt-4 hidden">
-                    <li className="info-txt text-white md:text-lg hover:underline text-sm"><Link to={'/get-started'}>Get Started</Link></li>
-                    {auth.id && (auth.roles.includes(2001) || auth.roles.includes(5150)) && 
-                        
-                        <li className="info-txt text-white md:text-lg hover:underline text-sm"><Link to={'/dashboard'}>Dashboard</Link></li>
+                <ul className={auth.id ? "md:flex md:justify-between md:w-[60%] lg:w-[50%] md:pt-4 hidden" : "md:flex md:justify-between w-[40%] lg:w-[30%] md:pt-4 hidden"}>
+                    <li className="info-txt text-white hover:underline lg:text-base text-sm"><Link to={'/get-started'}>Get Started</Link></li>
+                    {auth.id && (auth.roles.includes(1984) || auth.roles.includes(5150)) && 
+                            <li className="info-txt text-white lg:text-base hover:underline text-sm"><Link to={'/dashboard'}>Dashboard</Link></li>
                     }
-                    <li className="info-txt text-white md:text-lg hover:underline text-sm"><Link to={'/resources'}>Resources</Link></li>
+
+                    {auth.id && (auth.roles.includes(1984) || auth.roles.includes(2001) || auth.roles.includes(5150)) && 
+                             <li className="info-txt text-white lg:text-base hover:underline text-sm"><Link to={'/resources'}>Resources</Link></li>
+                    }
+                    
                     {auth.id && auth.roles.includes(5150) &&
-                        <li className="info-txt text-white md:text-lg hover:underline text-sm"><Link to={'/admin'}>Admin</Link></li>
+                        <li className="info-txt text-white lg:text-base hover:underline text-sm"><Link to={'/admin'}>Admin</Link></li>
                     }
                     {!auth.id &&
-                        <>
-                            <li className="info-txt text-white md:text-lg hover:underline text-sm"><Link to={'/login'}>Login</Link></li>
-                            <li className="info-txt text-white md:text-lg hover:underline text-sm"><Link to={'/register'}>Sign up</Link></li>
-                        </> 
+                        <div className='flex'>
+                            <li className="info-txt text-white lg:text-base hover:underline text-sm"><Link to={'/login'}>Login</Link></li>
+                            <li className="ml-10 info-txt text-white lg:text-base hover:underline text-sm"><Link to={'/register'}>Sign up</Link></li>
+                        </div> 
                     }
                     {auth.id && 
-                        <li className="leading-loose info-txt text-white md:text-lg text-sm"><button onClick={signout} className='hover:underline'>Signout</button></li>
+                        <li className="info-txt text-white lg:text-base text-sm"><button onClick={signout} className='lg:text-base text-sm hover:underline'>Signout</button></li>
                     }
                 </ul>
             </nav>
