@@ -76,9 +76,8 @@ const Avatar = () => {
     const submitForm = async (e) =>{
         e.preventDefault();
         try {
-
-            //https://spiral-backend-api.onrender.com/users/${id}
-            const response = await axiosPrivate.post(`http://localhost:3500/users/${id}`, JSON.stringify({file}))
+            const response = await axiosPrivate.post(`https://spiral-backend-api.onrender.com/users/${id}`, JSON.stringify({file}))
+            //const response = await axiosPrivate.post(`http://localhost:3500/users/${id}`, JSON.stringify({file}))
 
             // const {data} = await axiosPrivate.post(`http://localhost:3500/users/${id}`, {file})
             if  (response.success === true){
