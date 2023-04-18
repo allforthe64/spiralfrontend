@@ -70,7 +70,7 @@ const Modal = (props) => {
 
     return (
         <div className="modal backdrop-blur-sm flex justify-center py-16">
-            <div className="border w-10/12 bg-dark rounded-2xl">
+            <div className="border w-10/12 bg-slate-900 rounded-2xl">
                 <div className="flex justify-end pt-2 pr-4 max-sm:mb-3">
                     <button className="text-white" onClick={() => props.onClickFunc()}><FontAwesomeIcon icon={faXmark} className='text-4xl' /></button>
                 </div>
@@ -91,7 +91,7 @@ const Modal = (props) => {
                     <div className='flex justify-center sm:max-md:mt-4'>
                         <div className='md:w-10/12 sm:max-md:w-8/12 flex justify-around'>
                             <button className="bg-alien-green info-txt px-4 py-2 text-xl font-bold rounded-lg sm:max-md:text-sm max-sm:text-xs max-sm:w-8/12"><Link to={props.link} target='_blank'>Start using {props.name}</Link></button>
-                            <FontAwesomeIcon onClick={toggleFav} icon={[`${favorited}`, "heart"]} className='text-white text-5xl max-sm:text-3xl max-sm:mt-2 sm:max-md:text-3xl sm:max-md:mt-px hover:cursor-pointer'/>
+                            {(auth.roles.includes(1984) || auth.roles.includes(5150)) && <FontAwesomeIcon onClick={toggleFav} icon={[`${favorited}`, "heart"]} className='text-white text-5xl max-sm:text-3xl max-sm:mt-2 sm:max-md:text-3xl sm:max-md:mt-px hover:cursor-pointer'/>}
                         </div>
                     </div>
                     

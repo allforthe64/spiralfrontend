@@ -61,26 +61,26 @@ const Home = () => {
                     choose when to stop, how you choose to spend your time shifts. Learning flows better. There isn't a magical set facts that, once 
                     memorized/understood, constitutes a complete education. There’s always something more to be learned. The internet 
                     is an endless source of information and it’s more important to know how to create, build, and share information and ideas, than it is to memorize it.</p>
-                    <div className="grid grid-flow-row gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 justify-items-center">
-                        <div className="p-4 max-w-xs rounded-3xl tinted">
-                            <img className='rounded-lg mb-4' src="./projects_white.png" alt="passions"/>
+                    <div className="mx-4 grid grid-flow-row gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 justify-items-center">
+                        <div className="p-6 max-w-xs rounded-3xl tinted">
+                            <img className='m-auto w-6/12 rounded-lg mb-6' src="./projects_white.png" alt="passions"/>
                             <p className="headings text-2xl font-semibold text-white mb-4">Passions</p>
                             <p className="text-left text-white text-sm info-txt">Students will work longer, with more focus, and persist when 
                                 faced with challenges if they really care about what they are doing.</p>
                         </div>
-                        <div className="p-4 max-w-xs rounded-3xl tinted">
-                            <img className='rounded-lg mb-4' src="./learning_white.png" alt="projects"/>
+                        <div className="p-6 max-w-xs rounded-3xl tinted">
+                            <img className='m-auto w-6/12 rounded-lg mb-6' src="./learning_white.png" alt="projects"/>
                             <p className="headings text-2xl font-semibold text-white mb-4">Projects</p>
                             <p className="text-left text-white text-sm info-txt">Start with an idea and carry it through to a finished project. Use real tools and master cutting edge technologies.</p>
                         </div>
-                        <div className="p-4 max-w-xs rounded-3xl tinted">
-                            <img className="rounded-lg mb-4" src="./peers_white.png" alt='Peers'/>
+                        <div className="p-6 max-w-xs rounded-3xl tinted">
+                            <img className="m-auto w-6/12 rounded-lg mb-6" src="./peers_white.png" alt='Peers'/>
                             <p className="headings text-2xl font-semibold text-white mb-4">Peers</p>
                             <p className="text-left text-white text-sm info-txt">Learning is a social process. Students need feedback from both adults and 
                                 other students to help move them towards their goals.</p>
                         </div>
-                        <div className="p-4 max-w-xs rounded-3xl tinted">
-                            <img className="rounded-lg mb-4" src="./play_white.png" alt="play"/>
+                        <div className="p-6 max-w-xs rounded-3xl tinted">
+                            <img className="m-auto w-6/12 rounded-lg mb-6" src="./play_white.png" alt="play"/>
                             <p className="headings text-2xl font-semibold text-white mb-4">Play</p>
                             <p className="text-left text-white text-sm info-txt">Students should be given opportunities to take risks, try new things, and 
                                 recognize there is no shame if their attempts do not work out.</p>
@@ -145,7 +145,7 @@ const Home = () => {
                 </AnimationOnScroll>
             </section>
             <section className='flex flex-col items-center md:flex=row md:justify-around py-10 bg-white'>
-                <img src='/question.png' className='w-4/12 h-[auto]' alt='question-mark'/>
+                <img src='/question.png' className='w-4/12 md:w-2/12 h-[auto]' alt='question-mark'/>
                 <div className='w-10/12 md:w-7/12 mt-12'>
                     <form ref={form} onSubmit={sendEmail}>
                         <div className='flex flex-col'>
