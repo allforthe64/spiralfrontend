@@ -10,7 +10,7 @@ const Login = ({ func }) => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || "/dashboard";
+    let from = location.state?.from?.pathname || "/resources";
 
     const userRef = useRef();
     const errRef = useRef();
@@ -51,6 +51,8 @@ const Login = ({ func }) => {
             setUser('');
             setPwd('');
             func()
+            console.log(roles)
+            if (roles.includes(1984)) from = '/dashboard'
             navigate(from, { replace: true });
         } catch (err) {
             if (!err?.response) {

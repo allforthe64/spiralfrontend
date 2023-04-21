@@ -57,10 +57,10 @@ const Home = () => {
             </section>
             <section className="flex flex-col items-center pt-16 pb-16">
                 <h3 className="headings text-5xl font-bold text-white mb-4">Why Spiral?</h3>
-                <p className="w-10/12 lg:w-8/12 mt-2 font-medium text-white text-sm md:text-xl leading-9 info-txt mb-16">When you have a choice about what you do and can 
-                    choose when to stop, how you choose to spend your time shifts. Learning flows better. There isn't a magical set facts that, once 
-                    memorized/understood, constitutes a complete education. There’s always something more to be learned. The internet 
+                <p className="w-10/12 lg:w-8/12 mt-2 font-medium text-white text-sm md:text-xl leading-9 info-txt mb-16">When kids have a choice about what they do and can 
+                    choose when to stop, their approach to learning changes. Learning is no longer a chore. Schools approach education as a set of facts to be memorized. But there’s always something more to be learned. The internet 
                     is an endless source of information and it’s more important to know how to create, build, and share information and ideas, than it is to memorize it.</p>
+                    <p className='text-white text-3xl font-bold mb-8'>4 <span className='alien-green'>Key Ingredients</span> for Learning</p>
                     <div className="mx-4 grid grid-flow-row gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 justify-items-center">
                         <div className="p-6 max-w-xs rounded-3xl tinted">
                             <img className='m-auto w-6/12 rounded-lg mb-6' src="./projects_white.png" alt="passions"/>

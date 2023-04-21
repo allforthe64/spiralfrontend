@@ -65,7 +65,7 @@ const GetStarted = () => {
                     <hr className='lg-spacer ml-[4%] mb-6 bg-black'/> 
                 </AnimationOnScroll>
                 <AnimationOnScroll animateIn='animate__fadeInUp'>
-                    <div className="flex flex-col items-center lg:flex-row lg:justify-around lg:items-stretch lg:w-10/12 lg:ml-[8%] pt-10">
+                    <div className="flex flex-col items-center lg:flex-row lg:justify-around lg:items-stretch lg:w-10/12 lg:ml-[8%] pt-10 ">
                             <div className="py-4 h-full w-10/12 mb-8 md:mb-0 md:w-8/12 lg:w-3/12">
                                 <img className='mb-4 w-4/12 m-auto' src="./support.png" alt="peers"/>
                                 <p className="headings text-center text-lg font-semibold text-black mb-2">Support</p>
