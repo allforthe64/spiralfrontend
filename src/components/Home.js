@@ -91,7 +91,7 @@ const Home = () => {
                 <h1 className='headings font-bold text-3xl md:text-5xl mb-4 md:mb-14'>The Creative Learning Spiral:</h1>
                 <AnimationOnScroll animateIn='animate__fadeIn' offset={100}>
                     <img src='./desktop1.png' alt='Learning spiral graphic' className='hidden md:w-[80%] md:ml-[10%] md:block'/>
-                    <img src='./mobile4.png' alt='Learning spiral graphic' className='w-[80%] ml-[10%] md:hidden'/>
+                    <img src='./mobile1.png' alt='Learning spiral graphic' className='w-[80%] ml-[10%] md:hidden'/>
                 </AnimationOnScroll>
             </section>
             <section className="space-bg flex flex-col py-32">
