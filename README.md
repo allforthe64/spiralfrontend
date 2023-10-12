@@ -1,8 +1,6 @@
 <h1>Discover Spiral: The Frontend</h1>
 <br>
-I am a huge gym rat. Something about going to the gym, racking up an absurd ammount of weight and trying to lift it speaks to me. But one thing I 
-don't enjoy, is writing complex, heavy code. So I decided to learn ReactJS :p. I knew going in that React would allow me to write lighter, easier to read code and I had a brilliant idea: why not use the power of lightweight code to build a website about jacking heavy weights? And just like that, the Mogged
-Supplement Company was born. Read on to see how I combined two of my passions into one epic project:
+For this project, I teamed up with my Mom (who was also learning web development at the time) to create an online learning platform for kids everywhere. Being a homeschool student, my Mom has been my main resource when comes to finding new tools, tutorials, or even just ideas for cool projects. As such, this project had a lot of personal value for both of us, so we put in a lot of effort to get the website looking and feeling just right. We'd been practicing building with the MERN stack, so we decided to use this project to put our skills to the test. We also wanted to use Tailwind CSS to style the app, which we'd never used before. Read on to see how everything turned out:
 <br>
 <br> 
 <br>
