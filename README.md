@@ -14,7 +14,7 @@ For this project, I teamed up with my Mom (who was also learning web development
 
 **Tech Used:** React.js, TypeScript, Tailwind CSS  
 <br>
-<p>Unlike how I build most of my projects, we actually opted not to use Adobe XD for this project and instead used simple sketches for each page to decide how the site should look. We new that we wanted to have several informational graphics appear on screen and we wanted to incorporate motion with those graphics to keep the pages interesting. We kept our designs fairly clean and simple, utilizing lots of negative space to draw the user's attention to the content being displayed. </p>
+<p>Unlike how I build most of my projects, we actually opted not to use Adobe XD for this project and instead used simple sketches for each page to decide how the site should look. We knew that we wanted to have several informational graphics appear on screen and we wanted to incorporate motion with those graphics to keep the pages interesting. We kept our designs fairly clean and simple, utilizing lots of negative space to draw the user's attention to the content being displayed. </p>
 <br>
 <p>We wanted to use this project as a means of practicing with the MERN stack, so naturally we used React.js to build out the frontend of the app. Functionally, the frontend didn't need to do much other than some basic CRUD operations and for this we used Axios, which allowed us to setup request controller and make private requests to our backend. It was important that our CRUD operations had the proper authentication protocols setup and Axios was crucial for making sure that only users with the right kind of account could make requests. Once we had our data, it was easy to use react hooks and JSX to map over and display it.</p>
 <br>
