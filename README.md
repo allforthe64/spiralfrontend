@@ -6,7 +6,7 @@ For this project, I teamed up with my Mom (who was also learning web development
 <br>
 <br>
 <div align='center'>
-  <img width='50%' src='https://media.giphy.com/media/Vwf0G57SrWa4bqkouc/giphy.gif'/>
+  <img width='50%' src='https://media.giphy.com/media/8JHCsfucYOYnEWcv8Y/giphy.gif'/>
 </div>
 <br>
 <h1>How It's Made:</h1>
